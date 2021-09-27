@@ -56,18 +56,20 @@
                         <button (click)="Register()">Signup</button>
                     </div>
                 </div>
-                <div class="form-content" *ngIf="!signup">
-                    <div class="inputs">
+                <div class="form-content" [formGroup]="LoginForm" *ngIf="!signup">
+                    <div class="inputs" >
                         <label for="email">Email Id</label>
-                        <input type="email" name="email" id="email">
+                        <input  matInput  type="email" name="email" id="email"  formControlName='email'  [ngClass]="{'err-input':(LoginForm.get('email')?.errors?.required || LoginForm.get('email')?.errors?.email)  && LoginForm.controls.email.touched}">
+                        <mat-error  *ngIf="LoginForm.controls['email'].invalid && (LoginForm.controls['email'].dirty || LoginForm.controls['email'].touched)" class="alert">{{EmailValidation()}}</mat-error>
                     </div>
                     <div class="inputs">
                         <label for="password">Password</label>
-                        <div class="pass-div">
-                            <input type="password" name="password" id="password" [type]="hide?'password':'text'">
+                        <div class="pass-div"  [ngClass]="{'err-input':(LoginForm.get('password')?.errors?.required || LoginForm.get('password')?.errors?.pattern)  && LoginForm.controls.password.touched}">
+                            <input  matInput  type="password" name="password" id="password" [type]="hide?'password':'text'"  formControlName='password'>
                             <mat-icon (click)="hide=!hide">{{hide?'visibility':'visibility_off'}}</mat-icon>
                         </div>
                         <label class="forgot-password">Forgot Password?</label>
+                        <mat-error *ngIf="LoginForm.controls['password'].invalid && (LoginForm.controls['password'].dirty || LoginForm.controls['password'].touched)" class="alert" style="margin-top: -15px;">{{PasswordValidation()}}</mat-error>
                     </div>
                     <div class="login-but">
                         <button>Login</button>
