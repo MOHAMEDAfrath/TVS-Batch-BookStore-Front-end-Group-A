@@ -17,22 +17,22 @@
               <div class="form-content" *ngIf = "signup">
                   <div class="inputs">
                       <label for="fullname">FullName</label>
-                      <input type="text" name="fullname" id="fullname">
+                      <input type="text" name="fullname" id="fullname" required>
                   </div>
                   <div class="inputs">
                       <label for="email">Email Id</label>
-                      <input type="email" name="email" id="email">
+                      <input type="email" name="email" id="email" required>
                   </div>
                   <div class="inputs">
                       <label for="password">Password</label>
                       <div class="pass-div">
-                          <input type="password" name="password" id="password" [type]="hide?'password':'text'">
+                          <input type="password" name="password" id="password" [type]="hide?'password':'text'" required>
                           <mat-icon (click)="hide=!hide">{{hide?'visibility':'visibility_off'}}</mat-icon>
                       </div>
                   </div>
                   <div class="inputs">
                       <label for="phone">Mobile Number</label>
-                      <input type="tel" name="phone" id="phone">
+                      <input type="tel" name="phone" id="phone" required>
                   </div>
                   <div class="sign-but">
                     <button>Signup</button>
