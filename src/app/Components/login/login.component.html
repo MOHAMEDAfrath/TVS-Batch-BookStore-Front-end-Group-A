@@ -7,14 +7,14 @@
       <div class="login-main">
           <div class="login-sign">
               <div class="but-div">
-              <div class="but-cs">Login
-                  <button class="rect"></button>
+              <div class="but-cs" (click)="signup=false" [ngStyle]="signup?{'color':'#878787'}:{'color':'black'}">Login
+                  <button class="rect" *ngIf="!signup"></button>
               </div>
-              <div class="but-cs">SignUp
-                <button class="rect"></button>
+              <div class="but-cs" (click)="signup=true" [ngStyle]="!signup?{'color':'#878787'}:{'color':'black'}">SignUp
+                <button class="rect"*ngIf="signup"></button>
               </div>
               </div>
-              <div class="form-content">
+              <div class="form-content" *ngIf = "signup">
                   <div class="inputs">
                       <label for="fullname">FullName</label>
                       <input type="text" name="fullname" id="fullname">
@@ -26,8 +26,8 @@
                   <div class="inputs">
                       <label for="password">Password</label>
                       <div class="pass-div">
-                          <input type="password" name="password" id="password">
-                          <mat-icon>visibility</mat-icon>
+                          <input type="password" name="password" id="password" [type]="hide?'password':'text'">
+                          <mat-icon (click)="hide=!hide">{{hide?'visibility':'visibility_off'}}</mat-icon>
                       </div>
                   </div>
                   <div class="inputs">
