@@ -7,8 +7,12 @@
       <div class="login-main">
           <div class="login-sign">
               <div class="but-div">
-              <div>Login</div>
-              <div>Sign Up</div>
+              <div class="but-cs">Login
+                  <button class="rect"></button>
+              </div>
+              <div class="but-cs">SignUp
+                <button class="rect"></button>
+              </div>
               </div>
               <div class="form-content">
                   <div class="inputs">
@@ -21,12 +25,18 @@
                   </div>
                   <div class="inputs">
                       <label for="password">Password</label>
-                      <input type="password" name="password" id="password">
+                      <div class="pass-div">
+                          <input type="password" name="password" id="password">
+                          <mat-icon>visibility</mat-icon>
+                      </div>
                   </div>
                   <div class="inputs">
                       <label for="phone">Mobile Number</label>
                       <input type="tel" name="phone" id="phone">
                   </div>
+                  <div class="sign-but">
+                    <button>Signup</button>
+                </div>
               </div>
           </div>
       </div>
