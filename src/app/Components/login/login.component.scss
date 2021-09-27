@@ -50,11 +50,11 @@
     }
     .form-content{
         width: 70%;
-        margin-top: 20px;
+        margin-top: 15px;
         .inputs{
             display: flex;
             flex-direction: column;
-            margin-bottom: 20px;
+            margin-bottom: 13px;
             label{
                 font-family: 'Roboto' ,sans-serif !important;
                 font-style: normal;
@@ -111,7 +111,7 @@
 .pass-div{
     display: flex;
     width: 99%;
-    border: 1px solid rgb(118,118,118);
+    border: 1.5px solid rgb(118,118,118);
     border-radius: 2px;
     height: 36px;
     mat-icon{
@@ -227,4 +227,13 @@
     line-height: 10px;
     font-weight: normal;
     padding-top: 2px;
+}
+.err{
+    color: red;
+    font-size: 10px;
+    display: inline;
+}
+.err-input{
+    border:2px solid;
+    border-color: #ff001c;
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import{ FormControl, Validators, FormGroup} from '@angular/forms';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,6 +10,7 @@ import{ FormControl, Validators, FormGroup} from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   constructor() { }
+  RegisterForm!:FormGroup
   hide = true;
   signup = false;
   LoginForm!: FormGroup;
@@ -15,6 +18,12 @@ export class LoginComponent implements OnInit {
     this.LoginForm= new FormGroup({
       email: new FormControl('',[Validators.email,Validators.required]),
       password : new FormControl('',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[#@$!%*?&])[A-Za-z\d@#$!%*?&].{4,}'),Validators.minLength(8)])
+    }),
+    this.RegisterForm = new FormGroup({
+      FullName : new FormControl('',[Validators.required,Validators.minLength(3)]),
+      Email:new FormControl('',[Validators.required,Validators.email]),
+      Password: new FormControl('',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}')]),
+      Mobile : new FormControl('',[Validators.required,Validators.minLength(10),Validators.pattern('^[0-9]{10}$')])
     })
   }
   EmailValidation()
@@ -44,5 +53,6 @@ export class LoginComponent implements OnInit {
       return "Should have minimum 8 characters";
     }
     return null;
+
   }
 }
