@@ -1,4 +1,4 @@
-<div style="display: flex; justify-content: center;margin-top: 50px;">
+<div style="display: flex; justify-content: center;align-items: center; margin-top: 10%;">
     <div class="user-card">
         <div class="image-card">
             <img class="logo" src="../../../assets/2766594.png" alt="">
@@ -68,7 +68,7 @@
                             <input  matInput  type="password" name="password" id="password" [type]="!hide?'password':'text'"  formControlName='password'>
                             <mat-icon (click)="hide=!hide">{{hide?'visibility':'visibility_off'}}</mat-icon>
                         </div>
-                        <label class="forgot-password">Forgot Password?</label>
+                        <label class="forgot-password"  [routerLink]="['/forgotPassword']" >Forgot Password?</label>
                         <mat-error *ngIf="LoginForm.controls['password'].invalid && (LoginForm.controls['password'].dirty || LoginForm.controls['password'].touched)" class="alert" style="margin-top: -15px;">{{PasswordValidation()}}</mat-error>
                     </div>
                     <div class="login-but">
