@@ -1,92 +1,249 @@
-<div style="display: flex; justify-content: center;align-items: center; margin-top: 10%;">
-    <div class="user-card">
-        <div class="image-card">
-            <img class="logo" src="../../../assets/2766594.png" alt="">
-            <p>ONLINE BOOK SHOPPING</p>
+<div class="user-card">
+  <div class="image-card">
+    <img class="logo" src="../../../assets/2766594.png" alt="" />
+    <p>ONLINE BOOK SHOPPING</p>
+  </div>
+  <div class="login-main">
+    <div class="login-sign">
+      <div class="but-div">
+        <div
+          class="but-cs"
+          (click)="signup = false"
+          [ngStyle]="signup ? { color: '#878787' } : { color: 'black' }"
+        >
+          Login
+          <button class="rect" *ngIf="!signup"></button>
         </div>
-        <div class="login-main">
-            <div class="login-sign">
-                <div class="but-div">
-                    <div class="but-cs" (click)="signup=false" [ngStyle]="signup?{'color':'#878787'}:{'color':'black'}">
-                        Login
-                        <button class="rect" *ngIf="!signup"></button>
-                    </div>
-                    <div class="but-cs" (click)="signup=true" [ngStyle]="!signup?{'color':'#878787'}:{'color':'black'}">
-                        SignUp
-                        <button class="rect" *ngIf="signup"></button>
-                    </div>
-                </div>
-                <div class="form-content" [formGroup]="RegisterForm" *ngIf="signup">
-                    <div class="inputs">
-                        <label for="fullname">FullName</label>
-                        <input type="text" name="fullname" id="fullname" formControlName="FullName" [ngClass]="{'err-input':(RegisterForm.get('FullName')?.errors?.required || RegisterForm.get('FullName')?.errors?.minlength) && RegisterForm.controls.FullName.touched}">
-                        <span *ngIf="RegisterForm.get('FullName')?.errors?.required && RegisterForm.controls.FullName.touched" class="err">
-                            Required</span>
-                        <span *ngIf="RegisterForm.get('FullName')?.errors?.minlength && RegisterForm.controls.FullName.touched" class="err">
-                            Minimum 3 characters</span>
-                    </div>
-                    <div class="inputs">
-                        <label for="email">Email Id</label>
-                        <input type="email" name="email" id="email" formControlName="Email" [ngClass]="{'err-input':(RegisterForm.get('Email')?.errors?.required || RegisterForm.get('Email')?.errors?.email) && RegisterForm.controls.Email.touched}">
-                        <span *ngIf=" RegisterForm.get('Email')?.errors?.required && RegisterForm.controls.Email.touched" class="err">
-                            Required</span>
-                        <span *ngIf="RegisterForm.get('Email')?.errors?.email && RegisterForm.controls.Email.touched" class="err">
-                            Invalid Email</span>
-                    </div>
-                    <div class="inputs">
-                        <label for="password">Password</label>
-                        <div class="pass-div" [ngClass]="{'err-input':(RegisterForm.get('Password')?.errors?.required || RegisterForm.get('Password')?.errors?.pattern) && RegisterForm.controls.Password.touched}">
-                            <input type="password" name="password" id="password" [type]="hide?'password':'text'"  formControlName="Password">
-                            <mat-icon (click)="hide=!hide">{{hide?'visibility':'visibility_off'}}</mat-icon>
-                        </div>
-                        <span *ngIf=" RegisterForm.get('Password')?.errors?.required && RegisterForm.controls.Password.touched" class="err">
-                            Required</span>
-                        <span *ngIf="RegisterForm.get('Password')?.errors?.pattern && RegisterForm.controls.Password.touched" class="err">
-                            Invalid Password</span>
-                    </div>
-                    <div class="inputs">
-                        <label for="phone">Mobile Number</label>
-                        <input type="tel" name="phone" id="phone" formControlName="Mobile" [ngClass]="{'err-input':(RegisterForm.get('Mobile')?.errors?.required || RegisterForm.get('Mobile')?.errors?.pattern)  && RegisterForm.controls.Mobile.touched}">
-                        <span *ngIf="RegisterForm.get('Mobile')?.errors?.required  && RegisterForm.controls.Mobile.touched" class="err">
-                            Required</span>
-                        <span *ngIf="RegisterForm.get('Mobile')?.errors?.pattern && RegisterForm.controls.Mobile.touched" class="err">
-                            Invalid Phone Number</span>
-                    </div>
-                    <div class="sign-but">
-                        <button (click)="Register()">Signup</button>
-                    </div>
-                </div>
-                <div class="form-content" [formGroup]="LoginForm" *ngIf="!signup">
-                    <div class="inputs" >
-                        <label for="email">Email Id</label>
-                        <input  matInput  type="email" name="email" id="email"  formControlName='email'  [ngClass]="{'err-input':(LoginForm.get('email')?.errors?.required || LoginForm.get('email')?.errors?.email)  && LoginForm.controls.email.touched}">
-                        <mat-error  *ngIf="LoginForm.controls['email'].invalid && (LoginForm.controls['email'].dirty || LoginForm.controls['email'].touched)" class="alert">{{EmailValidation()}}</mat-error>
-                    </div>
-                    <div class="inputs">
-                        <label for="password"   [ngClass]="{'alert':(LoginForm.get('password')?.errors?.required || LoginForm.get('password')?.errors?.pattern)  && LoginForm.controls.password.touched}">Password</label>
-                        <div class="pass-div"  [ngClass]="{'err-input':(LoginForm.get('password')?.errors?.required || LoginForm.get('password')?.errors?.pattern)  && LoginForm.controls.password.touched}">
-                            <input  matInput  type="password" name="password" id="password" [type]="!hide?'password':'text'"  formControlName='password'>
-                            <mat-icon (click)="hide=!hide">{{hide?'visibility':'visibility_off'}}</mat-icon>
-                        </div>
-                        <label class="forgot-password"  [routerLink]="['/forgotPassword']" >Forgot Password?</label>
-                        <mat-error *ngIf="LoginForm.controls['password'].invalid && (LoginForm.controls['password'].dirty || LoginForm.controls['password'].touched)" class="alert" style="margin-top: -15px;">{{PasswordValidation()}}</mat-error>
-                    </div>
-                    <div class="login-but">
-                        <button>Login</button>
-                    </div>
-                    <div class="or-option" >
-                        <div class="or-content">
-                            <mat-divider class="mat-divider"></mat-divider>
-                            <p>OR</p>
-                            <mat-divider  class="mat-divider"></mat-divider>
-                        </div>
-                    </div>
-                    <div class="or-option">
-                        <button mat-raised-button>Facebook</button>
-                        <button mat-raised-button>Google</button>
-                    </div>
-                </div>
-            </div>
+        <div
+          class="but-cs"
+          (click)="signup = true"
+          [ngStyle]="!signup ? { color: '#878787' } : { color: 'black' }"
+        >
+          SignUp
+          <button class="rect" *ngIf="signup"></button>
         </div>
+      </div>
+      <div class="form-content" [formGroup]="RegisterForm" *ngIf="signup">
+        <div class="inputs">
+          <label for="fullname">FullName</label>
+          <input
+            type="text"
+            name="fullname"
+            id="fullname"
+            formControlName="FullName"
+            [ngClass]="{
+              'err-input':
+                (RegisterForm.get('FullName')?.errors?.required ||
+                  RegisterForm.get('FullName')?.errors?.minlength) &&
+                RegisterForm.controls.FullName.touched
+            }"
+          required/>
+          <span
+            *ngIf="
+              RegisterForm.get('FullName')?.errors?.required &&
+              RegisterForm.controls.FullName.touched
+            "
+            class="err"
+          >
+            Required</span
+          >
+          <span
+            *ngIf="
+              RegisterForm.get('FullName')?.errors?.minlength &&
+              RegisterForm.controls.FullName.touched
+            "
+            class="err"
+          >
+            Minimum 3 characters</span
+          >
+        </div>
+        <div class="inputs">
+          <label for="email">Email Id</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            formControlName="Email"
+            [ngClass]="{
+              'err-input':
+                (RegisterForm.get('Email')?.errors?.required ||
+                  RegisterForm.get('Email')?.errors?.email) &&
+                RegisterForm.controls.Email.touched
+            }"
+           required/>
+          <span
+            *ngIf="
+              RegisterForm.get('Email')?.errors?.required &&
+              RegisterForm.controls.Email.touched
+            "
+            class="err"
+          >
+            Required</span
+          >
+          <span
+            *ngIf="
+              RegisterForm.get('Email')?.errors?.email &&
+              RegisterForm.controls.Email.touched
+            "
+            class="err"
+          >
+            Invalid Email</span
+          >
+        </div>
+        <div class="inputs">
+          <label for="password">Password</label>
+          <div
+            class="pass-div"
+            [ngClass]="{
+              'err-input':
+                (RegisterForm.get('Password')?.errors?.required ||
+                  RegisterForm.get('Password')?.errors?.pattern) &&
+                RegisterForm.controls.Password.touched
+            }"
+          >
+            <input
+              type="password"
+              name="password"
+              id="password"
+              [type]="hide ? 'password' : 'text'"
+              formControlName="Password"
+            />
+            <mat-icon (click)="hide = !hide">{{
+              hide ? "visibility" : "visibility_off"
+            }}</mat-icon>
+          </div>
+          <span
+            *ngIf="
+              RegisterForm.get('Password')?.errors?.required &&
+              RegisterForm.controls.Password.touched
+            "
+            class="err"
+          >
+            Required</span
+          >
+          <span
+            *ngIf="
+              RegisterForm.get('Password')?.errors?.pattern &&
+              RegisterForm.controls.Password.touched
+            "
+            class="err"
+          >
+            Invalid Password</span
+          >
+        </div>
+        <div class="inputs">
+          <label for="phone">Mobile Number</label>
+          <input
+            type="tel"
+            name="phone"
+            id="phone"
+            formControlName="Mobile"
+            [ngClass]="{
+              'err-input':
+                (RegisterForm.get('Mobile')?.errors?.required ||
+                  RegisterForm.get('Mobile')?.errors?.pattern) &&
+                RegisterForm.controls.Mobile.touched
+            }"
+          />
+          <span
+            *ngIf="
+              RegisterForm.get('Mobile')?.errors?.required &&
+              RegisterForm.controls.Mobile.touched
+            "
+            class="err"
+          >
+            Required</span
+          >
+          <span
+            *ngIf="
+              RegisterForm.get('Mobile')?.errors?.pattern &&
+              RegisterForm.controls.Mobile.touched
+            "
+            class="err"
+          >
+            Invalid Phone Number</span
+          >
+        </div>
+        <div class="sign-but">
+          <button (click)="Register()">Signup</button>
+        </div>
+      </div>
+      <div class="form-content" [formGroup]="LoginForm" *ngIf="!signup">
+        <div class="inputs">
+          <label for="email">Email Id</label>
+          <input
+            matInput
+            type="email"
+            name="email"
+            id="email"
+            formControlName="email"
+            [ngClass]="{
+              'err-input':
+                (LoginForm.get('email')?.errors?.required ||
+                  LoginForm.get('email')?.errors?.email) &&
+                LoginForm.controls.email.touched
+            }"
+          />
+          <mat-error
+            *ngIf="
+              LoginForm.controls['email'].invalid &&
+              (LoginForm.controls['email'].dirty ||
+                LoginForm.controls['email'].touched)
+            "
+            class="alert"
+            >{{ EmailValidation() }}</mat-error
+          >
+        </div>
+        <div class="inputs">
+          <label for="password">Password</label>
+          <div
+            class="pass-div"
+            [ngClass]="{
+              'err-input':
+                (LoginForm.get('password')?.errors?.required ||
+                  LoginForm.get('password')?.errors?.pattern) &&
+                LoginForm.controls.password.touched
+            }"
+          >
+            <input
+              matInput
+              type="password"
+              name="password"
+              id="password"
+              [type]="hide ? 'password' : 'text'"
+              formControlName="password"
+            />
+            <mat-icon (click)="hide = !hide">{{
+              hide ? "visibility" : "visibility_off"
+            }}</mat-icon>
+          </div>
+          <label class="forgot-password">Forgot Password?</label>
+          <mat-error
+            *ngIf="
+              LoginForm.controls['password'].invalid &&
+              (LoginForm.controls['password'].dirty ||
+                LoginForm.controls['password'].touched)
+            "
+            class="alert"
+            style="margin-top: -15px"
+            >{{ PasswordValidation() }}</mat-error
+          >
+        </div>
+        <div class="login-but">
+          <button>Login</button>
+        </div>
+        <div class="or-option">
+          <div class="or-content">
+            <mat-divider class="mat-divider"></mat-divider>
+            <p>OR</p>
+            <mat-divider class="mat-divider"></mat-divider>
+          </div>
+        </div>
+        <div class="or-option">
+          <button mat-raised-button>Facebook</button>
+          <button mat-raised-button>Google</button>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

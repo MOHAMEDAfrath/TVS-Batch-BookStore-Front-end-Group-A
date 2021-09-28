@@ -1,11 +1,14 @@
+
 .user-card{
     width: 729px;
     height: 391px;
-    //border: 1px solid;
     border-radius: 21px;
     background-color: #F5F5F5;
     display: flex;
     position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
 }
 .logo{
     width: 245px;
@@ -236,4 +239,28 @@
 .err-input{
     border:2px solid;
     border-color: #ff001c;
+}
+@media only screen and (max-width:770px){
+    .image-card{
+        display: none;
+    }
+    .user-card{
+        width: 100%;
+        height: 0%;
+        justify-content: center;
+        background-color: white;
+    }
+    .login-main{
+        position: static;
+        margin-top: 20px;
+    }
+   
+}
+@media only screen and (max-width:525px){
+    .login-main{
+        position: static;
+        margin-top: 40px;
+        box-shadow: none;
+        border: none;
+    }
 }
