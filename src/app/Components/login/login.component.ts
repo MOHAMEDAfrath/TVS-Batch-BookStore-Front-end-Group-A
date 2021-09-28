@@ -54,9 +54,21 @@ export class LoginComponent implements OnInit {
       console.log(this.LoginForm.value);
       this.userService.Login(this.LoginForm.value)
       .subscribe((result:any)=>{
+        this.LocalStorage(result.data);
         this.snackBar.open(result.message,'',{duration:2000,panelClass:['black-snackbar']});
         this.LoginForm.reset();
+      },
+      (error: HttpErrorResponse) => {
+        this.snackBar.open(error.error.message, '', { duration: 2500 });
       })
     }
+  }
+  LocalStorage(data: any) {
+    var user = localStorage.getItem('BookStoreUser');
+    if (user != null) {
+      localStorage.removeItem('BookStoreUser');
+    }
+    user = data;
+    localStorage.setItem('BookStoreUser', JSON.stringify(user));
   }
 }

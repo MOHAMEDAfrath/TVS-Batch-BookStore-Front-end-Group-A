@@ -63,7 +63,7 @@ if(this.ResetPasswordForm.value.OTP == this.otp)
     },(error: HttpErrorResponse) => {
     console.log(error.error.message);
     this.snackBar.open(error.error.message,'',{duration:2000});
-    if(error.error.message == "Password Reset Failed!")
+    if(error.error.message == "Reset Unsuccessfull!")
     {
       this.router.navigateByUrl('/login');
     }

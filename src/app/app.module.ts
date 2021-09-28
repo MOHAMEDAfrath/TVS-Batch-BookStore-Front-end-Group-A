@@ -16,6 +16,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './Components/home/home.component';
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 
 @NgModule({
@@ -23,6 +24,7 @@ import { ResetPasswordComponent } from './Components/reset-password/reset-passwo
     AppComponent,
     ForgotPasswordComponent,
     LoginComponent,
+    HomeComponent,
     ResetPasswordComponent
   ],
   imports: [
