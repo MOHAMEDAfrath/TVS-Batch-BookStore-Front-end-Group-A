@@ -32,4 +32,36 @@
     <div class="temp">
     </div>
     </div>
+    <div class="book-main">
+        <div class="book-head" style="margin-bottom: 30px;">
+          <div class="book-count">Books<p>(128 items)</p></div>
+          <div>
+              <select name="sort" id="sort" class="sort">
+                  <option value="">Sort By Relevance</option>
+                  <option value="">Price: High to low</option>
+                  <option value="">Price: Low to High</option>
+                  <option value="">Newest Arrivals</option>
+              </select>
+          </div>
+        </div>
+        <div class="book-wrap">
+            <div class="book-comp" *ngFor="let book of books">
+                <div class="book-img">
+                    <img src="../../../assets/Image 11.png" alt="">
+                </div>
+                 <div class="book-content">
+                    <p class="book-name">Dont Make Me Think</p>
+                    <p class="author-name">by Steve krug</p>
+                    <div style="display: flex;align-items: center;">
+                    <div class="rating">
+                        <p>4.5</p>
+                        <i class="material-icons">star</i>
+                         </div>
+                         <p class="rating-count">(20)</p>
+                    </div>
+                    <div class="cost">Rs. 1500<p>Rs.2500</p></div>
+                </div> 
+            </div>
+        </div>
+    </div>
 </div>

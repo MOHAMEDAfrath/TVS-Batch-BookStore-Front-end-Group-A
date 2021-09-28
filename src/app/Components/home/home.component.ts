@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   isSearch = false
+  books=['a','b','c','d','e']
   constructor() { }
 
   ngOnInit(): void {
