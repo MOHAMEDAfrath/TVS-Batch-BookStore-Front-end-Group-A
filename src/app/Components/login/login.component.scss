@@ -1,12 +1,14 @@
+
 .user-card{
-    width: 624px;
+    width: 729px;
     height: 391px;
-    //border: 1px solid;
     border-radius: 21px;
     background-color: #F5F5F5;
     display: flex;
     position: relative;
-    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
 }
 .logo{
     width: 245px;
@@ -51,24 +53,24 @@
     }
     .form-content{
         width: 70%;
-        margin-top: 15px;
+        height: 100%;
+        margin-top: 13px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         .inputs{
             display: flex;
             flex-direction: column;
-            margin-bottom: 13px;
-            label{
-                font-family: 'Roboto' ,sans-serif !important;
-                font-style: normal;
-                font-variant: normal;
-                font-size: 10px;
-                line-height: 13px;
-                font-weight: normal;
-            }
-            input{
-                padding:8px;
-            }
         }
     }
+}
+label{
+    font-family: 'Roboto' ,sans-serif !important;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 13px;
+    line-height: 13px;
+    font-weight: normal;
 }
 .but-div{
     display: flex;
@@ -89,6 +91,21 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
+    padding:0px !important;
+}
+.inputs{
+    margin-bottom: 15px;
+}
+
+input{
+    padding: 10px;
+    margin-top: 3px;
+    color: black;
+    font-family: 'Roboto' sans-serif;
+    font-size: 12px;
+    line-height: 16px;
 }
 .rect{
     background-color: #a03037;
@@ -112,9 +129,6 @@
 .pass-div{
     display: flex;
     width: 99%;
-    border: 1.5px solid rgb(118,118,118);
-    border-radius: 2px;
-    height: 36px;
     mat-icon{
         align-self: center;
         margin-right: 5px;
@@ -123,7 +137,8 @@
 }
 .sign-but{
     width: 100%;
-    margin-bottom: 38px;
+    margin-top: 15px;
+    margin-bottom: 30px;
     button{
         background-color: #a03037;
         border: none;
@@ -167,6 +182,20 @@
     width: 30%;
     color: #c5c2c2;
 }
+::ng-deep .mat-form-field-suffix{
+        align-self: center;
+        padding: 5px;
+        margin-bottom: 2px;
+}
+::ng-deep .mat-form-field-appearance-outline{
+    color: rgb(118,118,118) !important;
+}
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick{
+    color: red!important;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-subscript-wrapper{
+    padding: 0px !important;
+}
 .or-option button
 {
     width: 119px;
@@ -200,7 +229,8 @@
 .login-but
 {
     width: 100%;
-    margin-bottom: 20px;
+    margin-top:10px;
+    margin-bottom: 8px;
     button{
         background-color: #a03037;
         border: none;
@@ -224,7 +254,7 @@
     font-family: 'Roboto' ,sans-serif !important;
     font-style: normal;
     font-variant: normal;
-    font-size: 8px;
+    font-size: 10px;
     line-height: 10px;
     font-weight: normal;
     padding-top: 2px;
@@ -237,4 +267,28 @@
 .err-input{
     border:2px solid;
     border-color: #ff001c;
+}
+@media only screen and (max-width:770px){
+    .image-card{
+        display: none;
+    }
+    .user-card{
+        width: 100%;
+        height: 0%;
+        justify-content: center;
+        background-color: white;
+    }
+    .login-main{
+        position: static;
+        margin-top: 20px;
+    }
+   
+}
+@media only screen and (max-width:525px){
+    .login-main{
+        position: static;
+        margin-top: 40px;
+        box-shadow: none;
+        border: none;
+    }
 }

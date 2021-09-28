@@ -10,15 +10,13 @@ export class UserService {
 
   constructor(private http:HttpService) { }
   Register(data: any) {
-    let params = {
-      fullName: data.FullName,
-      emailId: data.Email,
-      password: data.Password,
-      mobileNumber:data.Mobile
+    let userData = {
+      FullName: data.FullName,
+      EmailId: data.Email,
+      Password: data.Password,
+      MobileNumber:data.Mobile
     }
-    console.log(params)
-    // let header = new HttpHeaders();
-    // header.set("Content-Type","application/json");
-    return this.http.post(`${environment.baseUrl}/api/Register`,params);
+    console.log(userData);
+    return this.http.post(`${environment.baseUrl}/api/Register`,userData);
   }
 }
