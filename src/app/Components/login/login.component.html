@@ -23,7 +23,8 @@
           <button class="rect" *ngIf="signup"></button>
         </div>
       </div>
-      <div class="form-content" [formGroup]="RegisterForm" *ngIf="signup">
+      <div class="form-content" *ngIf="signup">
+        <form  [formGroup]="RegisterForm" >
         <div class="inputs">
           <label for="fullname">FullName</label>
           <input
@@ -105,7 +106,7 @@
               type="password"
               name="password"
               id="password"
-              [type]="hide ? 'password' : 'text'"
+              [type]="hide ? 'text':'password'"
               formControlName="Password"
             />
             <mat-icon (click)="hide = !hide">{{
@@ -167,6 +168,7 @@
         <div class="sign-but">
           <button (click)="Register()">Signup</button>
         </div>
+      </form>
       </div>
       <div class="form-content" [formGroup]="LoginForm" *ngIf="!signup">
         <div class="inputs">
@@ -210,7 +212,7 @@
               type="password"
               name="password"
               id="password"
-              [type]="hide ? 'password' : 'text'"
+              [type]="hide ? 'text':'password'"
               formControlName="password"
             />
             <mat-icon (click)="hide = !hide">{{
