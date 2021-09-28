@@ -1,6 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import{ FormControl, Validators, FormGroup} from '@angular/forms';
-
+import { FormGroup,FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserService } from 'src/app/Service/userservice/user.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import{ FormControl, Validators, FormGroup} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService:UserService,private snackBar:MatSnackBar) { }
   RegisterForm!:FormGroup
   hide = false;
   signup = false;
@@ -25,6 +27,26 @@ export class LoginComponent implements OnInit {
       Password: new FormControl('',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}')]),
       Mobile : new FormControl('',[Validators.required,Validators.minLength(10),Validators.pattern('^[0-9]{10}$')])
     })
+  }
+  Register() {
+    if (!this.RegisterForm.invalid) {
+      console.log(this.RegisterForm.value)
+      this.userService.Register(this.RegisterForm.value).subscribe(
+        (result: any) => {
+          console.log(result);
+          this.snackBar.open(result.message, '', { duration: 2500 });
+          // if (result.status == true) {
+          //   this.router.navigateByUrl('/login');
+          // }
+        },
+        (error: HttpErrorResponse) => {
+          this.snackBar.open(error.error.message, '', { duration: 2500 });
+          // if (error.error.message == 'Email Already Exists! Please Login') {
+          //   this.router.navigateByUrl('/login');
+          // }
+        }
+      );
+    }
   }
   EmailValidation()
   {
