@@ -19,4 +19,12 @@ export class UserService {
     console.log(userData);
     return this.http.post(`${environment.baseUrl}/api/Register`,userData);
   }
+  Login(data:any){
+    let userData = {
+      EmailId: data.email,
+      Password: data.password,
+    }
+    console.log(userData);
+    return this.http.post(`${environment.baseUrl}/api/Login`,userData);
+  }
 }

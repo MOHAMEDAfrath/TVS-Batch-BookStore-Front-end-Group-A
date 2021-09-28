@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
           this.snackBar.open(result.message, '', { duration: 2500,panelClass:['black-snackbar']});
            if (result.status == true) {
              this.signup=false;
+             this.RegisterForm.reset();
           }
         },
         (error: HttpErrorResponse) => {
@@ -46,6 +47,16 @@ export class LoginComponent implements OnInit {
           }
         }
       );
+    }
+  }
+  Login(){
+    if(!this.LoginForm.invalid){
+      console.log(this.LoginForm.value);
+      this.userService.Login(this.LoginForm.value)
+      .subscribe((result:any)=>{
+        this.snackBar.open(result.message,'',{duration:2000,panelClass:['black-snackbar']});
+        this.LoginForm.reset();
+      })
     }
   }
 }
