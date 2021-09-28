@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
 
   constructor() { }
   RegisterForm!:FormGroup
-  hide = true;
+  hide = false;
   signup = false;
   LoginForm!: FormGroup;
   ngOnInit(): void {
