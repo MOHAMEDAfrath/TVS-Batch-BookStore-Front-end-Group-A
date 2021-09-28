@@ -24,13 +24,13 @@
     }
 }
 .search-div{
-    width: 50%;
+    width: 40%;
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: white;
-    border-radius: 8px;
+    border-radius: 3px;
     mat-icon{
         padding: 5px;
     }
@@ -57,7 +57,22 @@ input{
         padding-left: 20px;
         padding-right: 20px;
         height: 100%;
-        border-left: .01px solid rgb(29, 29, 29);
+        cursor: pointer;
+        border-left: 1px solid #872b2f;
+        p{
+            margin-top: 0px;
+            margin-bottom: 0px;
+            color: white;
+        }
+    }
+    .search{
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-left: 20px;
+        padding-right: 20px;
+        cursor: pointer;
         p{
             margin-top: 0px;
             margin-bottom: 0px;
@@ -72,8 +87,9 @@ input{
         padding-left: 25px;
         padding-right: 25px;
         height: 100%;
-        border-left: .01px solid rgb(29, 29, 29);
-        border-right: .01px solid rgb(29, 29, 29);
+        cursor: pointer;
+        border-left: 1px solid #872b2f;
+        border-right: 1px solid #872b2f;
         p{
             margin-top: 0px;
             margin-bottom: 0px;
@@ -83,4 +99,43 @@ input{
 }
 .icon{
     color: white;
+}
+@media only screen and (max-width:651px){
+    .Logo{
+        margin-left: 10px !important;
+    }
+    .search-div{
+        display: none;
+    }
+    .temp{
+        display: none;
+    }
+    .search{
+        display: flex !important;
+    }
+    .cart{
+        background-color: #A03037;
+    }
+    .media-search-div{
+        display: flex;
+        margin-left: 20px;
+    }
+    .media-Logo{
+        display: none;
+    }
+
+}
+@media only screen and (max-width:400px) {
+    .cart{
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+    }
+    .person{
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+    .search{
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+    }
 }

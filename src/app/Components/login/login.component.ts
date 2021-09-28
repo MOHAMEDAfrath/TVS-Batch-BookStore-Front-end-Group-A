@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl, Validators } from '@angular/forms';
 import { MatSnackBar  ,MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition, } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/Service/userservice/user.service';
 
 @Component({
@@ -11,7 +12,8 @@ import { UserService } from 'src/app/Service/userservice/user.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  constructor(private userService:UserService,private snackBar:MatSnackBar) { }
+  constructor(private userService:UserService,private snackBar:MatSnackBar,
+    private route: Router) { }
   RegisterForm!:FormGroup
   hide = false;
   signup = false;
@@ -55,6 +57,7 @@ export class LoginComponent implements OnInit {
       this.userService.Login(this.LoginForm.value)
       .subscribe((result:any)=>{
         this.LocalStorage(result.data);
+        this.route.navigateByUrl('/home')
         this.snackBar.open(result.message,'',{duration:2000,panelClass:['black-snackbar']});
         this.LoginForm.reset();
       },
