@@ -86,7 +86,8 @@
         </div>
        </form>
       </div>
-      <div class="form-content" style="margin-top: 25px;" [formGroup]="LoginForm" *ngIf="!signup">
+      <div class="form-content" style="margin-top: 25px;"*ngIf="!signup">
+        <form  [formGroup]="LoginForm" >
         <div class="inputs">
           <label for="email">Email Id</label>
           <mat-form-field appearance="outline" class="email">
@@ -117,6 +118,7 @@
             </mat-error>
           </mat-form-field>
         </div>
+        <p class="forgot-password"  [routerLink]="['/forgotPassword']">Forget Password?</p>
         <div class="login-but">
           <button (click)="Login()">Login</button>
         </div>
@@ -131,6 +133,7 @@
           <button mat-raised-button>Facebook</button>
           <button mat-raised-button>Google</button>
         </div>
+      </form>
       </div>
     </div>
   </div>
