@@ -100,6 +100,68 @@ input{
 .icon{
     color: white;
 }
+::ng-deep .mat-menu-item
+{
+    line-height: 0px !important;
+}
+.profile-main-div
+{
+    p{
+        font-family: 'Roboto' ,sans-serif !important;
+        font-style: normal;
+        font-variant: normal;
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: normal;
+
+        &:nth-child(1)
+        {
+            color:#0A0102;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        &:nth-child(2)
+        {
+            color:#878787;
+        }
+    }
+    
+}
+.profile-main-div
+{
+    padding: 0px 15px 10px;
+}
+.profile-button
+{
+    width: 135px;
+height: 40px;
+color: #A03037;
+border: 1px solid #A03037;
+text-align: center;
+margin-bottom: 15px;
+border-radius: 2px;
+}
+.icon-div
+{
+    display: flex;
+    align-items: center;
+    margin-top: 9px;
+    font-family: 'Roboto' ,sans-serif !important;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 100;
+    color: #878787;
+    .material-icons , .material-icons-outlined
+    {
+        margin-right: 10px;
+    }
+}
+
+
+
+
 @media only screen and (max-width:651px){
     .Logo{
         margin-left: 10px !important;

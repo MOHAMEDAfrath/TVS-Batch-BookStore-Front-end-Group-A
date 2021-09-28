@@ -21,7 +21,7 @@
             <p>Search</p>
         </div>
         <div class="person">
-        <i class="material-icons icon">person_outline</i>
+        <i class="material-icons icon"  [matMenuTriggerFor]="profilemenu">person_outline</i>
         <p>Profile</p>
         </div>
         <div class="cart">
@@ -32,4 +32,22 @@
     <div class="temp">
     </div>
     </div>
+    <mat-menu #profilemenu="matMenu" class="profilemenu">
+        <div class="profile-main-div">
+            <p>Welcome</p>
+            <p>To access account and manage orders</p>
+            <button mat-menu-item class="profile-button" [routerLink]="['/login']">LOGIN/SIGNUP</button>
+            <mat-divider></mat-divider>
+            <div class="icon-div">
+                <i class="material-icons-outlined">markunread_mailbox</i>
+                <span>My Orders</span>
+            </div>
+        <div  class="icon-div">
+            <i class="material-icons">favorite_border</i>
+            <span>Wishlist</span>
+        </div>
+
+        </div>
+
+    </mat-menu>
 </div>
