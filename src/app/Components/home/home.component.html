@@ -21,8 +21,9 @@
             <p>Search</p>
         </div>
         <div class="person">
-        <i class="material-icons icon"  [matMenuTriggerFor]="profilemenu">person_outline</i>
-        <p>Profile</p>
+        <i class="material-icons icon" [matMenuTriggerFor]="BookStoreUser == null?profilemenu:UserProfile">person_outline</i>
+        <p *ngIf="BookStoreUser == null">Profile</p>
+        <p *ngIf="BookStoreUser != null">{{BookStoreUser.fullName}}</p>
         </div>
         <div class="cart">
         <i class="material-icons-outlined icon">shopping_cart</i>
@@ -48,6 +49,23 @@
         </div>
 
         </div>
-
+    </mat-menu>
+    <mat-menu #UserProfile="matMenu" class="UserProfile">
+        <div class="profile-main-div"    *ngIf="BookStoreUser != null">
+        <p>Hello {{BookStoreUser.fullName}},</p>
+        <div class="icon-div">
+            <i class="material-icons icons">person_outline</i>
+            <span>My Orders</span>
+        </div>
+        <div class="icon-div">
+            <i class="material-icons-outlined">markunread_mailbox</i>
+            <span>My Orders</span>
+        </div>
+    <div  class="icon-div">
+        <i class="material-icons">favorite_border</i>
+        <span>Wishlist</span>
+    </div>
+    <button mat-menu-item class="profile-button" style="margin-top: 15px;margin-bottom: 0px;" (click)="Logout()">Logout</button>
+        </div>
     </mat-menu>
 </div>

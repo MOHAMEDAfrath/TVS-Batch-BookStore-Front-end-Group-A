@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  isSearch = false
-  constructor() { }
+  isSearch = false;
+  BookStoreUser =  JSON.parse(localStorage.getItem("BookStoreUser")!); 
+  constructor(private route : Router) { }
 
   ngOnInit(): void {
+    console.log(this.BookStoreUser);
   }
-
+  Logout()
+{
+  if(this.BookStoreUser != null){
+    localStorage.removeItem("BookStoreUser");
+    this.route.navigateByUrl('/login');
+}
+}
 }
