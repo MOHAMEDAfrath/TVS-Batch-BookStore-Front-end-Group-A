@@ -1,7 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar  ,MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition, } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/Service/userservice/user.service';
 
 @Component({
@@ -10,7 +11,6 @@ import { UserService } from 'src/app/Service/userservice/user.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
   constructor(private userService:UserService,private snackBar:MatSnackBar) { }
   RegisterForm!:FormGroup
   hide = false;
@@ -34,47 +34,18 @@ export class LoginComponent implements OnInit {
       this.userService.Register(this.RegisterForm.value).subscribe(
         (result: any) => {
           console.log(result);
-          this.snackBar.open(result.message, '', { duration: 2500 });
-          // if (result.status == true) {
-          //   this.router.navigateByUrl('/login');
-          // }
+          this.snackBar.open(result.message, '', { duration: 2500,panelClass:['black-snackbar']});
+           if (result.status == true) {
+             this.signup=false;
+          }
         },
         (error: HttpErrorResponse) => {
           this.snackBar.open(error.error.message, '', { duration: 2500 });
-          // if (error.error.message == 'Email Already Exists! Please Login') {
-          //   this.router.navigateByUrl('/login');
-          // }
+          if (error.error.message == 'Email Already Exists! Please Login') {
+            this.signup=false;
+          }
         }
       );
     }
-  }
-  EmailValidation()
-  {
-    if(this.LoginForm.get('email')?.hasError('required'))
-    {
-      return "Enter Email";
-    }
-    if(this.LoginForm.get('email')?.hasError('email'))
-    {
-      return "Email is not in proper format";
-    }
-    return null;
-  }
-  PasswordValidation()
-  {
-    if(this.LoginForm.get('password')?.hasError('required'))
-    {
-      return "Enter Password";
-    }
-    else if(this.LoginForm.get('password')?.hasError('pattern'))
-    {
-      return "Please enter a valid Password ";
-    }
-    else if(this.LoginForm.get('password')?.errors?.minlength)
-    {
-      return "Should have minimum 8 characters";
-    }
-    return null;
-
   }
 }
