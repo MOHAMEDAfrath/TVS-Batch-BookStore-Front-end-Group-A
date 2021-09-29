@@ -51,21 +51,21 @@
         </div>
     </mat-menu>
     <mat-menu #UserProfile="matMenu" class="UserProfile">
-        <div class="profile-main-div"    *ngIf="BookStoreUser != null">
-        <p>Hello {{BookStoreUser.fullName}},</p>
-        <div class="icon-div">
+        <div *ngIf="BookStoreUser != null">
+        <p class="profile-padding">Hello {{BookStoreUser.fullName}},</p>
+        <div class="icon-div my-profile profile-padding">
             <i class="material-icons icons">person_outline</i>
-            <span>My Orders</span>
+            <span>My Profile</span>
         </div>
-        <div class="icon-div">
+        <div class="icon-div profile-padding">
             <i class="material-icons-outlined">markunread_mailbox</i>
             <span>My Orders</span>
         </div>
-    <div  class="icon-div">
+    <div  class="icon-div profile-padding">
         <i class="material-icons">favorite_border</i>
         <span>Wishlist</span>
     </div>
-    <button mat-menu-item class="profile-button" style="margin-top: 15px;margin-bottom: 0px;" (click)="Logout()">Logout</button>
+    <button mat-menu-item class="profile-button" style="margin:15px 50px 15px 35px" (click)="Logout()">Logout</button>
         </div>
     </mat-menu>
 </div>

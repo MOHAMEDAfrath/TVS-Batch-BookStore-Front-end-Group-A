@@ -153,19 +153,30 @@ font-weight: 500;
     font-size: 12px;
     line-height: 16px;
     font-weight: 400;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
     color: #878787;
     .material-icons , .material-icons-outlined
     {
         margin-right: 10px;
     }
 }
-
+.profile-padding
+{
+    padding-left: 35px;
+}
 ::ng-deep .mat-menu-content .ng-tns-c107-1
 {
     min-width: 190px !important;
-    padding-left: 35px !important;
 }
+.my-profile:hover
+{
+    margin-left: 0px;
+    margin-right: 0px;
 
+    background-color: #FFDBDD;
+}
 
 @media only screen and (max-width:651px){
     .Logo{
