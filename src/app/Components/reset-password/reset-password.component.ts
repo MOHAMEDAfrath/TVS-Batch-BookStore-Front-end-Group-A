@@ -58,6 +58,7 @@ if(this.ResetPasswordForm.value.OTP == this.otp)
       if(status.status == true)
       {
         this.snackBar.open(status.message,'',{duration:2000});
+        localStorage.removeItem('OTP');
         this.router.navigateByUrl('/login');
       }
     },(error: HttpErrorResponse) => {

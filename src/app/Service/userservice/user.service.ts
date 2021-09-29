@@ -37,6 +37,7 @@ export class UserService {
   ResetPassword(data:any)
   {
     console.log(this.otp.userId);
+    console.log(this.otp);
     let userData = {
       emailId: this.otp.emailId,
       ConfirmPassword: data.password,
