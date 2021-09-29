@@ -90,6 +90,7 @@ input{
     position: relative;
     border-radius: 5px;
     margin-bottom: 15px;
+    cursor: pointer;
     .book-img{
         display: flex;
         justify-content: center;
@@ -329,6 +330,9 @@ font-weight: 500;
     font-size: 12px;
     line-height: 16px;
     font-weight: 400;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
     color: #878787;
     .material-icons , .material-icons-outlined
     {
@@ -342,10 +346,13 @@ font-weight: 500;
 ::ng-deep .ngx-pagination .current{
     background-color: #A03037 !important;
 }
+.profile-padding
+{
+    padding-left: 35px;
+}
 ::ng-deep .mat-menu-content .ng-tns-c107-1
 {
     min-width: 190px !important;
-    padding-left: 20px !important;
 }
 @media only screen and (max-width:672px) {
     
@@ -356,6 +363,13 @@ font-weight: 500;
     .book-comp{
         width: 300px;
     }
+}
+.my-profile:hover
+{
+    margin-left: 0px;
+    margin-right: 0px;
+
+    background-color: #FFDBDD;
 }
 
 @media only screen and (max-width:651px){

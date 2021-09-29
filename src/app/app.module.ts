@@ -20,6 +20,7 @@ import { ResetPasswordComponent } from './Components/reset-password/reset-passwo
 import {MatMenuModule} from '@angular/material/menu';
 import { WishlistComponent } from './Components/wishlist/wishlist.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { BookDescriptionComponent } from './Components/book-description/book-description.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     LoginComponent,
     HomeComponent,
     ResetPasswordComponent,
-    WishlistComponent
+    WishlistComponent,
+    BookDescriptionComponent
   ],
   imports: [
     BrowserModule,

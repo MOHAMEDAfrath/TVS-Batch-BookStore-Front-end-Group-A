@@ -105,8 +105,6 @@
         <p style="font-size: 12px;line-height: 16px;font-family: 'Roboto',sans-serif;color: #9d9d9d;cursor: pointer;" (click)="option='Home'">Home</p>
         <p style="font-size: 12px;line-height: 16px;font-family: 'Roboto',sans-serif;color: #0a0102;margin-left: 1px;">/Books(01)</p>
       </div>
-      <div>
-      </div>
     </div>
     <div class="book-head" style="margin-bottom: 30px" *ngIf="option=='WishList'">
       <div class="book-count">
@@ -147,6 +145,7 @@
     <div>
         <app-wishlist *ngIf="option == 'WishList'"></app-wishlist>
     </div>
+        <app-book-description *ngIf="option=='BookDescription'"></app-book-description>
     <div class="page" *ngIf="option == 'Home'">
       <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
