@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-book-description',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-description.component.scss']
 })
 export class BookDescriptionComponent implements OnInit {
-
+  @Input() bookdetails!:any
   constructor() { }
   Userrating=[{name:'Aniket Chile',
                rating:3,

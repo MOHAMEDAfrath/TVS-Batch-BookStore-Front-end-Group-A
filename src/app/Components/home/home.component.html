@@ -115,7 +115,7 @@
       </div>
     </div>
      <div class="book-wrap" *ngIf="option=='Home'">
-      <div class="book-comp" *ngFor="let book of books | paginate: { itemsPerPage: 12, currentPage: p }" (click)="option='BookDescription'">
+      <div class="book-comp" *ngFor="let book of books | paginate: { itemsPerPage: 12, currentPage: p }" (click)="option='BookDescription';bookdetails = book" >
         <div class="Message" *ngIf="book['bookQuantity']==0">
           <div class="out">Out of stock</div>
         </div>
@@ -145,7 +145,7 @@
     <div>
         <app-wishlist *ngIf="option == 'WishList'"></app-wishlist>
     </div>
-        <app-book-description *ngIf="option=='BookDescription'"></app-book-description>
+        <app-book-description *ngIf="option=='BookDescription'" [bookdetails]='bookdetails'></app-book-description>
     <div class="page" *ngIf="option == 'Home'">
       <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>

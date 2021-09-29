@@ -2,7 +2,7 @@
 
     <div class="image-div">
         <div class="book-image">
-            <img src="../../../assets/Image 11.png" alt="" width="282px" height="364px">
+            <img src="{{bookdetails['bigImage']}}" alt="" width="282px" height="364px">
         </div>
         <div class="book-function">
             <button class="add-to-bag">ADD TO BAG</button>
@@ -16,28 +16,22 @@
 
     <div class="book-image-content">
         <div class="book-contents">
-            <p class="book-names">Dont Make Me Think</p>
-            <p class="author-names">by Steve krug</p>
+            <p class="book-names">{{bookdetails['title']}}</p>
+            <p class="author-names">{{bookdetails['authorName']}}</p>
             <div style="display: flex;align-items: center;">
                 <div class="rating">
-                    <p>4.5</p>
+                    <p>{{bookdetails['rating']}}</p>
                     <i class="material-icons">star</i>
                 </div>
-                <p class="rating-count">(20)</p>
+                <p class="rating-count">({{bookdetails['bookQuantity']}})</p>
             </div>
-            <div class="cost">Rs. 1500<p>Rs.2500</p>
+            <div class="cost">{{bookdetails['price']}}<p>{{(bookdetails['price'])+500}}</p>
             </div>
         </div>
         <mat-divider></mat-divider>
         <div class="book-detail">
             <li>Book Details</li>
-            <p>For Dummies is an extensive series of instructional/reference books which are intended to present
-                non-intimidating guides for readers new to the various topics covered. The series has been a worldwide
-                success with editions in numerous languages.
-                The books are an example of a media franchise, consistently sporting a distinctive cover—usually yellow
-                and black with a triangular-headed cartoon figure known as the "Dummies Man", and an informal,
-                blackboard-style logo. Prose is simple and direct; bold icons, such as a piece of string tied around an
-                index finger, are placed in the margin to indicate particularly important passages.
+            <p>{{bookdetails['bookDetail']}}
             </p>
         </div>
         <mat-divider></mat-divider>

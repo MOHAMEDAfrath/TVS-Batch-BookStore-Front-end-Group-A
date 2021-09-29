@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   new = [];
   option = 'Home'
   sortOption = 0;
+  bookdetails:any;
   BookStoreUser =  JSON.parse(localStorage.getItem("BookStoreUser")!); 
   constructor(private route : Router,private book:BookService) { }
   p:number= 1;

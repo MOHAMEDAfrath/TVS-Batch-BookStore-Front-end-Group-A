@@ -93,12 +93,10 @@
 .book-main-div
 {
     display: flex;
-    width: 70%;
     height: 100%;
     align-items: flex-start;
     justify-content: flex-start;
     margin: 0 auto;
-    margin-top: 67px;
     margin-bottom: 50px;
 }
 .book-image
@@ -241,7 +239,7 @@ float: right;
     }
 
     p{
-        font-size: 12px;
+        font-size: 14px;
         font-family: 'Roboto',sans-serif;
         line-height: 16px;
         color: #373434;
