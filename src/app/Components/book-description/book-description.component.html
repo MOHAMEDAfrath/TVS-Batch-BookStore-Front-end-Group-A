@@ -66,11 +66,11 @@
                     <button mat-flat-button class="buttons">Submit</button>
                 </div>
             </div>
-            <div *ngFor="let rating of Userrating" style="display: flex;">
-                <img src="../../../assets/account.png" width="30px" height="30px" style=" padding-left: 15px;">
-                <div style="display: flex; flex-direction: column;">
-                    <p>{{rating.name}}</p>
-                    <div style="display: flex; color: rgba(243, 227, 10, 0.589);">
+            <div *ngFor="let rating of Userrating" style="display: flex; align-items:flex-start; margin-top: 20px; justify-content: center;">
+                <img src="../../../assets/account.png" width="30px" height="30px" style=" padding-left: 15px; margin-right: 20px; padding-top: 5px;">
+                <div style="display: flex; flex-direction: column; justify-content: center;">
+                    <p style="font-size: 12px; line-height: 20px;margin-bottom: 5px;">{{rating.name}}</p>
+                    <div style="display: flex; color: #FFCE00">
                         <div *ngFor="let dummy of ' '.repeat(rating.rating).split(''), let x = index">
                             <i class="material-icons">star_rate</i>
                         </div>
@@ -78,7 +78,7 @@
                             <i class="material-icons">star_border</i>
                         </div>
                     </div>
-                    <p>{{rating.review}}</p>
+                    <p style="color:#707070; font-size: 12px; line-height: 16px; margin-top: 3px;">{{rating.review}}</p>
                 </div>
             </div>
         </div>

@@ -8,13 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class BookDescriptionComponent implements OnInit {
 
   constructor() { }
-  Userrating=[{name:'Ash',
+  Userrating=[{name:'Aniket Chile',
                rating:3,
-              review:'This is content'},
+               review:'Good product. Even though the translation could have been better, Chanaky\'s neeti are thought provoking. Chanakya has written on many different topics and his writings are succinct.'}
+               ,
             {
-              name:'Ash',
-               rating:3,
-              review:'This is content'}
+              name:'Shweta Bodkar',
+               rating:4,
+              review:'Good product. Even though the translation could have been better, Chanaky\'s neeti are thought provoking. Chanakya has written on many different topics and his writings are succinct.'}
             ]
 
   ngOnInit(): void {
