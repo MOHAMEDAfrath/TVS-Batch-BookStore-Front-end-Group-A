@@ -1,0 +1,87 @@
+<div class="book-main-div">
+
+    <div class="image-div">
+        <div class="book-image">
+            <img src="../../../assets/Image 11.png" alt="" width="282px" height="364px">
+        </div>
+        <div class="book-function">
+            <button class="add-to-bag">ADD TO BAG</button>
+            <button class="fav-icon">
+                <i class="material-icons">favorite_border</i>
+                <span>WISHLIST</span>
+            </button>
+        </div>
+
+    </div>
+
+    <div class="book-image-content">
+        <div class="book-contents">
+            <p class="book-names">Dont Make Me Think</p>
+            <p class="author-names">by Steve krug</p>
+            <div style="display: flex;align-items: center;">
+                <div class="rating">
+                    <p>4.5</p>
+                    <i class="material-icons">star</i>
+                </div>
+                <p class="rating-count">(20)</p>
+            </div>
+            <div class="cost">Rs. 1500<p>Rs.2500</p>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="book-detail">
+            <li>Book Details</li>
+            <p>For Dummies is an extensive series of instructional/reference books which are intended to present
+                non-intimidating guides for readers new to the various topics covered. The series has been a worldwide
+                success with editions in numerous languages.
+                The books are an example of a media franchise, consistently sporting a distinctive cover—usually yellow
+                and black with a triangular-headed cartoon figure known as the "Dummies Man", and an informal,
+                blackboard-style logo. Prose is simple and direct; bold icons, such as a piece of string tied around an
+                index finger, are placed in the margin to indicate particularly important passages.
+            </p>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="customer-rating-main-div">
+            <p class="customer-feedback">Customer Feedback</p>
+            <div class="customer-rating">
+                <p>Overall Rating</p>
+                <div style="display: flex; align-items: flex-start;justify-content: flex-start;">
+                    <div class="rate">
+                        <input type="radio" id="star1" name="rate" value="1" />
+                        <label for="star1" title="text">1 star</label>
+                        <input type="radio" id="star2" name="rate" value="2" />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star3" name="rate" value="3" />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star4" name="rate" value="4" />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star5" name="rate" value="5" />
+                        <label for="star5" title="text">5 stars</label>
+                    </div>
+                </div>
+                <textarea placeholder="Write your Review" id="textarea" (keyup)="Resize()" id="textarea"></textarea>
+
+                <div style="display: flex;justify-content: space-between;">
+                    <div></div>
+                    <button mat-flat-button class="buttons">Submit</button>
+                </div>
+            </div>
+            <div *ngFor="let rating of Userrating" style="display: flex;">
+                <img src="../../../assets/account.png" width="30px" height="30px" style=" padding-left: 15px;">
+                <div style="display: flex; flex-direction: column;">
+                    <p>{{rating.name}}</p>
+                    <div style="display: flex; color: rgba(243, 227, 10, 0.589);">
+                        <div *ngFor="let dummy of ' '.repeat(rating.rating).split(''), let x = index">
+                            <i class="material-icons">star_rate</i>
+                        </div>
+                        <div *ngFor="let dummy of ' '.repeat(5- rating.rating).split(''), let x = index">
+                            <i class="material-icons">star_border</i>
+                        </div>
+                    </div>
+                    <p>{{rating.review}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

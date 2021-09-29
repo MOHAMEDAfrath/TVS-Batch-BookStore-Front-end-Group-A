@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   isSearch = false
   books=['a','b','c','d','e']
+  option="home";
   BookStoreUser =  JSON.parse(localStorage.getItem("BookStoreUser")!); 
   constructor(private route : Router) { }
 

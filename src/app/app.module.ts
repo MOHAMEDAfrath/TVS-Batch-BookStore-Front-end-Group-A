@@ -18,13 +18,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './Components/home/home.component';
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { BookDescriptionComponent } from './Components/book-description/book-description.component';
 @NgModule({
   declarations: [
     AppComponent,
     ForgotPasswordComponent,
     LoginComponent,
     HomeComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    BookDescriptionComponent
   ],
   imports: [
     BrowserModule,
