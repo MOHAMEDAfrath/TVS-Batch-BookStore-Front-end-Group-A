@@ -21,6 +21,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { WishlistComponent } from './Components/wishlist/wishlist.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BookDescriptionComponent } from './Components/book-description/book-description.component';
+import { PersondetailComponent } from './Components/persondetail/persondetail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { BookDescriptionComponent } from './Components/book-description/book-des
     HomeComponent,
     ResetPasswordComponent,
     WishlistComponent,
-    BookDescriptionComponent
+    BookDescriptionComponent,
+    PersondetailComponent
   ],
   imports: [
     BrowserModule,

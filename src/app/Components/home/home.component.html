@@ -102,20 +102,28 @@
     </div>
     <div class="book-head" style="margin-bottom: 30px" *ngIf="option=='BookDescription'">
       <div class="book-count">
-        <p style="font-size: 12px;line-height: 16px;font-family: 'Roboto',sans-serif;color: #9d9d9d;cursor: pointer;" (click)="option='Home'">Home</p>
-        <p style="font-size: 12px;line-height: 16px;font-family: 'Roboto',sans-serif;color: #0a0102;margin-left: 1px;">/Books(01)</p>
+        <p style="font-size: 16px;line-height: 16px;font-family: 'Roboto',sans-serif;color: #9d9d9d;cursor: pointer;" (click)="option='Home'">Home</p>
+        <p style="font-size: 16px;line-height: 16px;font-family: 'Roboto',sans-serif;color: #0a0102;margin-left: 1px;">/Books({{bookId}})</p>
       </div>
     </div>
     <div class="book-head" style="margin-bottom: 30px" *ngIf="option=='WishList'">
       <div class="book-count">
-        <p style="font-size: 12px;line-height: 16px;font-family: 'Roboto',sans-serif;color: #9d9d9d;cursor: pointer;" (click)="option='Home'">Home</p>
-        <p style="font-size: 12px;line-height: 16px;font-family: 'Roboto',sans-serif;color: #0a0102;margin-left: 1px;">/WishList</p>
+        <p style="font-size: 16px;line-height: 16px;font-family: 'Roboto',sans-serif;color: #9d9d9d;cursor: pointer;" (click)="option='Home'">Home</p>
+        <p style="font-size: 16px;line-height: 16px;font-family: 'Roboto',sans-serif;color: #0a0102;margin-left: 1px;">/WishList</p>
+      </div>
+      <div>
+      </div>
+    </div>
+    <div class="book-head" style="margin-bottom: 30px" *ngIf="option=='PersonDetail'">
+      <div class="book-count">
+        <p style="font-size: 16px;line-height: 16px;font-family: 'Roboto',sans-serif;color: #9d9d9d;cursor: pointer;" (click)="option='Home'">Home</p>
+        <p style="font-size: 16px;line-height: 16px;font-family: 'Roboto',sans-serif;color: #0a0102;margin-left: 1px;">/ Profile</p>
       </div>
       <div>
       </div>
     </div>
      <div class="book-wrap" *ngIf="option=='Home'">
-      <div class="book-comp" *ngFor="let book of books | paginate: { itemsPerPage: 12, currentPage: p }" (click)="option='BookDescription';bookdetails = book" >
+      <div class="book-comp" *ngFor="let book of books | paginate: { itemsPerPage: 12, currentPage: p }" (click)="option='BookDescription';bookdetails = book;bookId=book['bookId']" >
         <div class="Message" *ngIf="book['bookQuantity']==0">
           <div class="out">Out of stock</div>
         </div>
@@ -146,6 +154,7 @@
         <app-wishlist *ngIf="option == 'WishList'"></app-wishlist>
     </div>
         <app-book-description *ngIf="option=='BookDescription'" [bookdetails]='bookdetails'></app-book-description>
+        <app-persondetail *ngIf="option == 'PersonDetail'"></app-persondetail>
     <div class="page" *ngIf="option == 'Home'">
       <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
@@ -169,24 +178,24 @@
     </div>
   </mat-menu>
   <mat-menu #UserProfile="matMenu" class="UserProfile">
-    <div class="profile-main-div" *ngIf="BookStoreUser != null">
-      <p>Hello {{ BookStoreUser.fullName }},</p>
-      <div class="icon-div">
+    <div *ngIf="BookStoreUser != null">
+      <p class="profile-padding">Hello {{ BookStoreUser.fullName }},</p>
+      <div class="icon-div my-profile profile-padding" (click)="option = 'PersonDetail'">
         <i class="material-icons icons">person_outline</i>
-        <span>My Orders</span>
+        <span>Profile</span>
       </div>
-      <div class="icon-div">
+      <div class="icon-div profile-padding">
         <i class="material-icons-outlined">markunread_mailbox</i>
         <span>My Orders</span>
       </div>
-      <div class="icon-div" (click)="option= 'WishList'">
+      <div class="icon-div profile-padding" (click)="option= 'WishList'">
         <i class="material-icons">favorite_border</i>
         <span>Wishlist</span>
       </div>
       <button
         mat-menu-item
         class="profile-button"
-        style="margin-top: 15px; margin-bottom: 0px"
+        style="margin:15px 60px 10px 35px"
         (click)="Logout()"
       >
         Logout

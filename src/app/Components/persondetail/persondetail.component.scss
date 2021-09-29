@@ -1,0 +1,113 @@
+.main-div{
+    width: 40vw;
+}
+.edit-head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .person-det{
+        font-size: 18px;
+        line-height: 24px;
+        font-family: 'Roboto',sans-serif;
+        font-weight: 500;
+    }
+    .edit{
+        margin-top: 0px;
+        margin-bottom: 0px;
+        color: #a03037;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 16px;
+        margin-left: 7px;
+    }
+    .save{
+        background-color: #3371b5;
+        color: white;
+        width: 76px;
+        height: 33px;
+        font-size: 15px;
+        line-height: 20px;
+    }
+   
+}
+.user-det{
+    div{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        label{
+            margin-bottom: 5px;
+        }
+        input{
+            height: 45px;
+            border: 1px solid #e2e2e2 !important;
+            border-radius: 2px !important;
+            font-size: 20px;
+            line-height: 20px;
+            color: #0a0102;
+            padding-left: 16px;
+            &:focus-visible{
+                outline: none;
+            }
+        }
+
+    }
+}
+.address-head{
+    margin-top: 55px;
+    p{
+        font-size: 18px;
+        line-height: 24px;
+        font-family: 'Roboto',sans-serif;
+        font-weight: 500;
+    }
+}
+.add-details{
+    div{
+        display: flex;
+        flex-direction: column;
+        label{
+            margin-bottom: 5px;
+        }
+    }
+}
+#address-area{
+    resize: none;
+    width: 99%;
+    height: 82px;
+}
+.c-t-div{
+    display: flex !important;
+    flex-direction: row !important;
+    margin-top: 30px;
+    justify-content: space-between;
+    div{
+        display: flex;
+        flex-direction: column;
+        input{
+            height: 45px;
+            width: 210px;
+        }
+    }
+}
+.radios{
+    margin-top: 35px;
+    margin-bottom: 50px;
+    width: 70%;
+    div{
+       flex-direction: row;
+       justify-content: space-between;
+        div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            label{
+                margin-bottom: 0px;
+            }
+        }
+    }
+}
+
+
+
+

@@ -1,0 +1,71 @@
+<div class="main-div">
+    <div class="edit-head">
+        <div style="display: flex;align-items: center;">
+        <p class="person-det">Person Details</p>
+        <p class="edit" (click)="edit=!edit">{{!edit?'Edit':'Cancel'}}</p>
+        </div>
+        <button mat-button *ngIf="edit" class="save">SAVE</button>
+    </div>
+    <div class="user-det">
+        <div>
+            <label for="fullName">Full Name</label>
+            <input type="text" name="fullName" id="" [disabled]= "edit?false:true" value="{{user['fullName']}}">
+        </div>
+        <div>
+            <label for="EmailId">Email Id</label>
+            <input type="email" name="EmailId" id="" [disabled]= "edit?false:true" value="{{user['emailId']}}">
+        </div>
+        <div>
+            <label for="Password">Password</label>
+            <input type="password" name="Password" [disabled]= "edit?false:true" id="" value="********">
+        </div>
+        <div>
+            <label for="Mobile">Mobile Number</label>
+            <input type="text" name="Mobile" id="" [disabled]= "edit?false:true" value="{{user['mobileNumber']}}">
+        </div>
+    </div>
+
+    <div class="address-head">
+        <p>Address Details</p>
+    </div>
+    <div class="edit-head">
+            <div style="display: flex;align-items: center;">
+            <p class="person-det">1. Work</p>
+            <p class="edit" (click)="addedit=!addedit">{{!addedit?'Edit':'Cancel'}}</p>
+            </div>
+            <button mat-button *ngIf="addedit" class="save">SAVE</button>
+    </div>
+    <div class="add-details">
+        <div>
+            <label for="address">Address</label>
+            <textarea name="address" id="address-area" cols="30" rows="10" [disabled]= "addedit?false:true"></textarea>
+        </div>
+        <div class="c-t-div">
+            <div>
+                <label for="city">city/town</label>
+                <input type="text" [disabled]= "addedit?false:true" name="city" id="">
+            </div>
+            <div>
+                <label for="state">State</label>
+                <input [disabled]= "addedit?false:true" type="text">
+            </div>
+        </div>
+        <div class="radios">
+            <label for="">Type</label>
+            <div>
+                <div class="radio-item">
+                    <input  [disabled]= "addedit?false:true" type="radio" name="Home" value="Home">
+                    <label for="Home">Home</label>
+                </div>
+                <div  class="radio-item">
+                    <input [disabled]= "addedit?false:true" type="radio" name="Work" value="Work">
+                    <label for="Work">Work</label>
+                </div>
+                <div  class="radio-item">
+                    <input  [disabled]= "addedit?false:true" type="radio" name="Others" value="Others">
+                    <label for="Others">Others</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
