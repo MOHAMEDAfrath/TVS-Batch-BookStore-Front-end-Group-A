@@ -105,6 +105,27 @@
     resize: none;
     width: 98%;
     height: 82px;
+    font-size: 15px;
+    padding-top: 10px;
+     padding-left: 5px;
+    line-height: 15px;
+    font-family: 'Roboto';
+}
+.radio-item{
+    input{
+        margin-top: 0px;
+    }
+}
+.save{
+    background-color: #3371b5;
+    color: white;
+    width: 76px;
+    height: 33px;
+    font-size: 15px;
+    line-height: 20px;
+}
+.cont{
+    width: 150px !important;
 }
 .c-t-div{
     display: flex !important;
@@ -118,6 +139,10 @@
         input{
             height: 45px;
             width: 95%;
+            font-size: 15px;
+            padding-left: 5px;
+            line-height: 15px;
+            font-family: 'Roboto';
         }
     }
 }
@@ -172,6 +197,10 @@
         input{
             height: 40px;
             width: 95%;
+            font-size: 15px;
+            padding-left: 5px;
+            line-height: 15px;
+            font-family: 'Roboto';
         }
     }
 }

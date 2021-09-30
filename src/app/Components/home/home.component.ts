@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   isSearch = false
   books=[];
   new = [];
-  option = 'Cart'
+  option = 'Home'
   sortOption = 0;
   bookId = 0;
   bookdetails:any;

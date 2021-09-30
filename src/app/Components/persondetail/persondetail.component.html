@@ -74,7 +74,7 @@
     <div *ngFor="let address of userAddress;let i = index">
     <div class="edit-head">
             <div style="display: flex;align-items: center;">
-            <input type="radio" name="type" (change)="expand = true;change(address)" style="margin-top: 0px;">
+            <input type="radio" name="typeMain" (change)="expand = true;change(address)" style="margin-top: 0px;">
             <label class="person-det" for="type" style="margin-left: 5px;">{{i+1}}. {{address['type']}}</label>
             <p class="edit" (click)="addedit=!addedit" *ngIf="address['addressId']==checked" >{{!addedit?'Edit':'Cancel'}}</p>
             </div>
@@ -102,15 +102,15 @@
             <label for="">Type</label>
             <div>
                 <div class="radio-item">
-                    <input  formControlName="type" [attr.disabled]= "!addedit?'':null" type="radio" name="type" value="Home">
+                    <input  formControlName="type" [attr.disabled]= "!addedit?'':null" [ngModel]='address["type"]' type="radio" name="type" value="Home">
                     <label for="Home">Home</label>
                 </div>
                 <div  class="radio-item">
-                    <input  formControlName="type" [attr.disabled]= "!addedit?'':null" type="radio" name="type" value="Work">
+                    <input  formControlName="type"  [ngModel]='address["type"]' [attr.disabled]= "!addedit?'':null" type="radio" name="type" value="Work">
                     <label for="Work">Work</label>
                 </div>
                 <div  class="radio-item">
-                    <input formControlName="type" [attr.disabled]= "!addedit?'':null" type="radio" name="type" value="Others">
+                    <input formControlName="type"  [ngModel]='address["type"]'  [attr.disabled]= "!addedit?'':null" type="radio" name="type" value="Others">
                     <label for="Others">Others</label>
                 </div>
             </div>
