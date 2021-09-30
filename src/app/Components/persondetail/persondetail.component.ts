@@ -9,7 +9,7 @@ import { UserService } from 'src/app/Service/userservice/user.service';
 })
 export class PersondetailComponent implements OnInit {
   user = JSON.parse(localStorage.getItem('BookStoreUser')!);
-  password=atob(this.user.password);
+
   constructor(private userService:UserService) { }
   edit = false;
   addedit = false;
@@ -19,15 +19,25 @@ export class PersondetailComponent implements OnInit {
   checked: any;
   radio:string='';
   AddressForm!:FormGroup
+  PersonForm!:FormGroup
   userAddress:any;
   ngOnInit(): void {
     this.getAddress();
+    console.log(this.user);
     this.AddressForm = new FormGroup(
       {
         address:new FormControl('',Validators.required),
         city:new FormControl('',Validators.required),
         state: new FormControl('',Validators.required),
         type: new FormControl('',Validators.required)
+      }
+    ),
+    this.PersonForm=new FormGroup(
+      {
+        fullname:new FormControl('',Validators.required),
+        email:new FormControl('',Validators.required),
+        password: new FormControl('',Validators.required),
+        mobile: new FormControl('',Validators.required)
       }
     )
     this.check();
@@ -63,8 +73,20 @@ export class PersondetailComponent implements OnInit {
     this.radio = data['type'];
     console.log(data)
   }
-  EditPerson()
+  EditPersonDetail()
   {
-    
+    console.log(this.PersonForm.value);
+    this.userService.EditPersonDetail(this.PersonForm.value)
+    .subscribe((result:any)=>{
+      console.log(result);
+      let obj={
+        email:this.PersonForm.value.email,
+        firstName:this.PersonForm.value.fullname,
+        mobileNumber:this.PersonForm.value.mobile,
+        password:this.PersonForm.value.password,
+        userId:this.user.userId
+      }
+      localStorage.setItem('BookStoreUser', JSON.stringify(obj));
+    })  
   }
 }

@@ -67,6 +67,7 @@ export class LoginComponent implements OnInit {
     }
   }
   LocalStorage(data: any) {
+    data.password= atob(data.password);
     var user = localStorage.getItem('BookStoreUser');
     if (user != null) {
       localStorage.removeItem('BookStoreUser');

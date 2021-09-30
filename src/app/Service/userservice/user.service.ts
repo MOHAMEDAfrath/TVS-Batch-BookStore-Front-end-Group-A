@@ -73,5 +73,16 @@ export class UserService {
     }
     return this.http.put(`${environment.baseUrl}/api/updateAddress`,address);
   }
+  EditPersonDetail(data:any)
+  {
+    let userDetails = {
+      UserId:this.user.userId,
+      FullName: data.fullname,
+      EmailId: data.email,
+      Password: data.password,
+      MobileNumber:data.mobile
+    }
+    return this.http.post(`${environment.baseUrl}/api/PersonalDetails`,userDetails);
+  }
 }
 

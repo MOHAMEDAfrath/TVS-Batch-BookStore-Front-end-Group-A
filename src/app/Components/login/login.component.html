@@ -74,10 +74,10 @@
           <mat-form-field appearance="outline" class="email">
             <input matInput formControlName="Mobile" />
             <mat-error class="alert" *ngIf="RegisterForm.get('Mobile')?.errors?.required"
-              >Email is required</mat-error
+              >Number is required</mat-error
             >
             <mat-error class="alert" *ngIf="RegisterForm.get('Mobile')?.errors?.pattern"
-              >Invalid Email
+              >Invalid Number
             </mat-error>
           </mat-form-field>
         </div>
