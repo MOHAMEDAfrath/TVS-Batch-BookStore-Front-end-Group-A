@@ -158,6 +158,7 @@
         </div>
       </div>
     </div> 
+
     <div>
         <app-wishlist *ngIf="option == 'WishList'"></app-wishlist>
     </div>
@@ -211,4 +212,9 @@
       </button>
     </div>
   </mat-menu>
+</div>
+<div class="footer" *ngIf="option !='BookDescription'">
+  <div class="footer-content">
+    <p>Copyright © 2020, Bookstore Private Limited. All Rights Reserved</p>
+  </div>
 </div>
