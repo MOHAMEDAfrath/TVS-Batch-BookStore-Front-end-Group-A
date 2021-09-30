@@ -9,6 +9,7 @@ import { UserService } from 'src/app/Service/userservice/user.service';
 })
 export class PersondetailComponent implements OnInit {
   user = JSON.parse(localStorage.getItem('BookStoreUser')!);
+  password=atob(this.user.password);
   constructor(private userService:UserService) { }
   edit = false;
   addedit = false;
@@ -61,5 +62,9 @@ export class PersondetailComponent implements OnInit {
     this.checked=data['addressId'];
     this.radio = data['type'];
     console.log(data)
+  }
+  EditPerson()
+  {
+    
   }
 }

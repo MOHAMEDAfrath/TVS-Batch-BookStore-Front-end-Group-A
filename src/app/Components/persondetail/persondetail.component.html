@@ -4,7 +4,7 @@
         <p class="person-det">Person Details</p>
         <p class="edit" (click)="edit=!edit">{{!edit?'Edit':'Cancel'}}</p>
         </div>
-        <button mat-button *ngIf="edit" class="save">SAVE</button>
+        <button mat-button *ngIf="edit" class="save" (click)="EditPerson()">SAVE</button>
     </div>
     <div class="user-det">
         <div>
@@ -17,7 +17,7 @@
         </div>
         <div>
             <label for="Password">Password</label>
-            <input type="password" name="Password" [disabled]= "edit?false:true" id="" value="********">
+            <input type="password" name="Password" [disabled]= "edit?false:true" id="" value="{{password}}">
         </div>
         <div>
             <label for="Mobile">Mobile Number</label>
