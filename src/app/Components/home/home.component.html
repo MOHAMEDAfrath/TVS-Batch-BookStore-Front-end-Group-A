@@ -79,7 +79,7 @@
         <p *ngIf="BookStoreUser != null">{{ BookStoreUser.fullName }}</p>
       </div>
       <div class="cart">
-        <i class="material-icons-outlined icon">shopping_cart</i>
+        <i class="material-icons-outlined icon" (click)="option = 'Cart'">shopping_cart</i>
         <p>Cart</p>
       </div>
     </div>
@@ -122,6 +122,14 @@
       <div>
       </div>
     </div>
+    <div class="book-head" style="margin-bottom: 30px" *ngIf="option=='Cart'">
+      <div class="book-count">
+        <p style="font-size: 16px;line-height: 16px;font-family: 'Roboto',sans-serif;color: #9d9d9d;cursor: pointer;" (click)="option='Home'">Home</p>
+        <p style="font-size: 16px;line-height: 16px;font-family: 'Roboto',sans-serif;color: #0a0102;margin-left: 1px;">/ Cart</p>
+      </div>
+      <div>
+      </div>
+    </div>
      <div class="book-wrap" *ngIf="option=='Home'">
       <div class="book-comp" *ngFor="let book of books | paginate: { itemsPerPage: 12, currentPage: p }" (click)="option='BookDescription';bookdetails = book;bookId=book['bookId']" >
         <div class="Message" *ngIf="book['bookQuantity']==0">
@@ -155,6 +163,7 @@
     </div>
         <app-book-description *ngIf="option=='BookDescription'" [bookdetails]='bookdetails'></app-book-description>
         <app-persondetail *ngIf="option == 'PersonDetail'"></app-persondetail>
+        <app-cart *ngIf="option == 'Cart'"></app-cart>
     <div class="page" *ngIf="option == 'Home'">
       <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>

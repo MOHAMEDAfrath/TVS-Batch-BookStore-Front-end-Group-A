@@ -27,45 +27,94 @@
 
     <div class="address-head">
         <p>Address Details</p>
+        <button mat-button (click)='address = true'>Add New Address</button>
     </div>
+    <div>
+        <div class="add-details" [formGroup]='AddressForm' *ngIf="address" >
+            <div>
+                <label for="address">Address</label>
+                <textarea name="address" id="address-area" formControlName='address' cols="30" rows="10" ></textarea>
+            </div>
+            <div class="c-t-div">
+                <div>
+                    <label for="city">city/town</label>
+                    <input type="text"  formControlName="city" name="city" id="">
+                </div>
+                <div>
+                    <label for="state">State</label>
+                    <input  formControlName='state' name = "state"type="text">
+                </div>
+            </div>
+             <div class="radios">
+            <label for="">Type</label>
+            <div>
+                <div class="radio-item">
+                    <input  formControlName="type" type="radio" name="type" value="Home">
+                    <label for="Home">Home</label>
+                </div>
+                <div  class="radio-item">
+                    <input  formControlName="type" type="radio" name="type" value="Work">
+                    <label for="Work">Work</label>
+                </div>
+                <div  class="radio-item">
+                    <input formControlName="type" type="radio" name="type" value="Others">
+                    <label for="Others">Others</label>
+                </div>
+            </div>
+        </div>
+        <div style="flex-direction: row;justify-content: space-between;">
+            <button mat-button class="save" (click)="address=false">
+                Cancel
+            </button>
+            <button mat-button (click)= "addAddress()"class="save">
+                Save
+            </button>
+        </div>
+    </div>
+    <div *ngFor="let address of userAddress;let i = index">
     <div class="edit-head">
             <div style="display: flex;align-items: center;">
-            <p class="person-det">1. Work</p>
-            <p class="edit" (click)="addedit=!addedit">{{!addedit?'Edit':'Cancel'}}</p>
+            <input type="radio" name="type" (change)="expand = true;change(address)" style="margin-top: 0px;">
+            <label class="person-det" for="type" style="margin-left: 5px;">{{i+1}}. {{address['type']}}</label>
+            <p class="edit" (click)="addedit=!addedit" *ngIf="address['addressId']==checked" >{{!addedit?'Edit':'Cancel'}}</p>
             </div>
-            <button mat-button *ngIf="addedit" class="save">SAVE</button>
+            <button mat-button *ngIf="addedit&&address['addressId']==checked" class="save" (click)='editaddress(address)'>SAVE</button>
     </div>
-    <div class="add-details">
+    <div *ngIf="expand==false;">
+        <p>{{address['address']}}, {{address['city']}}, {{address['state']}}</p>
+    </div>
+    <div class="add-details" [formGroup]='AddressForm' *ngIf="checked == address['addressId']">
         <div>
             <label for="address">Address</label>
-            <textarea name="address" id="address-area" cols="30" rows="10" [disabled]= "addedit?false:true"></textarea>
+            <textarea name="address" id="address-area" formControlName='address' [ngModel]='address["address"]' cols="30" rows="10" [attr.disabled]= "!addedit?'':null"></textarea>
         </div>
         <div class="c-t-div">
             <div>
                 <label for="city">city/town</label>
-                <input type="text" [disabled]= "addedit?false:true" name="city" id="">
+                <input type="text" formControlName='city' [ngModel]="address['city']" [attr.disabled]= "!addedit?'':null" name="city" id="">
             </div>
             <div>
                 <label for="state">State</label>
-                <input [disabled]= "addedit?false:true" type="text">
+                <input [attr.disabled]= "!addedit?'':null" [ngModel]="address['state']" formControlName='state' type="text">
             </div>
         </div>
         <div class="radios">
             <label for="">Type</label>
             <div>
                 <div class="radio-item">
-                    <input  [disabled]= "addedit?false:true" type="radio" name="Home" value="Home">
+                    <input  formControlName="type" [attr.disabled]= "!addedit?'':null" type="radio" name="type" value="Home">
                     <label for="Home">Home</label>
                 </div>
                 <div  class="radio-item">
-                    <input [disabled]= "addedit?false:true" type="radio" name="Work" value="Work">
+                    <input  formControlName="type" [attr.disabled]= "!addedit?'':null" type="radio" name="type" value="Work">
                     <label for="Work">Work</label>
                 </div>
                 <div  class="radio-item">
-                    <input  [disabled]= "addedit?false:true" type="radio" name="Others" value="Others">
+                    <input formControlName="type" [attr.disabled]= "!addedit?'':null" type="radio" name="type" value="Others">
                     <label for="Others">Others</label>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </div>

@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup ,FormControl,Validators} from '@angular/forms';
 import { UserService } from 'src/app/Service/userservice/user.service';
 
 @Component({
-  selector: 'app-persondetail',
-  templateUrl: './persondetail.component.html',
-  styleUrls: ['./persondetail.component.scss']
+  selector: 'app-cart',
+  templateUrl: './cart.component.html',
+  styleUrls: ['./cart.component.scss']
 })
-export class PersondetailComponent implements OnInit {
-  user = JSON.parse(localStorage.getItem('BookStoreUser')!);
+export class CartComponent implements OnInit {
+
   constructor(private userService:UserService) { }
-  edit = false;
+  cart=[1];
+  placeorder:any='order';
   addedit = false;
+  edit = false;
   newadd = false;
   address = false;
   expand = false;
@@ -30,6 +32,9 @@ export class PersondetailComponent implements OnInit {
       }
     )
     this.check();
+  }
+  add(count:any){
+    console.log(parseInt(count)+1);
   }
   check(){
     if(this.AddressForm.get('address')?.value == ''){

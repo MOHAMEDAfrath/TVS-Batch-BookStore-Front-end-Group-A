@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../HttpService/http.service';
 import { environment } from 'src/environments/environment';
+import { HttpParams } from '@angular/common/http';
 
 
 @Injectable({
@@ -10,6 +11,7 @@ export class UserService {
 
   constructor(private http:HttpService) { }
   otp=(JSON.parse(localStorage.getItem("OTP")!)); 
+  user=(JSON.parse(localStorage.getItem("BookStoreUser")!)); 
   Register(data: any) {
     let userData = {
       FullName: data.FullName,
@@ -46,4 +48,30 @@ export class UserService {
     }
     return this.http.put(`${environment.baseUrl}/api/ResetPassword`,userData);
   }
+  addAddress(data:any){
+    let address = {
+      UserId:this.user.userId,
+      Address:data.address,
+      Type:data.type,
+      City:data.city,
+      state:data.state
+    }
+    return this.http.post(`${environment.baseUrl}/api/Address`,address);
+  }
+  getAddress(){
+    let params = new HttpParams().set('userId',this.user.userId);
+    return this.http.post(`${environment.baseUrl}/api/getAddress`,params);
+  }
+  updateAddress(addressid:any,data:any){
+    let address = {
+      AddressId:addressid['addressId'],
+      Type:data.type,
+      UserId:this.user.userId,
+      Address:data.address,
+      City:data.city,
+      state:data.state
+    }
+    return this.http.put(`${environment.baseUrl}/api/updateAddress`,address);
+  }
 }
+

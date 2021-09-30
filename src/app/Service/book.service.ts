@@ -10,6 +10,7 @@ export class BookService {
 
   constructor(private http:HttpService) { }
   getBooks(){
-    return this.http.get(`${environment.baseUrl}/api/GetBooks`);
+    return this.http.get(`${environment.baseUrl}/api/GetBooks`,'');
   }
+
 }

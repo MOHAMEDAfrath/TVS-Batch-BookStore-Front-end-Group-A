@@ -1,5 +1,6 @@
 .main-div{
     width: 40vw;
+    margin-bottom: 50px;
 }
 .edit-head{
     display: flex;
@@ -20,16 +21,20 @@
         line-height: 16px;
         margin-left: 7px;
     }
-    .save{
-        background-color: #3371b5;
-        color: white;
-        width: 76px;
-        height: 33px;
-        font-size: 15px;
-        line-height: 20px;
-    }
-   
 }
+.temp{
+    flex-direction: row !important;
+    justify-content: space-between;
+}
+.save{
+    background-color: #3371b5;
+    color: white;
+    width: 76px;
+    height: 33px;
+    font-size: 15px;
+    line-height: 20px;
+}
+
 .user-det{
     div{
         display: flex;
@@ -55,14 +60,32 @@
 }
 .address-head{
     margin-top: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
     p{
         font-size: 18px;
         line-height: 24px;
         font-family: 'Roboto',sans-serif;
         font-weight: 500;
     }
+    button{
+        background: white;
+        border: 1px solid #a03037;
+        border-radius: 2px;
+        height: 29px;
+        width: 123px;
+        font-size: 12px;
+        line-height: 16px;
+        font-family: 'Roboto',sans-serif;
+        color: #a03037;
+
+    }
 }
 .add-details{
+    margin-bottom: 25px !important;
+    margin-top: 20px;
     div{
         display: flex;
         flex-direction: column;

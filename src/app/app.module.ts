@@ -22,6 +22,7 @@ import { WishlistComponent } from './Components/wishlist/wishlist.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BookDescriptionComponent } from './Components/book-description/book-description.component';
 import { PersondetailComponent } from './Components/persondetail/persondetail.component';
+import { CartComponent } from './Components/cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { PersondetailComponent } from './Components/persondetail/persondetail.co
     ResetPasswordComponent,
     WishlistComponent,
     BookDescriptionComponent,
-    PersondetailComponent
+    PersondetailComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

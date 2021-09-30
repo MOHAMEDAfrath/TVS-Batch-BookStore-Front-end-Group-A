@@ -1,0 +1,161 @@
+<div>
+  <div class="cart">
+    <p style="padding-left: 20px">My Cart(1)</p>
+    <div class="w-wrap" *ngFor="let a of cart">
+      <div class="w-book">
+        <div class="wb-con">
+          <div>
+            <img src="../../../assets/Image 11.png" alt="" />
+          </div>
+          <div class="wb-detail">
+            <p class="book-name">Dont make me think</p>
+            <p class="author">By Steven krug</p>
+            <div class="cost">
+              <p class="rupees">Rs. 1500</p>
+              <p class="disc">Rs. 2000</p>
+            </div>
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              "
+            >
+              <div class="cart-count">
+                <i class="material-icons">remove</i>
+                <input type="text" #count value="1" />
+                <i class="material-icons" (click)="add(count.value)">add</i>
+              </div>
+              <p>Remove</p>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+    <div
+      *ngIf="cart.length > 0"
+      style="display: flex; justify-content: flex-end; padding: 20px"
+    >
+      <button
+        mat-button
+        class="order-but"
+        style="align-self: flex-end"
+        (click)="placeorder = 'Address'"
+        *ngIf="placeorder == 'order'"
+      >
+        Place Order
+      </button>
+    </div>
+  </div>
+  <div class="cart">
+    <div class="cart-cust">
+      <div class="header">
+        <p>{{placeorder == 'Address'?'Customer Details':'Address'}}</p>
+        <button mat-button class="add-new" *ngIf="placeorder == 'Address'">
+          Add New Address
+        </button>
+      </div>
+      <div style="width: 90%" *ngIf="placeorder == 'Address'">
+        <div class="cust-per">
+          <div>
+            <label for="name">Full Name</label>
+            <input type="text" name="name" id="" />
+          </div>
+          <div>
+            <label for="email">Email Id</label>
+            <input type="email" name="email" />
+          </div>
+        </div>
+        <div style="margin-top: 25px">
+          <div style="margin-bottom: 15px">Address</div>
+          <div *ngFor="let address of userAddress; let i = index">
+            <div class="edit-head">
+              <div style="display: flex; align-items: center">
+                <input
+                  type="radio"
+                  name="type"
+                  (change)="expand = true; change(address)"
+                  style="margin-top: 0px"
+                />
+                <label class="person-det" for="type" style="margin-left: 5px"
+                  >{{ i + 1 }}. {{ address["type"] }}</label
+                >
+                <p
+                  class="edit"
+                  (click)="addedit = !addedit"
+                  *ngIf="address['addressId'] == checked"
+                >
+                  {{ !addedit ? "Edit" : "Cancel" }}
+                </p>
+              </div>
+              <button
+                mat-button
+                *ngIf="addedit && address['addressId'] == checked"
+                class="save"
+                (click)="editaddress(address)"
+              >
+                SAVE
+              </button>
+            </div>
+            <div *ngIf="expand==false;" style="margin-left: 25px;">
+              <p>{{address['address']}}, {{address['city']}}, {{address['state']}}</p>
+          </div>
+          <div class="add-details" [formGroup]='AddressForm' *ngIf="checked == address['addressId']">
+            <div>
+                <label for="address">Address</label>
+                <textarea name="address" id="address-area" formControlName='address' [ngModel]='address["address"]' cols="30" rows="10" [attr.disabled]= "!addedit?'':null"></textarea>
+            </div>
+            <div class="c-t-div">
+                <div>
+                    <label for="city">city/town</label>
+                    <input type="text" formControlName='city' [ngModel]="address['city']" [attr.disabled]= "!addedit?'':null" name="city" id="">
+                </div>
+                <div>
+                    <label for="state">State</label>
+                    <input [attr.disabled]= "!addedit?'':null" [ngModel]="address['state']" formControlName='state' type="text">
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="cart">
+    <p style="padding: 20px">Order Summary</p>
+    <div *ngIf="placeorder=='ordersummary'">
+      <div class="w-wrap" *ngFor="let a of cart">
+        <div class="w-book">
+          <div class="wb-con">
+            <div>
+              <img src="../../../assets/Image 11.png" alt="" />
+            </div>
+            <div class="wb-detail">
+              <p class="book-name">Dont make me think</p>
+              <p class="author">By Steven krug</p>
+              <div class="cost">
+                <p class="rupees">Rs. 1500</p>
+                <p class="disc">Rs. 2000</p>
+              </div>
+            </div>
+            <div></div>
+          </div>
+        </div>
+        <div
+          *ngIf="cart.length > 0"
+          style="display: flex; justify-content: flex-end; padding: 20px"
+        >
+          <button
+            mat-button
+            class="order-but"
+            style="align-self: flex-end"
+            *ngIf="placeorder == 'Checkout'"
+          >
+            Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
