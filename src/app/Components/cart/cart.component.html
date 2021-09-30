@@ -56,15 +56,15 @@
           Add New Address
         </button>
       </div>
-      <div style="width: 90%" *ngIf="placeorder == 'Address'">
+      <div style="width: 90%" *ngIf="placeorder == 'Address' || placeorder == 'ordersummary'">
         <div class="cust-per">
           <div>
             <label for="name">Full Name</label>
-            <input type="text" name="name" id="" />
+            <input type="text" name="name" id="" value="{{user['fullName']}}"/>
           </div>
           <div>
             <label for="email">Email Id</label>
-            <input type="email" name="email" />
+            <input type="email" name="email" value="{{user['emailId']}}"/>
           </div>
         </div>
         <div style="margin-top: 25px">
@@ -74,7 +74,7 @@
               <div style="display: flex; align-items: center">
                 <input
                   type="radio"
-                  name="type"
+                  name="typeMain"
                   (change)="expand = true; change(address)"
                   style="margin-top: 0px"
                 />
@@ -116,9 +116,30 @@
                     <input [attr.disabled]= "!addedit?'':null" [ngModel]="address['state']" formControlName='state' type="text">
                 </div>
             </div>
+            <div class="radios">
+              <label for="">Type</label>
+              <div>
+                  <div class="radio-item">
+                      <input  formControlName="type" [ngModel]="address['type']" [attr.disabled]= "!addedit?'':null" type="radio" name="type" value="Home">
+                      <label for="Home">Home</label>
+                  </div>
+                  <div  class="radio-item">
+                      <input  formControlName="type" [attr.disabled]= "!addedit?'':null" type="radio" name="type" [ngModel]="address['type']" value="Work">
+                      <label for="Work">Work</label>
+                  </div>
+                  <div  class="radio-item">
+                      <input formControlName="type" [ngModel]="address['type']" [attr.disabled]= "!addedit?'':null" type="radio" name="type" value="Others">
+                      <label for="Others">Others</label>
+                  </div>
+              </div>
+          </div>
           </div>
         </div>
       </div>
+    
+    </div>
+    <div style="display: flex;justify-content: flex-end;" *ngIf="placeorder == 'Address'">
+      <button mat-button class="save cont" (click)="placeorder='ordersummary'">Continue</button>
     </div>
   </div>
   </div>
@@ -150,7 +171,7 @@
             mat-button
             class="order-but"
             style="align-self: flex-end"
-            *ngIf="placeorder == 'Checkout'"
+            *ngIf="placeorder == 'ordersummary'"
           >
             Checkout
           </button>

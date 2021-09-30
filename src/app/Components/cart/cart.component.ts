@@ -10,6 +10,7 @@ import { UserService } from 'src/app/Service/userservice/user.service';
 export class CartComponent implements OnInit {
 
   constructor(private userService:UserService) { }
+  user = JSON.parse(localStorage.getItem('BookStoreUser')!);
   cart=[1];
   placeorder:any='order';
   addedit = false;
