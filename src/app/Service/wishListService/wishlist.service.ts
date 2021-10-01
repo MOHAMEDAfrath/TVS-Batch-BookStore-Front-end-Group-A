@@ -18,6 +18,11 @@ export class WishlistService {
     this.getToken();
     return this.http.post(`${environment.baseUrl}/api/MyWishList/WishList`, params,true,this.header);
   }
+  GetWishList()
+  {
+    this.getToken();
+    return this.http.get(`${environment.baseUrl}/api/MyWishList/api/Book?userId=${this.user.userId}`,'',true,this.header);
+  }
   getToken() {
     this.header = {
       headers: { Authorization: "Bearer " + this.user.token }
