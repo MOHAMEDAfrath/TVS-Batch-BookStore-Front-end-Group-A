@@ -50,6 +50,7 @@ export class PersondetailComponent implements OnInit {
     }
   }
   addAddress(){
+    console.log(this.AddressForm.value);
     this.userService.addAddress(this.AddressForm.value)
     .subscribe((result:any)=>{
       console.log(result);
