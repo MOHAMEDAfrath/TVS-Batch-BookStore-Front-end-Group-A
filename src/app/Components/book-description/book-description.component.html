@@ -2,11 +2,14 @@
 
     <div class="image-div">
         <div class="book-image">
+            <div class="stock" *ngIf='bookdetails["bookQuantity"]==0'>
+                <div>Out of stock</div>
+            </div>
             <img src="{{bookdetails['bigImage']}}" alt="" width="282px" height="364px">
         </div>
         <div class="book-function">
             <button class="add-to-bag">ADD TO BAG</button>
-            <button class="fav-icon">
+            <button class="fav-icon" (click)="AddtoWishList()">
                 <i class="material-icons">favorite_border</i>
                 <span>WISHLIST</span>
             </button>

@@ -103,14 +103,16 @@
 .c-t-div{
     display: flex !important;
     flex-direction: row !important;
-    margin-top: 30px;
-    justify-content: space-between;
+    margin-top: 30px !important;
+    justify-content: space-between !important;
     div{
         display: flex;
         flex-direction: column;
+        position: relative;
+        width: 48% !important;
         input{
             height: 45px;
-            width: 210px;
+            width: 98%;
         }
     }
 }
@@ -129,6 +131,29 @@
                 margin-bottom: 0px;
             }
         }
+    }
+}
+@media only screen and (max-width:596px) {
+    
+    .address-head{
+        display: flex;
+        flex-direction: column;
+        button{
+            margin-bottom: 20px;
+        }
+    }
+    .c-t-div{
+        display: flex;
+        flex-direction: column !important;
+        div{
+            width: 100% !important;
+            label{
+                margin-bottom: 10px;
+            }
+        }
+    }
+    #address-area{
+        margin-top: 10px;
     }
 }
 

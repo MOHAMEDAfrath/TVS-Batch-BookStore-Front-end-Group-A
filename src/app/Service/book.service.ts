@@ -12,5 +12,9 @@ export class BookService {
   getBooks(){
     return this.http.get(`${environment.baseUrl}/api/GetBooks`,'');
   }
+  AddtoWishList(book:any)
+  {
+        return this.http.get(`${environment.baseUrl}/api/GetBooks`,'');
+  }
 
 }

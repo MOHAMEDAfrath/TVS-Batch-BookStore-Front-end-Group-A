@@ -17,7 +17,7 @@
         </div>
         <div>
             <label for="Password">Password</label>
-            <input type="password" name="Password"   [attr.disabled]= "!edit?'':null" id="" [ngModel]="user['password']"   formControlName='password' >
+            <input type="password" name="Password"   [attr.disabled]= "!edit?'':null" id="" [ngModel]="Password"   formControlName='password' >
         </div>
         <div>
             <label for="Mobile">Mobile Number</label>
@@ -36,7 +36,7 @@
                 <textarea name="address" id="address-area" formControlName='address' cols="30" rows="10" ></textarea>
             </div>
             <div class="c-t-div">
-                <div>
+                <div style="margin-right: 30px !important;">
                     <label for="city">city/town</label>
                     <input type="text"  formControlName="city" name="city" id="">
                 </div>
@@ -80,8 +80,9 @@
             </div>
             <button mat-button *ngIf="addedit&&address['addressId']==checked" class="save" (click)='editaddress(address)'>SAVE</button>
     </div>
-    <div *ngIf="expand==false;">
-        <p>{{address['address']}}, {{address['city']}}, {{address['state']}}</p>
+    <div *ngIf="expand==false;" style="margin-left:20px">
+        <p style="font-weight:500;margin-bottom:0px">Address</p>
+        <p style="margin-top:10px">{{address['address']}}, {{address['city']}}, {{address['state']}}</p>
     </div>
     <div class="add-details" [formGroup]='AddressForm' *ngIf="checked == address['addressId']">
         <div>

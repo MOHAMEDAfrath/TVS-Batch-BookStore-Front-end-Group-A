@@ -9,6 +9,7 @@ import { UserService } from 'src/app/Service/userservice/user.service';
 })
 export class PersondetailComponent implements OnInit {
   user = JSON.parse(localStorage.getItem('BookStoreUser')!);
+  Password= atob(this.user.password);
 
   constructor(private userService:UserService) { }
   edit = false;
@@ -80,10 +81,10 @@ export class PersondetailComponent implements OnInit {
     .subscribe((result:any)=>{
       console.log(result);
       let obj={
-        email:this.PersonForm.value.email,
-        firstName:this.PersonForm.value.fullname,
+        emailId:this.PersonForm.value.email,
+        fullName:this.PersonForm.value.fullname,
         mobileNumber:this.PersonForm.value.mobile,
-        password:this.PersonForm.value.password,
+        password:btoa(this.PersonForm.value.password),
         userId:this.user.userId
       }
       localStorage.setItem('BookStoreUser', JSON.stringify(obj));

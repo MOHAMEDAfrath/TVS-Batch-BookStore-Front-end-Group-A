@@ -56,7 +56,7 @@ export class UserService {
       City:data.city,
       state:data.state
     }
-    return this.http.post(`${environment.baseUrl}/api/Address`,address);
+    return this.http.post(`${environment.baseUrl}/api/AddAddress`,address);
   }
   getAddress(){
     let params = new HttpParams().set('userId',this.user.userId);
