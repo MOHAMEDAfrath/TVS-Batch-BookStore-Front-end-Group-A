@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup ,FormControl,Validators} from '@angular/forms';
 import { UserService } from 'src/app/Service/userservice/user.service';
+import { CartService } from 'src/app/Service/cartService/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -9,7 +10,7 @@ import { UserService } from 'src/app/Service/userservice/user.service';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService, private cartService:CartService) { }
   user = JSON.parse(localStorage.getItem('BookStoreUser')!);
   cart=[1];
   placeorder:any='order';
@@ -18,6 +19,7 @@ export class CartComponent implements OnInit {
   newadd = false;
   address = false;
   expand = false;
+  cartDetails : any;
   checked: any;
   radio:string='';
   AddressForm!:FormGroup
@@ -68,4 +70,16 @@ export class CartComponent implements OnInit {
     this.radio = data['type'];
     console.log(data)
   }
+  
+  
+  addtoCart(cartbook:any)
+  {
+    console.log("working");
+    this.cartService.AddBooktoCart(cartbook)
+    .subscribe((result:any)=>{
+      console.log(result.message);
+
+    })
+  }
+
 }

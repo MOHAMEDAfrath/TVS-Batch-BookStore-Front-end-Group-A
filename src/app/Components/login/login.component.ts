@@ -56,8 +56,9 @@ export class LoginComponent implements OnInit {
       console.log(this.LoginForm.value);
       this.userService.Login(this.LoginForm.value)
       .subscribe((result:any)=>{
-        console.log(result.data);
-        this.LocalStorage(result.data,result.token);
+        console.log("result.data");
+        console.log(result.userData);
+        this.LocalStorage(result.userData,result.token);
         
         this.route.navigateByUrl('/home')
         this.snackBar.open(result.message,'',{duration:2000,panelClass:['black-snackbar']});
@@ -73,7 +74,6 @@ export class LoginComponent implements OnInit {
     if (user != null) {
       localStorage.removeItem('BookStoreUser');
     }
-    
     let obj:any=
     {
       fullName: data.fullName,

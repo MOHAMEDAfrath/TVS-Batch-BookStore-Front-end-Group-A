@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BookService } from 'src/app/Service/book.service';
+import { CartService } from 'src/app/Service/cartService/cart.service';
 @Component({
   selector: 'app-book-description',
   templateUrl: './book-description.component.html',
@@ -7,7 +8,7 @@ import { BookService } from 'src/app/Service/book.service';
 })
 export class BookDescriptionComponent implements OnInit {
   @Input() bookdetails!:any
-  constructor(private book:BookService) { }
+  constructor(private book:BookService, private cartService : CartService) { }
   Userrating=[{name:'Aniket Chile',
                rating:3,
                review:'Good product. Even though the translation could have been better, Chanaky\'s neeti are thought provoking. Chanakya has written on many different topics and his writings are succinct.'}
@@ -35,4 +36,15 @@ export class BookDescriptionComponent implements OnInit {
       console.log(result.message);
     })
   }
+
+    
+AddBooktoCart()
+{
+  console.log("working");
+  this.cartService.AddBooktoCart(this.bookdetails)
+  .subscribe((result:any)=>{
+    console.log(result.message);
+  })
+}
+
 }
