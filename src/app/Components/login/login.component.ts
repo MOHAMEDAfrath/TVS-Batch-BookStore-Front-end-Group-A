@@ -56,7 +56,9 @@ export class LoginComponent implements OnInit {
       console.log(this.LoginForm.value);
       this.userService.Login(this.LoginForm.value)
       .subscribe((result:any)=>{
-        this.LocalStorage(result.data);
+        console.log(result.data);
+        this.LocalStorage(result.data,result.token);
+        
         this.route.navigateByUrl('/home')
         this.snackBar.open(result.message,'',{duration:2000,panelClass:['black-snackbar']});
         this.LoginForm.reset();
@@ -66,12 +68,24 @@ export class LoginComponent implements OnInit {
       })
     }
   }
-  LocalStorage(data: any) {
+  LocalStorage(data: any,token:any) {
     var user = localStorage.getItem('BookStoreUser');
     if (user != null) {
       localStorage.removeItem('BookStoreUser');
     }
-    user = data;
+    
+    let obj:any=
+    {
+      fullName: data.fullName,
+      emailId: data.emailId,
+      password: data.password,
+      mobileNumber:data.mobileNumber,
+      userId:data.userId,
+      token:token
+    }
+    user =obj;
+    console.log(obj);
     localStorage.setItem('BookStoreUser', JSON.stringify(user));
+
   }
 }

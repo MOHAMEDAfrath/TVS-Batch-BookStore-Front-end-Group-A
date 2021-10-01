@@ -11,7 +11,7 @@ export class BookService {
   user=(JSON.parse(localStorage.getItem("BookStoreUser")!)); 
   constructor(private http:HttpService) { }
   getBooks(){
-    return this.http.get(`${environment.baseUrl}/api/GetBooks`,'');
+    return this.http.get(`${environment.baseUrl}/api/Book/Books`,'');
   }
   AddtoWishList(book:any)
   {
@@ -19,7 +19,7 @@ export class BookService {
       UserId: this.user.userId,
       BookId:book.bookId
     }
-        return this.http.post(`${environment.baseUrl}/api/WishList`,params);
+        return this.http.post(`${environment.baseUrl}/api/MywishList/WishList`,params);
   }
 
 }

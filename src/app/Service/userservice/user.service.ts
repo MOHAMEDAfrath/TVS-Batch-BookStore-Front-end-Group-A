@@ -8,6 +8,7 @@ import { HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
+  header:any;
 
   constructor(private http:HttpService) { }
   otp=(JSON.parse(localStorage.getItem("OTP")!)); 
@@ -20,7 +21,7 @@ export class UserService {
       MobileNumber:data.Mobile
     }
     console.log(userData);
-    return this.http.post(`${environment.baseUrl}/api/register`,userData);
+    return this.http.post(`${environment.baseUrl}/api/User/Register`,userData);
   }
   Login(data:any){
     let userData = {
@@ -28,12 +29,12 @@ export class UserService {
       Password: data.password,
     }
     console.log(userData);
-    return this.http.post(`${environment.baseUrl}/api/Login`,userData);
+    return this.http.post(`${environment.baseUrl}/api/User/Login`,userData);
   }
   ForgotPassword(data:any)
   {
     console.log(data.email);
-    return this.http.post(`${environment.baseUrl}/api/forgotPassword?email=${data.email}`);
+    return this.http.post(`${environment.baseUrl}/api/User/ForgotPassword?email=${data.email}`);
 
   }
   ResetPassword(data:any)
@@ -46,7 +47,7 @@ export class UserService {
       UserId:this.otp.userId,
       Password:data.password
     }
-    return this.http.put(`${environment.baseUrl}/api/ResetPassword`,userData);
+    return this.http.put(`${environment.baseUrl}/api/User/ResetPassword`,userData);
   }
   addAddress(data:any){
     let address = {
@@ -56,14 +57,22 @@ export class UserService {
       City:data.city,
       state:data.state
     }
-    return this.http.post(`${environment.baseUrl}/api/AddAddress`,address);
+    console.log(this.user.token);
+    this.getToken();
+    return this.http.post(`${environment.baseUrl}/api/Address/Address`,address,true,this.header);
   }
   getAddress(){
-    let params = new HttpParams().set('userId',this.user.userId);
-    return this.http.post(`${environment.baseUrl}/api/getAddress`,params);
+    console.log(this.user.token);
+    //let params = new HttpParams().set('userId',this.user.userId);
+    this.getToken();
+    console.log(this.header);
+    return this.http.post(`${environment.baseUrl}/api/Address/GetAddress?userId=${this.user.userId}`,null,true,this.header)
+ 
   }
-  updateAddress(addressid:any,data:any){
-    let address = {
+  updateAddress(addressid:any,data:any)
+  {
+    let address = 
+    {
       AddressId:addressid['addressId'],
       Type:data.type,
       UserId:this.user.userId,
@@ -71,7 +80,10 @@ export class UserService {
       City:data.city,
       state:data.state
     }
-    return this.http.put(`${environment.baseUrl}/api/updateAddress`,address);
+    console.log(this.user.token);
+    this.getToken();
+    return this.http.put(`${environment.baseUrl}/api/Address/Address`,address,true,this.header)
+
   }
   EditPersonDetail(data:any)
   {
@@ -82,7 +94,13 @@ export class UserService {
       Password: data.password,
       MobileNumber:data.mobile
     }
-    return this.http.post(`${environment.baseUrl}/api/PersonalDetails`,userDetails);
+    return this.http.put(`${environment.baseUrl}/api/User/PersonalDetails`,userDetails);
+  }
+
+  getToken(){
+    this.header = {
+      headers: {Authorization: "Bearer " + this.user.token}
+    }
   }
 }
 
