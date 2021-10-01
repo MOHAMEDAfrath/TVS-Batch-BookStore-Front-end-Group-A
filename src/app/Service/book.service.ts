@@ -8,13 +8,18 @@ import { environment } from 'src/environments/environment';
 })
 export class BookService {
 
+  user=(JSON.parse(localStorage.getItem("BookStoreUser")!)); 
   constructor(private http:HttpService) { }
   getBooks(){
     return this.http.get(`${environment.baseUrl}/api/GetBooks`,'');
   }
   AddtoWishList(book:any)
   {
-        return this.http.get(`${environment.baseUrl}/api/GetBooks`,'');
+    let params={
+      UserId: this.user.userId,
+      BookId:book.bookId
+    }
+        return this.http.post(`${environment.baseUrl}/api/WishList`,params);
   }
 
 }

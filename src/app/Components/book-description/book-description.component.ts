@@ -32,7 +32,7 @@ export class BookDescriptionComponent implements OnInit {
     this.book.AddtoWishList(this.bookdetails)
     .subscribe((result:any)=>{
 
-      console.log(result.Message)
+      console.log(result.message);
     })
   }
 }

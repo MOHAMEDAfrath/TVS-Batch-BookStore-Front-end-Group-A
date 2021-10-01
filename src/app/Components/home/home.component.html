@@ -172,6 +172,7 @@
           </div>
         </div>
     </div>
+
         <app-book-description *ngIf="option=='BookDescription'" [bookdetails]='bookdetails'></app-book-description>
         <app-persondetail *ngIf="option == 'PersonDetail'"></app-persondetail>
         <app-cart *ngIf="option == 'Cart'"></app-cart>
@@ -204,7 +205,7 @@
         <i class="material-icons icons">person_outline</i>
         <span>Profile</span>
       </div>
-      <div class="icon-div profile-padding">
+      <div class="icon-div profile-padding" (click)="option= 'orders'">
         <i class="material-icons-outlined">markunread_mailbox</i>
         <span>My Orders</span>
       </div>
