@@ -29,6 +29,19 @@ export class CartService {
 
   }
 
+  ReduceBookCountInCart(param:any)
+  {
+    this.getToken();
+    return this.http.put(`${environment.baseUrl}/api/Cart/Cart`,param,true,this.header);
+  }
+
+  GetCart()
+  {
+    this.getToken();
+    return this.http.get(`${environment.baseUrl}/api/Cart/Cart?userId=${this.user.userId}`,'',true,this.header);
+  }
+
+
 
 
 }

@@ -19,12 +19,13 @@ export class CartComponent implements OnInit {
   newadd = false;
   address = false;
   expand = false;
-  cartDetails : any;
+  cartDetails : any =[] ;
   checked: any;
   radio:string='';
   AddressForm!:FormGroup
   userAddress:any;
   ngOnInit(): void {
+    this.GetCart();
     this.getAddress();
     this.AddressForm = new FormGroup(
       {
@@ -55,6 +56,7 @@ export class CartComponent implements OnInit {
     this.userService.getAddress()
     .subscribe((result:any)=>{
       this.userAddress = result.data;
+      console.log("getAddress");
       console.log(result);
     })
   }
@@ -78,8 +80,37 @@ export class CartComponent implements OnInit {
     this.cartService.AddBooktoCart(cartbook)
     .subscribe((result:any)=>{
       console.log(result.message);
+      this.GetCart();
 
     })
+  }
+
+  ReduceCount(cartbook : any)
+  {
+    console.log("cartbook");
+    console.log(cartbook);
+    let param = {
+      userId: cartbook.userId,
+       bookId: cartbook.bookId,
+        cartId: cartbook.cartId
+    }
+    this.cartService.ReduceBookCountInCart(param)
+    .subscribe((result:any)=>{
+      console.log(result.message);
+      this.GetCart();
+
+    })
+  }
+
+  GetCart()
+  {
+    this.cartService.GetCart()
+    .subscribe((result:any)=>{
+
+      this.cartDetails = result.data;
+      console.log(this.cartDetails);
+    })
+
   }
 
 }
