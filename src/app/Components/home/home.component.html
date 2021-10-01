@@ -55,7 +55,7 @@
         (click)="isSearch = !isSearch"
         >arrow_back</mat-icon
       >
-      <input matInput placeholder="Search..." />
+      <input matInput placeholder="Search..."  [(ngModel)]='search' (ngModelChange)='Search()'/>
     </div>
     <div class="icons">
       <div class="search" *ngIf="!isSearch">

@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   option = 'Home'
   sortOption = 0;
   bookId = 0;
+  search:any='';
   bookdetails:any;
   BookStoreUser =  JSON.parse(localStorage.getItem("BookStoreUser")!); 
   constructor(private route : Router,private book:BookService) { }
@@ -53,6 +54,16 @@ export class HomeComponent implements OnInit {
       this.books = Array.from(this.new);
       this.new.reverse();
       console.log(this.books)
+    }
+  }
+
+  Search(){
+    if(this.search == ""){
+      this.ngOnInit();
+    }else{
+      this.books = this.books.filter((res:any)=>{
+        return res.title?.toLocaleLowerCase().match(this.search.toLocaleLowerCase());
+      })
     }
   }
 }
