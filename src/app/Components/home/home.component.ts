@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   option = 'Home'
   sortOption = 0;
   bookId = 0;
+  search:any='';
   bookdetails:any;
   search:any='';
   BookStoreUser =  JSON.parse(localStorage.getItem("BookStoreUser")!); 
