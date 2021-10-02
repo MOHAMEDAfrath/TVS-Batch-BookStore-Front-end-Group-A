@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup ,FormControl,Validators} from '@angular/forms';
 import { UserService } from 'src/app/Service/userservice/user.service';
 import { CartService } from 'src/app/Service/cartService/cart.service';
+import { OrderServiceService } from 'src/app/Service/OrderService/order-service.service';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cart',
@@ -10,7 +13,10 @@ import { CartService } from 'src/app/Service/cartService/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private userService:UserService, private cartService:CartService) { }
+  constructor(private userService:UserService, private cartService:CartService,
+    private orderService:OrderServiceService,
+    private route: Router,
+    private snackBar:MatSnackBar) { }
   user = JSON.parse(localStorage.getItem('BookStoreUser')!);
   cart=[1];
   placeorder:any='order';
@@ -24,6 +30,9 @@ export class CartComponent implements OnInit {
   radio:string='';
   AddressForm!:FormGroup
   userAddress:any;
+  monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"
+];
   ngOnInit(): void {
     this.GetCart();
     this.getAddress();
@@ -112,5 +121,25 @@ export class CartComponent implements OnInit {
     })
 
   }
+  AddToOrders()
+  {
+    this.cartDetails.forEach((element:any) => {
+      let date= new Date();
+      let currentDate=this.monthNames[date.getMonth()]+" "+date.getDate();
+      let orderData={
+        UserId: this.user.userId,
+        BookId:element.bookId,
+        AddressId:this.checked,
+        OrderDate:currentDate,
+        TotalCost:element.totalCost
+      }
+      this.orderService.AddToOrders(orderData)
+      .subscribe((result:any)=>{
+        console.log(result);
+        this.snackBar.open(result.message,'',{duration:2000,panelClass:['black-snackbar']});
+        this.route.navigateByUrl('/home')
+      })
+    });
+    }
+  }
 
-}

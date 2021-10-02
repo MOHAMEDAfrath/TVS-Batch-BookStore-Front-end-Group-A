@@ -172,7 +172,7 @@
             class="order-but"
             style="align-self: flex-end"
             *ngIf="placeorder == 'ordersummary'" 
-          >
+          (click)="AddToOrders()">
             Checkout
           </button>
         </div>

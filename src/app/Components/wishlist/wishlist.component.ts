@@ -8,16 +8,19 @@ import { WishlistService } from 'src/app/Service/wishListService/wishlist.servic
 })
 export class WishlistComponent implements OnInit {
 
-  constructor(private wishList:WishlistService) { }
+  constructor(private wishList:WishlistService) 
+  { }
   WishList:any = [];
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
     this.GetWishList();
   }
   GetWishList()
   {
     console.log("works")
     this.wishList.GetWishList()
-    .subscribe((result:any)=>{
+    .subscribe((result:any)=>
+    {
       console.log(result);
    this.WishList= result.data;
     })
