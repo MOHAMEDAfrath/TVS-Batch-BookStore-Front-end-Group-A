@@ -23,6 +23,12 @@ export class WishlistService {
     this.getToken();
     return this.http.get(`${environment.baseUrl}/api/MyWishList/WishList?userId=${this.user.userId}`,'',true,this.header);
   }
+  RemoveFromWishList(list:any)
+  {
+    this.getToken();
+    return this.http.delete(`${environment.baseUrl}/api/MyWishList/api/Book?myWishListId=${list}`,true,this.header);
+
+  }
   getToken() {
     this.header = {
       headers: { Authorization: "Bearer " + this.user.token }

@@ -26,5 +26,13 @@ export class WishlistComponent implements OnInit {
     })
     
   }
+  RemoveFromWishList(list:any){
+    console.log("works")
+    this.wishList.RemoveFromWishList(list.myWishListId)
+    .subscribe((result:any)=>{
+      console.log(result);
+      this.GetWishList();
+    })
+  }
 
 }
