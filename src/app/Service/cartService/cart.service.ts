@@ -35,6 +35,12 @@ export class CartService {
     return this.http.put(`${environment.baseUrl}/api/Cart/Cart`,param,true,this.header);
   }
 
+  RemoveBookFromCart(cartId:any)
+  {
+    this.getToken();
+    return this.http.delete(`${environment.baseUrl}/api/Cart/Cart?cartId=${cartId}`,null,true,this.header);
+  }
+
   GetCart()
   {
     this.getToken();

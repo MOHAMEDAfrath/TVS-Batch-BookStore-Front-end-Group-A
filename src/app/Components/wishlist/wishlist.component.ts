@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { WishlistService } from 'src/app/Service/wishListService/wishlist.service';
 
 @Component({
@@ -8,31 +9,29 @@ import { WishlistService } from 'src/app/Service/wishListService/wishlist.servic
 })
 export class WishlistComponent implements OnInit {
 
-  constructor(private wishList:WishlistService) 
-  { }
-  WishList:any = [];
-  ngOnInit(): void 
-  {
+  constructor(private wishList: WishlistService, private snackBar: MatSnackBar) { }
+  WishList: any = [];
+  ngOnInit(): void {
     this.GetWishList();
   }
-  GetWishList()
-  {
+  GetWishList() {
     console.log("works")
     this.wishList.GetWishList()
-    .subscribe((result:any)=>
-    {
-      console.log(result);
-   this.WishList= result.data;
-    })
-    
+      .subscribe((result: any) => {
+        console.log(result);
+        this.WishList = result.data;
+      })
   }
-  RemoveFromWishList(list:any){
+  RemoveFromWishList(list: any) {
     console.log("works")
     this.wishList.RemoveFromWishList(list.myWishListId)
-    .subscribe((result:any)=>{
-      console.log(result);
-      this.GetWishList();
-    })
+      .subscribe((result: any) => {
+        this.snackBar.open(result.message, '', { duration: 3000, verticalPosition: 'bottom', horizontalPosition: 'left' });
+        console.log(result);
+        this.GetWishList();
+      }, error => {
+        this.snackBar.open(`${error.error.message}`, '', { duration: 3000, verticalPosition: 'bottom', horizontalPosition: 'left' });
+      })
   }
 
 }

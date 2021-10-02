@@ -23,11 +23,11 @@ export class WishlistService {
     this.getToken();
     return this.http.get(`${environment.baseUrl}/api/MyWishList/api/Book?userId=${this.user.userId}`,'',true,this.header);
   }
+  
   RemoveFromWishList(list:any)
   {
     this.getToken();
-    return this.http.delete(`${environment.baseUrl}/api/MyWishList/api/Book?myWishListId=${list}`,true,this.header);
-
+    return this.http.delete(`${environment.baseUrl}/api/MyWishList/api/Book?myWishListId=${list}`,'',true,this.header);
   }
   getToken() {
     this.header = {

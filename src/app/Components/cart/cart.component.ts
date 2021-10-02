@@ -111,6 +111,17 @@ export class CartComponent implements OnInit {
     })
   }
 
+  RemoveBook(cartbook :any)
+  {
+    console.log("cartbook");
+    console.log(cartbook);
+    this.cartService.RemoveBookFromCart(cartbook.cartId).subscribe((result:any)=>{
+      console.log(result.message);
+      this.GetCart();
+
+    })
+  }
+
   GetCart()
   {
     this.cartService.GetCart()
@@ -125,8 +136,9 @@ export class CartComponent implements OnInit {
   {
     this.cartDetails.forEach((element:any) => {
       let date= new Date();
-      let currentDate=this.monthNames[date.getMonth()]+" "+date.getDate();
-      let orderData={
+      let currentDate=this.monthNames[date.getMonth()]+" "+ date.getDate();
+      let orderData=
+      {
         UserId: this.user.userId,
         BookId:element.bookId,
         AddressId:this.checked,
@@ -136,7 +148,12 @@ export class CartComponent implements OnInit {
       this.orderService.AddToOrders(orderData)
       .subscribe((result:any)=>{
         console.log(result);
+        if(result.status==true)
+        {
+          this.RemoveBook(element);
+        }
         this.snackBar.open(result.message,'',{duration:2000,panelClass:['black-snackbar']});
+       
         this.route.navigateByUrl('/home')
       })
     });
