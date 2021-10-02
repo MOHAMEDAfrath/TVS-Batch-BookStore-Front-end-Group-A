@@ -21,7 +21,7 @@ export class WishlistService {
   GetWishList()
   {
     this.getToken();
-    return this.http.get(`${environment.baseUrl}/api/MyWishList/WishList?userId=${this.user.userId}`,'',true,this.header);
+    return this.http.get(`${environment.baseUrl}/api/MyWishList/api/Book?userId=${this.user.userId}`,'',true,this.header);
   }
   RemoveFromWishList(list:any)
   {
