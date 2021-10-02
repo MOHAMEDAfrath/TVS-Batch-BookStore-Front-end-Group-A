@@ -13,16 +13,17 @@
             <p class="author">{{list.authorName}}</p>
             <div class="cost">
                 <p class="rupees">
-                    {{list.price}}
+                    Rs. {{list.price}}
                 </p>
                 <p class="disc">
-                    {{list.price + 5}} 
+                    Rs. {{list.price + 5}} 
                 </p>
             </div>
         </div>
         </div>
     <div>
-      <i class="material-icons" style="color: #9d9d9d;font-size: 25px;">delete</i>
+      <i class="material-icons" style="color: #9d9d9d;font-size: 25px; cursor: pointer;" (click) = "RemoveFromWishList(list)" >delete</i>
     </div>
   </div>
+  <mat-divider style="margin-top: 30px;" ></mat-divider>
 </div>
