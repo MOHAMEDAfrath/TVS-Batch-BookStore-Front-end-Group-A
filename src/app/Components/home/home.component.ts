@@ -57,10 +57,13 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  Search(){
-    if(this.search == ""){
+  Search()
+  {
+    if(this.search == "")
+    {
       this.ngOnInit();
-    }else{
+    }
+    else{
       this.books = this.books.filter((res:any)=>{
         return res.title?.toLocaleLowerCase().match(this.search.toLocaleLowerCase());
       })
