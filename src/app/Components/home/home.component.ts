@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit {
   bookId = 0;
   search:any='';
   bookdetails:any;
-  search:any='';
   BookStoreUser =  JSON.parse(localStorage.getItem("BookStoreUser")!); 
   constructor(private route : Router,private book:BookService) { }
   p:number= 1;
