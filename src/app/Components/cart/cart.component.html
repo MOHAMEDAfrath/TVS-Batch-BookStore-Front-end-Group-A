@@ -23,10 +23,10 @@
             >
               <div class="cart-count">
                 <i class="material-icons" (click)="ReduceCount(cartbook)">remove</i>
-                <input type="text" #count value="{{cartbook.bookCount}}" />
+                <input type="text" #count value="{{cartbook.bookCount}}" /> 
                 <i class="material-icons" (click)="addtoCart(cartbook)" style="cursor: pointer;">add</i>
               </div>
-              <p>Remove</p>
+              <p (click)="RemoveBook(cartbook)" >Remove</p>
             </div>
           </div>
         </div>

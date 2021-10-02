@@ -111,6 +111,17 @@ export class CartComponent implements OnInit {
     })
   }
 
+  RemoveBook(cartbook :any)
+  {
+    console.log("cartbook");
+    console.log(cartbook);
+    this.cartService.RemoveBookFromCart(cartbook.cartId).subscribe((result:any)=>{
+      console.log(result.message);
+      this.GetCart();
+
+    })
+  }
+
   GetCart()
   {
     this.cartService.GetCart()
