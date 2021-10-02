@@ -69,9 +69,11 @@ export class LoginComponent implements OnInit {
       })
     }
   }
-  LocalStorage(data: any,token:any) {
+  LocalStorage(data: any,token:any)
+   {
     var user = localStorage.getItem('BookStoreUser');
-    if (user != null) {
+    if (user != null) 
+    {
       localStorage.removeItem('BookStoreUser');
     }
     let obj:any=

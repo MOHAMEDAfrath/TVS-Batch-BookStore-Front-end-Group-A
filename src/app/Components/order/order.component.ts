@@ -10,7 +10,8 @@ export class OrderComponent implements OnInit {
   OrderDetails:any;
   constructor(private orderService:OrderServiceService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
     this.GetOrder();
   }
   GetOrder()
@@ -19,7 +20,7 @@ export class OrderComponent implements OnInit {
     .subscribe((result:any)=>{
       this.OrderDetails = result.data;
       console.log(this.OrderDetails);
-    })
+})
 
   }
 }
