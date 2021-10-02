@@ -147,7 +147,7 @@
     <p style="padding: 20px">Order Summary</p>
     <div *ngIf="placeorder=='ordersummary'">
       <div class="w-wrap" *ngFor="let cartbook of cartDetails">
-        <div class="w-book">
+        <div class="w-book" >
           <div class="wb-con">
             <div>
               <img src="{{cartbook.bookImage}}" alt="" />
@@ -163,20 +163,21 @@
             <div></div>
           </div>
         </div>
-        <div
-          *ngIf="cart.length > 0"
-          style="display: flex; justify-content: flex-end; padding: 20px"
-        >
-          <button
-            mat-button
-            class="order-but"
-            style="align-self: flex-end"
-            *ngIf="placeorder == 'ordersummary'" 
-          (click)="AddToOrders()">
-            Checkout
-          </button>
-        </div>
+ 
       </div>
+      <div
+      *ngIf="cart.length > 0"
+      style="display: flex; justify-content: flex-end; padding: 20px"
+    >
+      <button
+        mat-button
+        class="order-but"
+        style="align-self: flex-end"
+        *ngIf="placeorder == 'ordersummary'" 
+      (click)="AddToOrders()">
+        Checkout
+      </button>
+    </div>
     </div>
   </div>
 </div>

@@ -30,6 +30,7 @@ export class CartComponent implements OnInit {
   radio:string='';
   AddressForm!:FormGroup
   userAddress:any;
+  orderId:any;
   monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
   "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"
 ];
@@ -148,12 +149,13 @@ export class CartComponent implements OnInit {
       this.orderService.AddToOrders(orderData)
       .subscribe((result:any)=>{
         console.log(result);
+        this.orderId=result.orderId;
+        console.log(this.orderId);
         if(result.status==true)
         {
           this.RemoveBook(element);
         }
         this.snackBar.open(result.message,'',{duration:2000,panelClass:['black-snackbar']});
-       
         this.route.navigateByUrl('/home')
       })
     });
