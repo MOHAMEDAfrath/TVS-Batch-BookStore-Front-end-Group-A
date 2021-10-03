@@ -236,7 +236,7 @@
     </div>
   </mat-menu>
 </div>
-<div class="footer" [class]="option == 'WishList' || option=='orders'?'footer-t':''" *ngIf="option !='BookDescription' && option != 'wishlistLogout'">
+<div class="footer" [class]="option == 'WishList' || option == 'Cart' || option=='orders'?'footer-t':''" *ngIf="option !='BookDescription' && option != 'wishlistLogout'">
   <div class="footer-content">
     <p>Copyright © 2020, Bookstore Private Limited. All Rights Reserved</p>
   </div>
