@@ -29,9 +29,7 @@ export class BookDescriptionComponent implements OnInit {
   Resize() {
     var textArea = document.getElementById("textarea")!
     textArea.style.height = 'auto';
-    textArea.style.width = 'auto';
     textArea.style.height = Math.min(500, textArea.scrollHeight) + 'px';
-    textArea.style.width = textArea.scrollWidth + 'px';
   }
   AddtoWishList() {
     this.wishlist.AddtoWishList(this.bookdetails)

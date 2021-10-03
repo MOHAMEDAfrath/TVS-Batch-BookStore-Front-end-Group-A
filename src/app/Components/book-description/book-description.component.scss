@@ -270,6 +270,17 @@ float: right;
     font-family: 'Roboto',sans-serif;
     line-height: 24px;
 }
+::ng-deep input.star-5:checked ~ label.star:before {
+    text-shadow: none;
+    font-size: 25px;
+}
+::ng-deep label.star:before {
+    font-size: 25px;
+}
+::ng-deep label.star{
+    padding-top: 0px !important;
+    padding-left: 10px !important;
+}
 @media only screen and (max-width:820px) {
     .book-main-div{
         display: flex;

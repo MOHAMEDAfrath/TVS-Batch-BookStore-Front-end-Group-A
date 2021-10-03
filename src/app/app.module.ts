@@ -25,6 +25,7 @@ import { PersondetailComponent } from './Components/persondetail/persondetail.co
 import { CartComponent } from './Components/cart/cart.component';
 import { OrderComponent } from './Components/order/order.component';
 import { OrderPlacedComponent } from './Components/order-placed/order-placed.component';
+import { NgxStarRatingModule } from 'ngx-star-rating';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { OrderPlacedComponent } from './Components/order-placed/order-placed.com
     MatSnackBarModule,
     HttpClientModule,
     MatMenuModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxStarRatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
