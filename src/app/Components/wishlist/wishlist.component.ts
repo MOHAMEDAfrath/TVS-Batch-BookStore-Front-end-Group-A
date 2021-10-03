@@ -26,9 +26,12 @@ export class WishlistComponent implements OnInit {
     console.log("works")
     this.wishList.RemoveFromWishList(list.myWishListId)
       .subscribe((result: any) => {
+        if(result.Status==true)
+        {
+          this.GetWishList();
+        }
         this.snackBar.open(result.message, '', { duration: 3000, verticalPosition: 'bottom', horizontalPosition: 'left' });
-        console.log(result);
-        this.GetWishList();
+        console.log(result);        
       }, error => {
         this.snackBar.open(`${error.error.message}`, '', { duration: 3000, verticalPosition: 'bottom', horizontalPosition: 'left' });
       })

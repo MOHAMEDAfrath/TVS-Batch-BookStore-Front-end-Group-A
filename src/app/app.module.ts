@@ -24,6 +24,7 @@ import { BookDescriptionComponent } from './Components/book-description/book-des
 import { PersondetailComponent } from './Components/persondetail/persondetail.component';
 import { CartComponent } from './Components/cart/cart.component';
 import { OrderComponent } from './Components/order/order.component';
+import { OrderPlacedComponent } from './Components/order-placed/order-placed.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { OrderComponent } from './Components/order/order.component';
     BookDescriptionComponent,
     PersondetailComponent,
     CartComponent,
-    OrderComponent
+    OrderComponent,
+    OrderPlacedComponent
   ],
   imports: [
     BrowserModule,
