@@ -26,6 +26,8 @@ getToken() {
 AddToOrders(params:any)
 {
    this.getToken();
+   console.log("params");
+   console.log(params);
     return this.http.post(`${environment.baseUrl}/api/MyOrders/Order`, params,true,this.header);
 }
 

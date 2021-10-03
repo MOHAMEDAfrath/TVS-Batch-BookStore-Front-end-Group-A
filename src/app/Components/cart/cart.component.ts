@@ -5,6 +5,8 @@ import { CartService } from 'src/app/Service/cartService/cart.service';
 import { OrderServiceService } from 'src/app/Service/OrderService/order-service.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpErrorResponse } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-cart',
@@ -25,11 +27,13 @@ export class CartComponent implements OnInit {
   newadd = false;
   address = false;
   expand = false;
+  result1=0;
   cartDetails : any =[] ;
   checked: any;
   radio:string='';
   AddressForm!:FormGroup
   userAddress:any;
+  orderId:any;
   monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
   "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"
 ];
@@ -145,18 +149,22 @@ export class CartComponent implements OnInit {
         OrderDate:currentDate,
         TotalCost:element.totalCost
       }
-      this.orderService.AddToOrders(orderData)
-      .subscribe((result:any)=>{
+      this.orderService.AddToOrders(orderData).subscribe((result:any)=>{
+        console.log("result");
         console.log(result);
+        this.orderId=result.orderId;
+        console.log(this.orderId);
         if(result.status==true)
         {
           this.RemoveBook(element);
+          localStorage.setItem('OrderId',this.orderId);
         }
         this.snackBar.open(result.message,'',{duration:2000,panelClass:['black-snackbar']});
-       
-        this.route.navigateByUrl('/home')
-      })
-    });
-    }
+      },(error: HttpErrorResponse) => {
+        this.snackBar.open(error.error.message, '', { duration: 2500 });
+      });
+    })
+    this.route.navigateByUrl('/orderPlaced');
   }
+}
 

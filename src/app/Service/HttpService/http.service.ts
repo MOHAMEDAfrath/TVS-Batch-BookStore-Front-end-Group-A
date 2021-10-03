@@ -27,5 +27,5 @@ export class HttpService {
     console.log(headers);
     return this.http.delete(url,isHeaderRequired && headers);
   }
- 
+  
 }
