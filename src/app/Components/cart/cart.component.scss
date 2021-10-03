@@ -232,3 +232,44 @@
 .temp{
     margin-bottom: 45px !important;
 }
+.place-order{
+    display: flex; justify-content: flex-end; padding: 20px
+}
+.cart-count-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media only screen and (max-width:1040px) {
+    .cust-per{
+        flex-wrap: wrap;
+        input{
+            margin-bottom: 15px !important;
+        }
+    }
+    .c-t-div{
+        flex-wrap: wrap;
+        input{
+            margin-bottom: 15px !important;
+        }
+    }
+}
+@media only screen and (max-width:520px) {
+    .cart{
+        width: 80vw;
+        margin-left: -25px;
+    }
+    .place-order{
+        justify-content: center !important;
+    }
+}
+@media only screen and (max-width:400px) {
+
+    .cart-count-div{
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        p{
+            margin-left: 10px;
+        }
+    }
+}

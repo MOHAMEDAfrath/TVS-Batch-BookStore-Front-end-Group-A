@@ -1,5 +1,5 @@
 .w-main{
-    width: 1022px;
+    width: 70vw;
     background-color: white;
     border: 1px solid #e4e4e4;
     opacity: 1;
@@ -75,4 +75,19 @@
     font-family: 'Roboto',sans-serif;
     color: black;
     font-weight: bold;
+}
+@media only screen and (max-width:606px){
+    .w-book{
+        flex-direction: column;
+    }
+    .order-mes{
+        text-align: center;
+    }
+}
+@media only screen and (max-width:420px){
+    .w-main{
+        width: 80vw;
+        margin-left: -20px;
+    }
+    
 }

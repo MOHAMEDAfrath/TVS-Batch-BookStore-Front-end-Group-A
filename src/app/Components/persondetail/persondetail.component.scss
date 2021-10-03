@@ -133,8 +133,15 @@
         }
     }
 }
+@media only screen and (max-width:640px) {
+    .main-div{
+        width: 60vw;
+    }
+}
 @media only screen and (max-width:596px) {
-    
+    .main-div{
+        width: 70vw;
+    }
     .address-head{
         display: flex;
         flex-direction: column;

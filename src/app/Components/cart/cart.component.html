@@ -15,11 +15,7 @@
               <p class="disc">Rs. {{cartbook.price + 500}}</p>
             </div>
             <div
-              style="
-                display: flex;
-                justify-content: center;
-                align-items: center;
-              "
+            class="cart-count-div"
             >
               <div class="cart-count">
                 <i class="material-icons" (click)="ReduceCount(cartbook)">remove</i>
@@ -35,7 +31,7 @@
     </div>
     <div
       *ngIf="cart.length > 0"
-      style="display: flex; justify-content: flex-end; padding: 20px"
+      class="place-order"
     >
       <button
         mat-button

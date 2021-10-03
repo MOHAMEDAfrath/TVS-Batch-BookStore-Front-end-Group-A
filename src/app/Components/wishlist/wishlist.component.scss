@@ -1,5 +1,5 @@
 .w-main{
-    width: 1022px;
+    width: 70vw;
     background-color: white;
     border: 1px solid #e4e4e4;
     opacity: 1;
@@ -65,5 +65,11 @@
             align-self: center;
             margin-left: 5px;
         }
+    }
+}
+@media only screen and (max-width:425px){
+    .w-main{
+        width: 90vw !important;
+        margin-left: -37px !important;
     }
 }
