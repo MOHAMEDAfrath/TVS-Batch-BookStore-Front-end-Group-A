@@ -3,6 +3,8 @@ import { BookService } from 'src/app/Service/book.service';
 import { WishlistService } from 'src/app/Service/wishListService/wishlist.service';
 import { CartService } from 'src/app/Service/cartService/cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FeedBackService } from 'src/app/Service/FeedBackService/feed-back.service';
 @Component({
   selector: 'app-book-description',
   templateUrl: './book-description.component.html',
@@ -10,7 +12,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class BookDescriptionComponent implements OnInit {
   @Input() bookdetails!: any
-  constructor(private book: BookService, private cartService: CartService, private wishlist: WishlistService, private snackBar: MatSnackBar) { }
+  FeedbackForm!: FormGroup
+  feedBackList :any = [];
+  constructor(private book: BookService, private cartService: CartService, private wishlist: WishlistService, private snackBar: MatSnackBar,
+    private feedBack: FeedBackService) { }
   Userrating = [{
     name: 'Aniket Chile',
     rating: 3,
@@ -25,6 +30,12 @@ export class BookDescriptionComponent implements OnInit {
   ]
 
   ngOnInit(): void {
+
+    this.FeedbackForm = new FormGroup({
+      rate: new FormControl(''),
+      comment: new FormControl('', Validators.required)
+    })
+    this.GetFeedBack();
   }
   Resize() {
     var textArea = document.getElementById("textarea")!
@@ -53,5 +64,21 @@ export class BookDescriptionComponent implements OnInit {
     else {
       this.snackBar.open("Out of Stock! Cant add to  cart", '', { duration: 3000, verticalPosition: 'bottom', horizontalPosition: 'left' });
     }
+  }
+  AddToFeedBack() {
+    console.log(this.FeedbackForm.value);
+    if (this.FeedbackForm.valid) {
+      this.feedBack.addcomment(this.FeedbackForm.value, this.bookdetails['bookId'])
+        .subscribe((result: any) => {
+          console.log(result);
+        })
+    }
+  }
+  GetFeedBack() {
+    this.feedBack.getFeedBack(this.bookdetails['bookId'])
+      .subscribe((result: any) => {
+        console.log(result);
+        this.feedBackList = result.data;
+      })
   }
 }

@@ -40,33 +40,28 @@
         <mat-divider></mat-divider>
         <div class="customer-rating-main-div">
             <p class="customer-feedback">Customer Feedback</p>
-            <div class="customer-rating">
+            <div class="customer-rating" [formGroup]="FeedbackForm">
                 <p>Overall Rating</p>
                 <div style="display: flex; align-items: flex-start;justify-content: flex-start;">
                     <div class="rate">
-                        <ngx-star-rating  [id]="'rating'"></ngx-star-rating>
+                        <ngx-star-rating formControlName="rate" [id]="'rating'"></ngx-star-rating>
                     </div>
                 </div>
-                <textarea placeholder="Write your Review" id="textarea" (keyup)="Resize()" id="textarea"></textarea>
+                <textarea placeholder="Write your Review"   formControlName="comment" id="textarea" (keyup)="Resize()" id="textarea"></textarea>
 
                 <div style="display: flex;justify-content: space-between;">
                     <div></div>
-                    <button mat-flat-button class="buttons">Submit</button>
+                    <button mat-flat-button class="buttons" (click)="AddToFeedBack()" >Submit</button>
                 </div>
             </div>
-            <div *ngFor="let rating of Userrating" style="display: flex; align-items:flex-start; margin-top: 20px; justify-content: center;">
+            <div *ngFor="let rating of feedBackList" style="display: flex; align-items:flex-start; margin-top: 20px;">
                 <img src="../../../assets/account.png" width="30px" height="30px" style=" padding-left: 15px; margin-right: 20px; padding-top: 5px;">
                 <div style="display: flex; flex-direction: column; justify-content: center;">
-                    <p style="font-size: 12px; line-height: 20px;margin-bottom: 5px;">{{rating.name}}</p>
+                    <p style="font-size: 12px; line-height: 20px;margin-bottom: 5px;">{{rating['userName']}}</p>
                     <div style="display: flex; color: #FFCE00">
-                        <div *ngFor="let dummy of ' '.repeat(rating.rating).split(''), let x = index">
-                            <i class="material-icons">star_rate</i>
-                        </div>
-                        <div *ngFor="let dummy of ' '.repeat(5- rating.rating).split(''), let x = index">
-                            <i class="material-icons">star_border</i>
-                        </div>
+                        <ngx-star-rating [ngModel]="rating['rating']"  [disabled]='true' [id]="'rating-1'"></ngx-star-rating>
                     </div>
-                    <p style="color:#707070; font-size: 12px; line-height: 16px; margin-top: 3px;">{{rating.review}}</p>
+                    <p style="color:#707070; font-size: 12px; line-height: 16px; margin-top: 3px;">{{rating['comment']}}</p>
                 </div>
             </div>
         </div>
