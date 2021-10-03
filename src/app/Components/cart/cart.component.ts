@@ -80,6 +80,10 @@ export class CartComponent implements OnInit {
     this.userService.updateAddress(data,this.AddressForm.value)
     .subscribe((result:any)=>{
       console.log(result);
+      this.expand=false;
+      this.address=false;
+      this.checked='';
+      this.getAddress();
     })  
   }
   change(data:any){
@@ -123,8 +127,8 @@ export class CartComponent implements OnInit {
     console.log(cartbook);
     this.cartService.RemoveBookFromCart(cartbook.cartId).subscribe((result:any)=>{
       console.log(result.message);
+      this.cartDetails.splice((this.cartDetails.indexOf(cartbook)),1);
       this.GetCart();
-
     })
   }
 

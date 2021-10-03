@@ -96,7 +96,8 @@ export class PersondetailComponent implements OnInit {
         fullName:this.PersonForm.value.fullname,
         mobileNumber:this.PersonForm.value.mobile,
         password:btoa(this.PersonForm.value.password),
-        userId:this.user.userId
+        userId:this.user.userId,
+        token:this.user.token
       }
       localStorage.setItem('BookStoreUser', JSON.stringify(obj));
       this.snackBar.open(result.message, '', { duration: 3000, verticalPosition: 'bottom', horizontalPosition: 'left' });

@@ -28,6 +28,7 @@ export class WishlistComponent implements OnInit {
       .subscribe((result: any) => {
         if(result.Status==true)
         {
+          this.WishList.splice((this.WishList.indexOf(list)),1);
           this.GetWishList();
         }
         this.snackBar.open(result.message, '', { duration: 3000, verticalPosition: 'bottom', horizontalPosition: 'left' });
