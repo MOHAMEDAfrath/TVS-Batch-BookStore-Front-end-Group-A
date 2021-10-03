@@ -55,9 +55,9 @@
                 </div>
             </div>
             <div *ngFor="let rating of feedBackList" style="display: flex; align-items:flex-start; margin-top: 20px;">
-                <img src="../../../assets/account.png" width="30px" height="30px" style=" padding-left: 15px; margin-right: 20px; padding-top: 5px;">
+                <img src="../../../assets/account.png" width="30px" height="30px" style=" padding-left: 15px; margin-right: 15px; padding-top: 8px;">
                 <div style="display: flex; flex-direction: column; justify-content: center;">
-                    <p style="font-size: 12px; line-height: 20px;margin-bottom: 5px;">{{rating['userName']}}</p>
+                    <p style="font-size: 15px; line-height: 20px;margin-bottom: -8px;text-transform: capitalize; font-weight: 500;">{{rating['userName']}}</p>
                     <div style="display: flex; color: #FFCE00">
                         <ngx-star-rating [ngModel]="rating['rating']"  [disabled]='true' [id]="'rating-1'"></ngx-star-rating>
                     </div>

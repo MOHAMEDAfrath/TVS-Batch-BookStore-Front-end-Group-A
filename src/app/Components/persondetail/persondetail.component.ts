@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/Service/userservice/user.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class PersondetailComponent implements OnInit {
   user = JSON.parse(localStorage.getItem('BookStoreUser')!);
   Password= atob(this.user.password);
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService,private snackBar: MatSnackBar) { }
   edit = false;
   addedit = false;
   newadd = false;
@@ -54,6 +55,10 @@ export class PersondetailComponent implements OnInit {
     this.userService.addAddress(this.AddressForm.value)
     .subscribe((result:any)=>{
       console.log(result);
+      this.snackBar.open(result.message, '', { duration: 3000, verticalPosition: 'bottom', horizontalPosition: 'left' });
+      this.expand=false;
+      this.address=false;
+      this.getAddress();
     })
   }
   getAddress(){
@@ -68,6 +73,11 @@ export class PersondetailComponent implements OnInit {
     this.userService.updateAddress(data,this.AddressForm.value)
     .subscribe((result:any)=>{
       console.log(result);
+      this.snackBar.open(result.message, '', { duration: 3000, verticalPosition: 'bottom', horizontalPosition: 'left' });
+      this.expand=false;
+      this.address=false;
+      this.checked='';
+      this.getAddress();
     })  
   }
   change(data:any){
@@ -89,6 +99,8 @@ export class PersondetailComponent implements OnInit {
         userId:this.user.userId
       }
       localStorage.setItem('BookStoreUser', JSON.stringify(obj));
+      this.snackBar.open(result.message, '', { duration: 3000, verticalPosition: 'bottom', horizontalPosition: 'left' });
+      this.edit=!this.edit;
     })  
   }
 }

@@ -59,6 +59,8 @@ export class BookDescriptionComponent implements OnInit {
       this.cartService.AddBooktoCart(this.bookdetails)
         .subscribe((result: any) => {
           console.log(result.message);
+          this.snackBar.open(result.message, '', { duration: 3000, verticalPosition: 'bottom', horizontalPosition: 'left' });
+          
         })
     }
     else {
@@ -71,6 +73,8 @@ export class BookDescriptionComponent implements OnInit {
       this.feedBack.addcomment(this.FeedbackForm.value, this.bookdetails['bookId'])
         .subscribe((result: any) => {
           console.log(result);
+          this.snackBar.open(result.message, '', { duration: 3000, verticalPosition: 'bottom', horizontalPosition: 'left' });
+          this.ngOnInit();
         })
     }
   }
