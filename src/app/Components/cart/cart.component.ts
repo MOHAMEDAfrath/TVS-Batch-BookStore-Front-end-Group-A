@@ -93,6 +93,7 @@ export class CartComponent implements OnInit {
     this.cartService.AddBooktoCart(cartbook)
     .subscribe((result:any)=>{
       console.log(result.message);
+      this.snackBar.open(result.message,'',{duration:5000,panelClass:['black-snackbar']});
       this.GetCart();
 
     })

@@ -22,8 +22,10 @@ export class FeedBackService {
       BookId: id,
       UserName:this.user.fullName,
       Rating: parseInt(data.rate),
-      Comment:data.comment
+      Comments:data.comment
     }
+    console.log("helooooooooo");
+    console.log(params);
     this.getToken();
     return this.http.post(`${environment.baseUrl}/api/FeedBack/FeedBack`,params,true,this.header);
   }

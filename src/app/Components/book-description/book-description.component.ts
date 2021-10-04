@@ -66,11 +66,14 @@ export class BookDescriptionComponent implements OnInit {
     }
   }
   AddToFeedBack() {
+    console.log("******************");
     console.log(this.FeedbackForm.value);
     if (this.FeedbackForm.valid) {
       this.feedBack.addcomment(this.FeedbackForm.value, this.bookdetails['bookId'])
         .subscribe((result: any) => {
+        
           console.log(result);
+          this.GetFeedBack();
         })
     }
   }

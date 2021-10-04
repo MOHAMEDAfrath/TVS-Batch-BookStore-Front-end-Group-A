@@ -26,7 +26,7 @@ export class WishlistComponent implements OnInit {
     console.log("works")
     this.wishList.RemoveFromWishList(list.myWishListId)
       .subscribe((result: any) => {
-        if(result.Status==true)
+        if(result.status==true)
         {
           this.GetWishList();
         }
