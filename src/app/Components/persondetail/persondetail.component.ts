@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter  } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/Service/userservice/user.service';
@@ -11,7 +11,7 @@ import { UserService } from 'src/app/Service/userservice/user.service';
 export class PersondetailComponent implements OnInit {
   user = JSON.parse(localStorage.getItem('BookStoreUser')!);
   Password= atob(this.user.password);
-
+  @Output("init") init: EventEmitter<any> = new EventEmitter();
   constructor(private userService:UserService,private snackBar: MatSnackBar) { }
   edit = false;
   addedit = false;
@@ -58,7 +58,7 @@ export class PersondetailComponent implements OnInit {
       this.snackBar.open(result.message, '', { duration: 3000, verticalPosition: 'bottom', horizontalPosition: 'left' });
       this.expand=false;
       this.address=false;
-      this.getAddress();
+      this.ngOnInit();
     })
   }
   getAddress(){
@@ -77,7 +77,7 @@ export class PersondetailComponent implements OnInit {
       this.expand=false;
       this.address=false;
       this.checked='';
-      this.getAddress();
+      this.ngOnInit();
     })  
   }
   change(data:any){
@@ -102,6 +102,7 @@ export class PersondetailComponent implements OnInit {
       localStorage.setItem('BookStoreUser', JSON.stringify(obj));
       this.snackBar.open(result.message, '', { duration: 3000, verticalPosition: 'bottom', horizontalPosition: 'left' });
       this.edit=!this.edit;
+      this.init.emit();
     })  
   }
 }

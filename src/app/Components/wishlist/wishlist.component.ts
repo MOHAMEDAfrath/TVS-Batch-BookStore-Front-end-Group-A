@@ -26,10 +26,10 @@ export class WishlistComponent implements OnInit {
     console.log("works")
     this.wishList.RemoveFromWishList(list.myWishListId)
       .subscribe((result: any) => {
-        if(result.Status==true)
+        if(result.status==true)
         {
           this.WishList.splice((this.WishList.indexOf(list)),1);
-          this.GetWishList();
+          this.ngOnInit();
         }
         this.snackBar.open(result.message, '', { duration: 3000, verticalPosition: 'bottom', horizontalPosition: 'left' });
         console.log(result);        

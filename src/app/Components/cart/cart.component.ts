@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { FormGroup ,FormControl,Validators} from '@angular/forms';
 import { UserService } from 'src/app/Service/userservice/user.service';
 import { CartService } from 'src/app/Service/cartService/cart.service';
@@ -22,6 +22,7 @@ export class CartComponent implements OnInit {
     private snackBar:MatSnackBar,
     private data:DataService) { }
   user = JSON.parse(localStorage.getItem('BookStoreUser')!);
+  @Output("init") init: EventEmitter<any> = new EventEmitter();
   cart=[1];
   placeorder:any='order';
   addedit = false;
@@ -128,7 +129,7 @@ export class CartComponent implements OnInit {
     this.cartService.RemoveBookFromCart(cartbook.cartId).subscribe((result:any)=>{
       console.log(result.message);
       this.cartDetails.splice((this.cartDetails.indexOf(cartbook)),1);
-      this.GetCart();
+      this.init.emit();
     })
   }
 

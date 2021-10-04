@@ -26,6 +26,7 @@ import { CartComponent } from './Components/cart/cart.component';
 import { OrderComponent } from './Components/order/order.component';
 import { OrderPlacedComponent } from './Components/order-placed/order-placed.component';
 import { NgxStarRatingModule } from 'ngx-star-rating';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
     HttpClientModule,
     MatMenuModule,
     NgxPaginationModule,
-    NgxStarRatingModule
+    NgxStarRatingModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

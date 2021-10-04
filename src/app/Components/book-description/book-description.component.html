@@ -8,7 +8,7 @@
             <img src="{{bookdetails['bigImage']}}" alt="" width="282px" height="364px">
         </div>
         <div class="book-function">
-            <button class="add-to-bag" (click)="AddBooktoCart()">ADD TO BAG</button>
+            <button class="add-to-bag" (click)="AddBooktoCart();">{{bookdetails['bookQuantity'] == 0 ? 'NOTIFY ME':added?'ADD ONE MORE':'ADD TO BAG'}}</button>
             <button class="fav-icon" (click)="AddtoWishList()">
                 <i class="material-icons">favorite_border</i>
                 <span>WISHLIST</span>
@@ -23,10 +23,10 @@
             <p class="author-names">{{bookdetails['authorName']}}</p>
             <div style="display: flex;align-items: center;">
                 <div class="rating">
-                    <p>{{bookdetails['rating']}}</p>
+                    <p>{{total / feedBackList.length}}</p>
                     <i class="material-icons">star</i>
                 </div>
-                <p class="rating-count">({{bookdetails['bookQuantity']}})</p>
+                <p class="rating-count">({{feedBackList.length}})</p>
             </div>
             <div class="cost">Rs. {{bookdetails['price']}}<p>{{(bookdetails['price'])+500}}</p>
             </div>

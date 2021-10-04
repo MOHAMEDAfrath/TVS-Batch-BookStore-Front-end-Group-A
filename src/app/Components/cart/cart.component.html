@@ -11,18 +11,18 @@
             <p class="book-name">{{cartbook.title}}</p>
             <p class="author">{{cartbook.authorName}}</p>
             <div class="cost">
-              <p class="rupees">Rs. {{cartbook.totalCost}}</p>
+              <p class="rupees">Rs. {{cartbook.price}}</p>
               <p class="disc">Rs. {{cartbook.price + 500}}</p>
             </div>
             <div
             class="cart-count-div"
             >
               <div class="cart-count">
-                <i class="material-icons" (click)="ReduceCount(cartbook)">remove</i>
+                <i class="material-icons" (click)="ReduceCount(cartbook)" style="cursor: pointer;">remove</i>
                 <input type="text" #count value="{{cartbook.bookCount}}" /> 
                 <i class="material-icons" (click)="addtoCart(cartbook)" style="cursor: pointer;">add</i>
               </div>
-              <p (click)="RemoveBook(cartbook)" >Remove</p>
+              <p (click)="RemoveBook(cartbook)" style="cursor: pointer;">Remove</p>
             </div>
           </div>
         </div>
@@ -152,7 +152,7 @@
               <p class="book-name">{{cartbook.title}}</p>
               <p class="author">{{cartbook.authorName}}</p>
               <div class="cost">
-                <p class="rupees">Rs. {{cartbook.totalCost}}</p>
+                <p class="rupees">Rs. {{cartbook.price}}</p>
                 <p class="disc">Rs. {{cartbook.price + 500}}</p>
               </div>
             </div>

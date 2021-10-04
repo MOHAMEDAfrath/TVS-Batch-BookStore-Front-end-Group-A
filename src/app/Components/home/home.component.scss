@@ -103,7 +103,8 @@ input{
 .book-wrap{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+   justify-content: space-between;
+    
 }
 .rating-count{
     margin-top: 0px;
@@ -116,6 +117,7 @@ input{
     color: #878787;
 }
 .book-comp{
+    align-self: flex-start;
     &:hover{
         box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
         .quick{
@@ -473,4 +475,14 @@ font-weight: 500;
 }
 .footer-t{
     position: fixed !important;
+}
+::ng-deep .mat-badge-medium.mat-badge-after .mat-badge-content {
+    right: -16px !important;
+}
+::ng-deep .mat-badge-medium.mat-badge-above .mat-badge-content {
+    top: -6px !important;
+}
+::ng-deep .mat-badge-content {
+    color: black;
+    background: white;
 }

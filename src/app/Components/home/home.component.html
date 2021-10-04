@@ -79,7 +79,7 @@
         <p *ngIf="BookStoreUser != null">{{ BookStoreUser.fullName }}</p>
       </div>
       <div class="cart">
-        <i class="material-icons-outlined icon" (click)="option = 'Cart'">shopping_cart</i>
+        <span matBadge="{{getCart.length>0?getCart.length:''}}" matBadgeOverlap="false"><i class="material-icons-outlined icon" (click)="option = 'Cart'">shopping_cart</i></span>
         <p>Cart</p>
       </div>
     </div>
@@ -159,7 +159,7 @@
               <p>{{book['rating']}}</p>
               <i class="material-icons">star</i>
             </div>
-            <p class="rating-count">({{book['bookQuantity']}})</p>
+            <p class="rating-count">({{20}})</p>
           </div>
           <div class="cost">
             Rs. {{book['price']}}
@@ -185,9 +185,9 @@
     <div>
       <app-order *ngIf="option == 'orders'"></app-order>
   </div>
-        <app-book-description *ngIf="option=='BookDescription'" [bookdetails]='bookdetails'></app-book-description>
-        <app-persondetail *ngIf="option == 'PersonDetail'"></app-persondetail>
-        <app-cart *ngIf="option == 'Cart'"></app-cart>
+        <app-book-description *ngIf="option=='BookDescription'" [bookdetails]='bookdetails' (init)="ngOnInit();"></app-book-description>
+        <app-persondetail *ngIf="option == 'PersonDetail'"  (init)="ngOnInit()"></app-persondetail>
+        <app-cart *ngIf="option == 'Cart'" (init)="ngOnInit()"></app-cart>
     <div class="page" *ngIf="option == 'Home'">
       <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
