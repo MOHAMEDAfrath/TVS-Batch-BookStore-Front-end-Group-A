@@ -1,0 +1,39 @@
+.bookdialog-sign{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+        div{
+            font-family: 'Roboto' ,sans-serif !important;
+        font-style: normal;
+        font-variant: normal;
+        font-size: 25px;
+        line-height: 10px;
+        // font-weight: bold;
+        // text-transform: uppercase;
+        text-align: center;
+        }
+    }
+
+    .submit-button{
+        width: 100%;
+        margin-top: 15px;
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: space-between;
+        button{
+            background-color: #a03037;
+            border: none;
+            border-radius: 3px;
+            height: 37px;
+            width: 150px;
+            color: white;
+            font-family: 'Roboto' ,sans-serif !important;
+            font-style: normal;
+            font-variant: normal;
+            font-size: 15px;
+            line-height: 20px;
+            font-weight: normal;
+            text-align: center;
+        }
+    }

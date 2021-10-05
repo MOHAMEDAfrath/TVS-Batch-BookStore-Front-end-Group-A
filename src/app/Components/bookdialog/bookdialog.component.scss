@@ -1,0 +1,131 @@
+.inputs{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+input{
+    padding: 13px;
+    margin-top: 3px;
+    color: black;
+    font-family: 'Roboto' sans-serif;
+    font-size: 15px;
+    line-height: 16px;
+}
+::ng-deep .mat-form-field-suffix{
+    align-self: center;
+    padding: 5px;
+    margin-bottom: 2px;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+ padding: 0px !important; 
+}
+::ng-deep .mat-form-field-infix {
+    border-top: none;
+}
+::ng-deep .mat-form-field-appearance-outline{
+color: rgb(118,118,118) !important;
+}
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick{
+color: red!important;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-subscript-wrapper{
+padding: 0px !important;
+
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper{
+margin: 0px !important;
+
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex
+{
+    padding: 0px !important;
+}
+::ng-deep .mat-form-field-wrapper {
+padding-bottom: 15px !important;
+}
+.alert
+{
+    color: #FF001C;
+    font-family: 'Roboto' ,sans-serif !important;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 10px;
+    line-height: 10px;
+    font-weight: normal;
+    padding-top: 10px;
+}
+label{
+    font-family: 'Roboto' ,sans-serif !important;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 13px;
+    line-height: 13px;
+    font-weight: normal;
+    text-align: left;
+}
+.bookdialog-sign{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+        div{
+            font-family: 'Roboto' ,sans-serif !important;
+        font-style: normal;
+        font-variant: normal;
+        font-size: 25px;
+        line-height: 33px;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+        }
+    
+    .form-content{
+        width: 98%;
+        height: 100%;
+        margin-top: 13px;
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: space-between;
+        .inputs{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+::ng-deep .cdk-overlay-pane
+{
+    overflow-y: auto !important;
+}
+.submit-button{
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    button{
+        background-color: #a03037;
+        border: none;
+        border-radius: 3px;
+        height: 37px;
+        width: 150px;
+        color: white;
+        font-family: 'Roboto' ,sans-serif !important;
+        font-style: normal;
+        font-variant: normal;
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: normal;
+        text-align: center;
+    }
+}
+::ng-deep .mat-dialog-container
+{
+    padding-bottom: 0px !important;
+}
+textarea{
+    padding-left: 8px !important;
+    width: -webkit-fill-available;
+    min-height: 50px;
+}

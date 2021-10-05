@@ -30,7 +30,7 @@
       </div>
     </div>
     <div
-      *ngIf="cart.length > 0"
+      *ngIf="cartDetails.length > 0"
       class="place-order"
     >
       <button
@@ -81,6 +81,7 @@
                   class="edit"
                   (click)="addedit = !addedit"
                   *ngIf="address['addressId'] == checked"
+                  style="cursor: pointer;"
                 >
                   {{ !addedit ? "Edit" : "Cancel" }}
                 </p>
@@ -89,6 +90,7 @@
                 mat-button
                 *ngIf="addedit && address['addressId'] == checked"
                 class="save"
+                style="cursor: pointer;"
                 (click)="editaddress(address)"
               >
                 SAVE

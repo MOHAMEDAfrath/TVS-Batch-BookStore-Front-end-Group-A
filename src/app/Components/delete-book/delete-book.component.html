@@ -1,0 +1,18 @@
+<div class="bookdialog-sign">
+    <div>
+        <p>
+            Are you sure to delete the book?
+
+        </p>
+    </div>
+    <div>
+        <img src={{this.Books.bookImage}}>
+       <p >{{this.Books.title}}  </p>
+       <p style="color:gray;font-size: 20px;"> {{this.Books.authorName}} </p>
+
+    </div>
+        <div class="submit-button">
+            <button style="cursor: pointer;" mat-dialog-close>Cancel</button>
+            <button style="cursor: pointer;"  (click)="DeleteBook()">Confirm</button>
+          </div>
+</div>

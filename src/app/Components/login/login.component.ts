@@ -54,15 +54,23 @@ export class LoginComponent implements OnInit {
   Login(){
     if(!this.LoginForm.invalid){
       console.log(this.LoginForm.value);
-      this.userService.Login(this.LoginForm.value)
-      .subscribe((result:any)=>{
-        console.log("result.data");
-        console.log(result.data);
-        this.LocalStorage(result.data,result.token);
-        
-        this.route.navigateByUrl('/home')
-        this.snackBar.open(result.message,'',{duration:2000,panelClass:['black-snackbar']});
-        this.LoginForm.reset();
+      this.userService.Login(this.LoginForm.value).subscribe((result:any)=>{
+        if(result.status==true)
+        {
+          if(result.data.emailId=='admin@gmail.com')
+          {
+            this.AdminLocalStorage(result.data,result.token);
+            this.route.navigateByUrl('/admin/home');
+          }
+          else
+          {
+            this.LocalStorage(result.data,result.token);
+            this.route.navigateByUrl('/home');
+          }
+          this.snackBar.open(result.message,'',{duration:2000,panelClass:['black-snackbar']});
+          this.LoginForm.reset();
+      }
+
       },
       (error: HttpErrorResponse) => {
         this.snackBar.open(error.error.message, '', { duration: 2500 });
@@ -90,4 +98,24 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('BookStoreUser', JSON.stringify(user));
 
   }
+
+  AdminLocalStorage(data: any,token:any)
+  {
+   var user = localStorage.getItem('BookStoreAdmin');
+   if (user != null) 
+   {
+     localStorage.removeItem('BookStoreAdmin');
+   }
+   let obj:any=
+   {
+     EmailId: data.emailId,
+     Password: data.password,
+     AdminId:data.userId,
+     token:token
+   }
+   user =obj;
+   localStorage.setItem('BookStoreAdmin', JSON.stringify(user));
+
+ }
+
 }

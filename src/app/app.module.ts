@@ -27,6 +27,10 @@ import { OrderComponent } from './Components/order/order.component';
 import { OrderPlacedComponent } from './Components/order-placed/order-placed.component';
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import {MatBadgeModule} from '@angular/material/badge';
+import { AdminComponent } from './Components/admin/admin.component';
+import { BookdialogComponent } from './Components/bookdialog/bookdialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DeleteBookComponent } from './Components/delete-book/delete-book.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,10 @@ import {MatBadgeModule} from '@angular/material/badge';
     PersondetailComponent,
     CartComponent,
     OrderComponent,
-    OrderPlacedComponent
+    OrderPlacedComponent,
+    AdminComponent,
+    BookdialogComponent,
+    DeleteBookComponent
   ],
   imports: [
     BrowserModule,
@@ -59,9 +66,11 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatMenuModule,
     NgxPaginationModule,
     NgxStarRatingModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[BookdialogComponent]
 })
 export class AppModule { }
