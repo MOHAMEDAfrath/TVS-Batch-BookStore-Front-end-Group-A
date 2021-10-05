@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookService } from 'src/app/Service/book.service';
+import { CartService } from 'src/app/Service/cartService/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -15,13 +16,15 @@ export class HomeComponent implements OnInit {
   sortOption = 0;
   bookId = 0;
   search:any='';
+  getCart:any = [];
   bookdetails:any;
   BookStoreUser =  JSON.parse(localStorage.getItem("BookStoreUser")!); 
-  constructor(private route : Router,private book:BookService) { }
+  constructor(private route : Router,private book:BookService,private cartService:CartService) { }
   p:number= 1;
   ngOnInit(): void {
     console.log(this.BookStoreUser);
     this.getBooks();
+    this.GetCart();
   }
   Logout()
 {
@@ -68,5 +71,15 @@ export class HomeComponent implements OnInit {
         return res.title?.toLocaleLowerCase().match(this.search.toLocaleLowerCase());
       })
     }
+  }
+  GetCart()
+  {
+    this.cartService.GetCart()
+    .subscribe((result:any)=>{
+
+      this.getCart = result.data;
+      console.log(this.getCart);
+    })
+
   }
 }

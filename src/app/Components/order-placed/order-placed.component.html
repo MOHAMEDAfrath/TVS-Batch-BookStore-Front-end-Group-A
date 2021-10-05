@@ -2,7 +2,7 @@
     <div>
         <div class="header">
             <div class="temp"></div>
-            <div class="Logo" [class]="isSearch ? 'media-Logo' : ''">
+            <div class="Logo" [class]="isSearch ? 'media-Logo' : ''"  [routerLink]="['/home']">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="31.039"
@@ -71,12 +71,12 @@
               <div class="person">
                 <i
                   class="material-icons icon"
-                  [matMenuTriggerFor]="UserProfile"
+                  [routerLink]="['/home']"
                   >person_outline</i>
-                  <mat-menu #UserProfile="matMenu" class="UserProfile">
+                  <!-- <mat-menu #UserProfile="matMenu" class="UserProfile">
                     <div *ngIf="BookStoreUser != null">
                       <p class="profile-padding">Hello {{ BookStoreUser.fullName }},</p>
-                      <div class="icon-div my-profile profile-padding" (click)="option = 'PersonDetail'">
+                      <div class="icon-div my-profile profile-padding"  [routerLink]="['/home']">
                         <i class="material-icons icons">person_outline</i>
                         <span>Profile</span>
                       </div>
@@ -84,7 +84,7 @@
                         <i class="material-icons-outlined">markunread_mailbox</i>
                         <span>My Orders</span>
                       </div>
-                      <div class="icon-div profile-padding" (click)="option= 'WishList'">
+                      <div class="icon-div profile-padding"  [routerLink]="['/home']">
                         <i class="material-icons">favorite_border</i>
                         <span>Wishlist</span>
                       </div>
@@ -97,11 +97,11 @@
                         Logout
                       </button>
                     </div>
-                  </mat-menu>
+                  </mat-menu> -->
                 <p *ngIf="BookStoreUser == null">Profile</p>
                 <p *ngIf="BookStoreUser != null">{{ BookStoreUser.fullName }}</p>
               </div>
-              <div class="cart">
+              <div class="cart"   [routerLink]="['/home']">
                 <i class="material-icons-outlined icon">shopping_cart</i>
                 <p>Cart</p>
               </div>
@@ -144,5 +144,15 @@
                 (click)="GoToHome()">CONTINUE SHOPPING</button>
             </div>
         </div>
+        <div class="footer">
+  <div class="footer-content">
+    <p>Copyright © 2020, Bookstore Private Limited. All Rights Reserved</p>
+  </div>
+</div>
     </div>
 </div>
+<!-- <div class="footer">
+  <div class="footer-content">
+    <p>Copyright © 2020, Bookstore Private Limited. All Rights Reserved</p>
+  </div>
+</div> -->

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {  Router } from '@angular/router';
+import { DataService } from 'src/app/Service/dataservice/data.service';
 
 @Component({
   selector: 'app-order-placed',
@@ -13,10 +14,19 @@ export class OrderPlacedComponent implements OnInit {
   orderId : any;
   BookStoreUser =  JSON.parse(localStorage.getItem("BookStoreUser")!); 
 
-  constructor(private route : Router) { }
+  constructor(private route : Router,private data:DataService) { }
 
   ngOnInit(): void {
     this.orderId = localStorage.getItem('OrderId');
+    // this.data.currentMessage.subscribe((result:any)=>{
+    //   console.log(result);
+    //   if(result!="Empty"){
+    //   this.orderId = result;
+    //   this.data.changeMessage("Empty")
+    //     console.log(result);
+    //   }
+    // })
+  
     console.log("OrderID");
     console.log(this.orderId);
   }

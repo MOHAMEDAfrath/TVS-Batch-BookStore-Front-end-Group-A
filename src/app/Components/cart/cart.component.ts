@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { FormGroup ,FormControl,Validators} from '@angular/forms';
 import { UserService } from 'src/app/Service/userservice/user.service';
 import { CartService } from 'src/app/Service/cartService/cart.service';
@@ -6,6 +6,7 @@ import { OrderServiceService } from 'src/app/Service/OrderService/order-service.
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
+import { DataService } from 'src/app/Service/dataservice/data.service';
 
 
 @Component({
@@ -18,8 +19,10 @@ export class CartComponent implements OnInit {
   constructor(private userService:UserService, private cartService:CartService,
     private orderService:OrderServiceService,
     private route: Router,
-    private snackBar:MatSnackBar) { }
+    private snackBar:MatSnackBar,
+    private data:DataService) { }
   user = JSON.parse(localStorage.getItem('BookStoreUser')!);
+  @Output("init") init: EventEmitter<any> = new EventEmitter();
   cart=[1];
   placeorder:any='order';
   addedit = false;
@@ -78,6 +81,10 @@ export class CartComponent implements OnInit {
     this.userService.updateAddress(data,this.AddressForm.value)
     .subscribe((result:any)=>{
       console.log(result);
+      this.expand=false;
+      this.address=false;
+      this.checked='';
+      this.getAddress();
     })  
   }
   change(data:any){
@@ -122,8 +129,8 @@ export class CartComponent implements OnInit {
     console.log(cartbook);
     this.cartService.RemoveBookFromCart(cartbook.cartId).subscribe((result:any)=>{
       console.log(result.message);
-      this.GetCart();
-
+      this.cartDetails.splice((this.cartDetails.indexOf(cartbook)),1);
+      this.init.emit();
     })
   }
 
@@ -137,35 +144,66 @@ export class CartComponent implements OnInit {
     })
 
   }
-  AddToOrders()
-  {
-    this.cartDetails.forEach((element:any) => {
-      let date= new Date();
-      let currentDate=this.monthNames[date.getMonth()]+" "+ date.getDate();
-      let orderData=
-      {
-        UserId: this.user.userId,
-        BookId:element.bookId,
-        AddressId:this.checked,
-        OrderDate:currentDate,
-        TotalCost:element.totalCost
-      }
-      this.orderService.AddToOrders(orderData).subscribe((result:any)=>{
-        console.log("result");
-        console.log(result);
-        this.orderId=result.orderId;
-        console.log(this.orderId);
-        if(result.status==true)
-        {
-          this.RemoveBook(element);
-          localStorage.setItem('OrderId',this.orderId);
-        }
-        this.snackBar.open(result.message,'',{duration:2000,panelClass:['black-snackbar']});
-      },(error: HttpErrorResponse) => {
-        this.snackBar.open(error.error.message, '', { duration: 2500 });
-      });
-    })
-    this.route.navigateByUrl('/orderPlaced');
-  }
-}
+  
+//   AddToOrders()
+//   {
+//     let order:any = [];
+//     this.cartDetails.forEach((element:any) => {
+//       let date= new Date();
+//       let currentDate=this.monthNames[date.getMonth()]+" "+ date.getDate();
+//       let orderData=
+//       {
+//         UserId: this.user.userId,
+//         BookId:element.bookId,
+//         AddressId:this.checked,
+//         OrderDate:currentDate,
+//         TotalCost:element.totalCost
+//       }
+//       order.push(orderData);
+//       this.RemoveBook(element);
+//     });
+//     this.orderService.AddToOrders(order).subscribe((result:any)=>{
+//       console.log(result.result);
+//       // let temp = "";
+//       // for(var res of result.result){
+//       //     temp+="#"+res+", ";
+//       // }
+//       // console.log(temp);
+//       // this.data.changeMessage(temp);
 
+//     })
+//     this.route.navigateByUrl('/orderPlaced');
+//   }
+ 
+// }
+AddToOrders()
+{
+  this.cartDetails.forEach((element:any) => {
+    let date= new Date();
+    let currentDate=this.monthNames[date.getMonth()]+" "+ date.getDate();
+    let orderData=
+    {
+      UserId: this.user.userId,
+      BookId:element.bookId,
+      AddressId:this.checked,
+      OrderDate:currentDate,
+      TotalCost:element.totalCost
+    }
+    this.orderService.AddToOrders(orderData).subscribe((result:any)=>{
+      console.log("result");
+      console.log(result);
+      this.orderId=result.orderId;
+      console.log(this.orderId);
+      if(result.status==true)
+      {
+        this.RemoveBook(element);
+        localStorage.setItem('OrderId',this.orderId);
+      }
+      this.snackBar.open(result.message,'',{duration:2000,panelClass:['black-snackbar']});
+    },(error: HttpErrorResponse) => {
+      this.snackBar.open(error.error.message, '', { duration: 2500 });
+    });
+  })
+  this.route.navigateByUrl('/orderPlaced');
+}
+}
