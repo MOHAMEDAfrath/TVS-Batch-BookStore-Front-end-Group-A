@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookService } from 'src/app/Service/book.service';
 import { MatDialog } from '@angular/material/dialog';
 import { BookdialogComponent } from '../bookdialog/bookdialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -10,7 +11,7 @@ import { BookdialogComponent } from '../bookdialog/bookdialog.component';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private book:BookService, public dialog : MatDialog) { }
+  constructor(private book:BookService, public dialog : MatDialog, private route : Router) { }
   books:any=[];
   p:number= 1;
   ngOnInit(): void {
@@ -34,4 +35,11 @@ export class AdminComponent implements OnInit {
        this.ngOnInit();
       })
   }
+
+  Logout()
+  {
+      localStorage.removeItem("BookStoreAdmin");
+      this.route.navigateByUrl('/home');
+  }
+
 }
