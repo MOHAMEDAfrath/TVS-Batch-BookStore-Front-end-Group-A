@@ -1,0 +1,79 @@
+<div class="bookdialog-sign">
+    <form [formGroup]="AddBookForm" class="form-content">
+        <div class="inputs">
+            <label for="Title">Title</label>
+            <mat-form-field appearance="outline" class="Title">
+                <input matInput formControlName="Title" />
+                <mat-error class="alert" *ngIf="AddBookForm.get('Title')?.errors?.required">Enter Title
+                </mat-error>
+                <mat-error class="alert" *ngIf="AddBookForm.get('Title')?.errors?.minlength">Minimum 3 length
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="inputs">
+            <label for="Author">Author</label>
+            <mat-form-field appearance="outline" class="Author">
+                <input matInput formControlName="Author" />
+                <mat-error class="alert" *ngIf="AddBookForm.get('Author')?.errors?.required">Enter Author Name
+                </mat-error>
+                <mat-error class="alert" *ngIf="AddBookForm.get('Author')?.errors?.minlength">Minimum 3 length
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="inputs">
+            <label for="Price">Price</label>
+            <mat-form-field appearance="outline" class="Price">
+                <input matInput formControlName="Price" />
+                <mat-error class="alert" *ngIf="AddBookForm.get('Price')?.errors?.required">Enter Price
+                </mat-error>
+                <mat-error class="alert" *ngIf="AddBookForm.get('Price')?.errors?.pattern">Only digits
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="inputs">
+            <label for="Rating">Rating</label>
+            <mat-form-field appearance="outline" class="Rating">
+                <input matInput formControlName="Rating" />
+                <mat-error class="alert" *ngIf="AddBookForm.get('Rating')?.errors?.required">Enter Rating
+                </mat-error>
+            </mat-form-field>
+        </div>
+        
+        <div class="inputs">
+            <label for="bookdetail">Book deatil</label>
+            <mat-form-field appearance="outline" class="bookdetail">
+                <textarea matInput id="textareas" style="resize: none;padding: 15px; font-size: small;" id="textarea"
+                    (keyup)="Resize()"  formControlName="textarea" ></textarea>
+                <mat-error class="alert" *ngIf="AddBookForm.get('textarea')?.errors?.required">Enter Book Description
+                </mat-error>
+                <mat-error class="alert" *ngIf="AddBookForm.get('textarea')?.errors?.minlength">Minimum 10 length
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+            <div class="inputs">
+                <label for="BookImage">Book Image</label>
+            <input type="file" name="image" accept="image/*" id="image" (change)="OnselectFile($event,1)" style="width: 90%;"/>
+            </div>
+            <div class="inputs">
+                <label for="BigImage">Big Image</label>
+                <input type="file" name="image" accept="image/*" id="image" (change)="OnselectFile($event,2)"  style="width: 90%;"/>
+            </div>
+        </div>
+
+        <div class="inputs">
+            <label for="bookquantity">Book Quantity</label>
+            <mat-form-field appearance="outline" class="bookquantity">
+                <input matInput formControlName="bookquantity" />
+                <mat-error class="alert" *ngIf="AddBookForm.get('bookquantity')?.errors?.required">Enter Book Quantity
+                </mat-error>
+                <mat-error class="alert" *ngIf="AddBookForm.get('bookquantity')?.errors?.pattern">Only digits
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="submit-button">
+            <button style="cursor: pointer;" mat-dialog-close>Cancel</button>
+            <button style="cursor: pointer;" (click)="AddBook()">Submit</button>
+          </div>
+    </form>
+</div>
