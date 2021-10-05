@@ -60,7 +60,7 @@
         <p>({{ books.length }} items)</p>
       </div>
       <div>
-        <button mat-button class="add" (click)="openAddBook()">Add Book</button>
+        <button mat-button class="add" (click)="openAddBook(false)">Add Book</button>
       </div>
     </div>
     <div class="book-wrap">
@@ -94,7 +94,7 @@
             <p>Rs.{{ book["price"] + 500 }}</p>
           </div>
           <div class="e-d-but">
-            <button mat-button>Edit</button>
+            <button mat-button (click)="openEditBook(book,true)">Edit</button>
             <button mat-button>Delete</button>
           </div>
         </div>

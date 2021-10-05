@@ -23,7 +23,7 @@
             <p class="author-names">{{bookdetails['authorName']}}</p>
             <div style="display: flex;align-items: center;">
                 <div class="rating">
-                    <p>{{total / feedBackList.length}}</p>
+                    <p>{{(total / feedBackList.length)>0 ? total / feedBackList.length : 0 }}</p>
                     <i class="material-icons">star</i>
                 </div>
                 <p class="rating-count">({{feedBackList.length}})</p>

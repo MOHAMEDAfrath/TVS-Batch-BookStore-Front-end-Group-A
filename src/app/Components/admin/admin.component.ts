@@ -22,10 +22,16 @@ export class AdminComponent implements OnInit {
       this.books = result.data;
     })
   }
-  openAddBook(){
-    let dialogref = this.dialog.open(BookdialogComponent,{data:{edit:false}});
+  openAddBook(edit:boolean){
+    let dialogref = this.dialog.open(BookdialogComponent,{data:{edit:edit}});
      dialogref.afterClosed().subscribe((result)=>{
-       console.log(result);
+       this.ngOnInit();
+      })
+  }
+  openEditBook(book:any,edit:boolean){
+    let dialogref = this.dialog.open(BookdialogComponent,{data:{data:book,edit:edit}});
+     dialogref.afterClosed().subscribe((result)=>{
+       this.ngOnInit();
       })
   }
 }

@@ -3,7 +3,7 @@
         <div class="inputs">
             <label for="Title">Title</label>
             <mat-form-field appearance="outline" class="Title">
-                <input matInput formControlName="Title" />
+                <input matInput formControlName="Title" [ngModel]="title"/>
                 <mat-error class="alert" *ngIf="AddBookForm.get('Title')?.errors?.required">Enter Title
                 </mat-error>
                 <mat-error class="alert" *ngIf="AddBookForm.get('Title')?.errors?.minlength">Minimum 3 length
@@ -13,7 +13,7 @@
         <div class="inputs">
             <label for="Author">Author</label>
             <mat-form-field appearance="outline" class="Author">
-                <input matInput formControlName="Author" />
+                <input matInput formControlName="Author" [ngModel]="author" />
                 <mat-error class="alert" *ngIf="AddBookForm.get('Author')?.errors?.required">Enter Author Name
                 </mat-error>
                 <mat-error class="alert" *ngIf="AddBookForm.get('Author')?.errors?.minlength">Minimum 3 length
@@ -23,7 +23,7 @@
         <div class="inputs">
             <label for="Price">Price</label>
             <mat-form-field appearance="outline" class="Price">
-                <input matInput formControlName="Price" />
+                <input matInput formControlName="Price" [ngModel]="price"/>
                 <mat-error class="alert" *ngIf="AddBookForm.get('Price')?.errors?.required">Enter Price
                 </mat-error>
                 <mat-error class="alert" *ngIf="AddBookForm.get('Price')?.errors?.pattern">Only digits
@@ -33,7 +33,7 @@
         <div class="inputs">
             <label for="Rating">Rating</label>
             <mat-form-field appearance="outline" class="Rating">
-                <input matInput formControlName="Rating" />
+                <input matInput formControlName="Rating" [ngModel]="rating"/>
                 <mat-error class="alert" *ngIf="AddBookForm.get('Rating')?.errors?.required">Enter Rating
                 </mat-error>
             </mat-form-field>
@@ -41,9 +41,9 @@
         
         <div class="inputs">
             <label for="bookdetail">Book deatil</label>
-            <mat-form-field appearance="outline" class="bookdetail">
+            <mat-form-field appearance="outline" class="bookdetail" >
                 <textarea matInput id="textareas" style="resize: none;padding: 15px; font-size: small;" id="textarea"
-                    (keyup)="Resize()"  formControlName="textarea" ></textarea>
+                    (keyup)="Resize()"  formControlName="textarea" [ngModel]="desc"></textarea>
                 <mat-error class="alert" *ngIf="AddBookForm.get('textarea')?.errors?.required">Enter Book Description
                 </mat-error>
                 <mat-error class="alert" *ngIf="AddBookForm.get('textarea')?.errors?.minlength">Minimum 10 length
@@ -64,7 +64,7 @@
         <div class="inputs">
             <label for="bookquantity">Book Quantity</label>
             <mat-form-field appearance="outline" class="bookquantity">
-                <input matInput formControlName="bookquantity" />
+                <input matInput formControlName="bookquantity" [ngModel]="bookquant"/>
                 <mat-error class="alert" *ngIf="AddBookForm.get('bookquantity')?.errors?.required">Enter Book Quantity
                 </mat-error>
                 <mat-error class="alert" *ngIf="AddBookForm.get('bookquantity')?.errors?.pattern">Only digits
@@ -73,7 +73,8 @@
         </div>
         <div class="submit-button">
             <button style="cursor: pointer;" mat-dialog-close>Cancel</button>
-            <button style="cursor: pointer;" (click)="AddBook()">Submit</button>
+            <button style="cursor: pointer;" *ngIf="!this.data.edit" (click)="AddBook()">Submit</button>
+            <button style="cursor: pointer;" *ngIf="this.data.edit" (click)="updateBook()">Update</button>
           </div>
     </form>
 </div>

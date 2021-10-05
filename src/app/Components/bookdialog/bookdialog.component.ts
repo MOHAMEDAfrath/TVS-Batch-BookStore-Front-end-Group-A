@@ -19,6 +19,12 @@ export class BookdialogComponent implements OnInit {
   Bookfile:any=null;
   BigImageFile:any=null;
   AddBookForm!:FormGroup;
+  title:any;
+  desc:any;
+  price:any;
+  rating:any;
+  bookquant:any;
+  author:any;
   ngOnInit(): void {
     this.AddBookForm = new FormGroup({
       Title : new FormControl('',[Validators.required,Validators.minLength(3)]),
@@ -28,6 +34,9 @@ export class BookdialogComponent implements OnInit {
       textarea:new FormControl('',[Validators.required,Validators.minLength(10)]),
       bookquantity: new FormControl('',[Validators.required,Validators.pattern('^[0-9]+')])
     })
+    if(this.data.edit){
+        this.setValues();
+    }
   }
   Resize(){
     var textArea = document.getElementById("textarea")!      
@@ -48,13 +57,44 @@ export class BookdialogComponent implements OnInit {
       this.BigImageFile=formData;
     }
 }
+setValues(){
+  this.title = this.data.data.title,
+  this.desc = this.data.data.bookDetail,
+  this.author = this.data.data.authorName,
+  this.price = this.data.data.price,
+  this.rating = this.data.data.rating,
+  this.bookquant = this.data.data.bookQuantity
+}
+updateBook(){
+  if(!this.AddBookForm.invalid){
+    let bookDetail= new FormData();
+    bookDetail.append('BookId',this.data.data.bookId);
+    bookDetail.append('Title',this.AddBookForm.value.Title);
+    bookDetail.append('AuthorName',this.AddBookForm.value.Author);
+    bookDetail.append('Price',this.AddBookForm.value.Price);
+    bookDetail.append('Rating',this.AddBookForm.value.Rating);
+    bookDetail.append('BookDetail',this.AddBookForm.value.textarea);
+    bookDetail.append('BookQuantity',this.AddBookForm.value.bookquantity);
+    bookDetail.append('BookImage',this.Bookfile);
+    bookDetail.append('BigImage',this.BigImageFile);
+    this.adminservice.updateBook(bookDetail)
+    .subscribe((result:any)=>{
+      console.log(result);
+      this.snackBar.open(result.message, '', { duration: 2500,panelClass:['black-snackbar']});
+      this.dialogRef.close();
+    },
+    (error: HttpErrorResponse) => {
+      this.snackBar.open(error.error.message, '', { duration: 2500 });
+    })
+  }
+}
 AddBook()
 {
  if(!this.AddBookForm.invalid && this.BigImageFile != null && this.Bookfile != null)
  {
     let bookDetail= new FormData();
     bookDetail.append('Title',this.AddBookForm.value.Title);
-    bookDetail.append('AuthorName',this.AddBookForm.value.Author);
+    bookDetail.append('AuthorName',"by "+this.AddBookForm.value.Author);
     bookDetail.append('Price',this.AddBookForm.value.Price);
     bookDetail.append('Rating',this.AddBookForm.value.Rating);
     bookDetail.append('BookDetail',this.AddBookForm.value.textarea);
@@ -66,6 +106,7 @@ AddBook()
     (result: any) => {
       console.log(result);
       this.snackBar.open(result.message, '', { duration: 2500,panelClass:['black-snackbar']});
+      this.dialogRef.close();
     },
     (error: HttpErrorResponse) => {
       this.snackBar.open(error.error.message, '', { duration: 2500 });

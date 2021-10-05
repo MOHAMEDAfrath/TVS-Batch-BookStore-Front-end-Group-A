@@ -124,3 +124,8 @@ label{
 {
     padding-bottom: 0px !important;
 }
+textarea{
+    padding-left: 8px !important;
+    width: -webkit-fill-available;
+    min-height: 50px;
+}
