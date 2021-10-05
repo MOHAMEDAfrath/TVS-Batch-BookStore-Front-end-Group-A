@@ -8,8 +8,8 @@
             <img src="{{bookdetails['bigImage']}}" alt="" width="282px" height="364px">
         </div>
         <div class="book-function">
-            <button class="add-to-bag" (click)="AddBooktoCart();">{{bookdetails['bookQuantity'] == 0 ? 'NOTIFY ME':added?'ADD ONE MORE':'ADD TO BAG'}}</button>
-            <button class="fav-icon" (click)="AddtoWishList()">
+            <button style ="cursor: pointer;" class="add-to-bag" (click)="AddBooktoCart();">{{bookdetails['bookQuantity'] == 0 ? 'NOTIFY ME':added?'ADD ONE MORE':'ADD TO BAG'}}</button>
+            <button class="fav-icon" style ="cursor: pointer;" (click)="AddtoWishList()">
                 <i class="material-icons">favorite_border</i>
                 <span>WISHLIST</span>
             </button>
