@@ -146,7 +146,6 @@ export class CartComponent implements OnInit {
   
   AddToOrders()
   {
-    let order:any = [];
     this.cartDetails.forEach((element:any) => {
       let date= new Date();
       let currentDate=this.monthNames[date.getMonth()]+" "+ date.getDate();
@@ -158,18 +157,20 @@ export class CartComponent implements OnInit {
         OrderDate:currentDate,
         TotalCost:element.totalCost
       }
-      order.push(orderData);
-      this.RemoveBook(element);
-    });
-    this.orderService.AddToOrders(order).subscribe((result:any)=>{
-      console.log(result.result);
-      let temp = "";
-      for(var res of result.result){
-          temp+="#"+res+", ";
-      }
-      console.log(temp);
-      this.data.changeMessage(temp);
-
+      this.orderService.AddToOrders(orderData).subscribe((result:any)=>{
+        console.log("result");
+        console.log(result);
+        this.orderId=result.orderId;
+        console.log(this.orderId);
+        if(result.status==true)
+        {
+          this.RemoveBook(element);
+          localStorage.setItem('OrderId',this.orderId);
+        }
+        this.snackBar.open(result.message,'',{duration:2000,panelClass:['black-snackbar']});
+      },(error: HttpErrorResponse) => {
+        this.snackBar.open(error.error.message, '', { duration: 2500 });
+      });
     })
     this.route.navigateByUrl('/orderPlaced');
   }

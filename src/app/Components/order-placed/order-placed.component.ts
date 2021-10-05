@@ -17,15 +17,7 @@ export class OrderPlacedComponent implements OnInit {
   constructor(private route : Router,private data:DataService) { }
 
   ngOnInit(): void {
-    this.data.currentMessage.subscribe((result:any)=>{
-      console.log(result);
-      if(result!="Empty"){
-      this.orderId = result;
-      this.data.changeMessage("Empty")
-        console.log(result);
-      }
-    })
-  
+    this.orderId = localStorage.getItem('OrderId');
     console.log("OrderID");
     console.log(this.orderId);
   }
