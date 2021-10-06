@@ -48,8 +48,8 @@ export class BookdialogComponent implements OnInit {
   OnselectFile(event: any,image:Number)
 {
   this.setImage(event,image);
-  var files: File = event.target.files.item(0);
-   const formData = files;
+
+   const formData = event.target.files.item(0);
     // formData.append('formFile', files,files.name);
     console.log(formData);
     if(image == 1)
@@ -66,7 +66,18 @@ setValues(){
   this.author = this.data.data.authorName,
   this.price = this.data.data.price,
   this.rating = this.data.data.rating,
-  this.bookquant = this.data.data.bookQuantity
+  this.bookquant = this.data.data.bookQuantity,
+  this.imageLink= this.data.data.bookImage,
+  this.bigLink =this.data.data.bigImage
+  console.log(this.data.data.bookImage)
+}
+GetImageUrl(data:any)
+{
+  var reader = new FileReader();
+  reader.readAsDataURL(data);
+  reader.onload =(event:any)=>{
+    return event.target.result;
+  }
 }
 updateBook(){
   if(!this.AddBookForm.invalid){
