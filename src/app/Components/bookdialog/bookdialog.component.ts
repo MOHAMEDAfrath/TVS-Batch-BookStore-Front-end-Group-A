@@ -25,6 +25,8 @@ export class BookdialogComponent implements OnInit {
   rating:any;
   bookquant:any;
   author:any;
+  bigLink:any;
+  imageLink:any;
   ngOnInit(): void {
     this.AddBookForm = new FormGroup({
       Title : new FormControl('',[Validators.required,Validators.minLength(3)]),
@@ -45,6 +47,7 @@ export class BookdialogComponent implements OnInit {
   }
   OnselectFile(event: any,image:Number)
 {
+  this.setImage(event,image);
   var files: File = event.target.files.item(0);
    const formData = files;
     // formData.append('formFile', files,files.name);
@@ -113,5 +116,18 @@ AddBook()
     }
   );
  }
+}
+setImage(event:any,image:any){
+  if(event.target.files){
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload =(event:any)=>{
+      if(image == 1){
+      this.imageLink = event.target.result;
+      }else if(image == 2){
+        this.bigLink = event.target.result;
+      }
+    }
+  }
 }
 }

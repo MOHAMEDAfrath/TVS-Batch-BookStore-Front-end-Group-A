@@ -54,10 +54,16 @@
             <div class="inputs">
                 <label for="BookImage">Book Image</label>
             <input type="file" name="image" accept="image/*" id="image" (change)="OnselectFile($event,1)" style="width: 90%;"/>
+            <div>
+                <img [src]="imageLink" alt="">
             </div>
+        </div>
             <div class="inputs">
                 <label for="BigImage">Big Image</label>
                 <input type="file" name="image" accept="image/*" id="image" (change)="OnselectFile($event,2)"  style="width: 90%;"/>
+                <div>
+                    <img [src]="bigLink" alt="">
+                </div>
             </div>
         </div>
 
