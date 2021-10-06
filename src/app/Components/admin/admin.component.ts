@@ -17,12 +17,19 @@ export class AdminComponent implements OnInit {
   p:number= 1;
   ngOnInit(): void {
     this.getBooks();
+    this.checklocal();
   }
   getBooks(){
     this.book.getBooks()
     .subscribe((result:any)=>{
       this.books = result.data;
     })
+  }
+  checklocal(){
+   var BookStoreAdmin =  JSON.parse(localStorage.getItem("BookStoreAdmin")!); 
+   if(BookStoreAdmin == null){
+     this.route.navigateByUrl('/home');
+   }
   }
   openAddBook(edit:boolean){
     let dialogref = this.dialog.open(BookdialogComponent,{data:{edit:edit}});

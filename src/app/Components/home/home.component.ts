@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
     this.ngOnInit();
 }
 }
+
   getBooks(){
     this.book.getBooks()
     .subscribe((result:any)=>{
