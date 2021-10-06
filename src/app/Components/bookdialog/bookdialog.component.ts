@@ -71,14 +71,7 @@ setValues(){
   this.bigLink =this.data.data.bigImage
   console.log(this.data.data.bookImage)
 }
-GetImageUrl(data:any)
-{
-  var reader = new FileReader();
-  reader.readAsDataURL(data);
-  reader.onload =(event:any)=>{
-    return event.target.result;
-  }
-}
+
 updateBook(){
   if(!this.AddBookForm.invalid){
     let bookDetail= new FormData();
