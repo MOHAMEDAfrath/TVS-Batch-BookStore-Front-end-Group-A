@@ -91,6 +91,9 @@
         .quick{
             display: flex;
         }
+        .more-icon{
+            display: block;
+        }
     }
 }
 
@@ -234,4 +237,12 @@ font-weight: 500;
 }
 ::ng-deep .ngx-pagination .current{
     background-color: #A03037 !important;
+}
+::ng-deep .mat-menu-item:hover:not([disabled]), .mat-menu-item.cdk-program-focused:not([disabled]), .mat-menu-item.cdk-keyboard-focused:not([disabled]), .mat-menu-item-highlighted:not([disabled])
+{
+  background-color: #fab6ba ;
+}
+.more-icon
+{
+    display: none;
 }
