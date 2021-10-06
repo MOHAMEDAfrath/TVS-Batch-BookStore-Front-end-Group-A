@@ -8,7 +8,7 @@ import { HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-  header:any;
+  header:any="";
 
   constructor(private http:HttpService) { }
   otp=(JSON.parse(localStorage.getItem("OTP")!)); 

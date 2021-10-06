@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { PersondetailComponent } from './persondetail.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 describe('PersondetailComponent', () => {
   let component: PersondetailComponent;
@@ -8,7 +9,8 @@ describe('PersondetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PersondetailComponent ]
+      imports:[HttpClientTestingModule,MatSnackBarModule],
+      declarations: [ PersondetailComponent]
     })
     .compileComponents();
   });

@@ -76,14 +76,9 @@
         <div class="Message" *ngIf="book['bookQuantity'] > 0">
           <div class="quick">Quick view</div>
         </div>
-        <i class="material-icons more-icon"  [matMenuTriggerFor]="moremenu"  style="position: absolute; top: 0; ;right: 5px;color:#A03037;"  (click)="$event.stopPropagation()">more</i>
         <div class="book-img">
           <img src="{{ book['bookImage'] }}" alt="" />
         </div>
-        <mat-menu #moremenu="matMenu" class="account-menu">
-          <button mat-menu-item style="font-size: 17px;" (click)="openEditBook(book,true)">Edit Book</button>
-          <button mat-menu-item style="font-size: 17px;" (click)="  openDeleteBook(book)">Delete Book</button>
-      </mat-menu>
         <div class="book-content">
           <p class="book-name">{{ book["title"] }}</p>
           <p class="author-name">{{ book["authorName"] }}</p>
@@ -98,10 +93,10 @@
             Rs. {{ book["price"] }}
             <p>Rs.{{ book["price"] + 500 }}</p>
           </div>
-          <!-- <div class="e-d-but">
+          <div class="e-d-but">
             <button mat-button (click)="openEditBook(book,true)">Edit</button>
             <button mat-button (click)="  openDeleteBook(book)">Delete</button>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
