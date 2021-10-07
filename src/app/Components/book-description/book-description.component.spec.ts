@@ -1,4 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async,ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BookDescriptionComponent } from './book-description.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -9,7 +10,7 @@ describe('BookDescriptionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports:[HttpClientTestingModule,MatSnackBarModule],
+      imports:[HttpClientTestingModule,MatSnackBarModule,RouterTestingModule],
       declarations: [ BookDescriptionComponent ]
     })
     .compileComponents();
@@ -24,4 +25,5 @@ describe('BookDescriptionComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
