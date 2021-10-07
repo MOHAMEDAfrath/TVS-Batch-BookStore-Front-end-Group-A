@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CartComponent } from './cart.component';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -25,4 +25,16 @@ describe('CartComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  // it('should be order', async(() => {
+  //   spyOn(component, 'AddToOrders');
+  
+  //   let button = fixture.debugElement.nativeElement.querySelector('button');
+  //   button.click();
+  
+  //   fixture.whenStable().then(() => {
+  //     expect(component.AddToOrders).toHaveBeenCalled();
+  //   });
+  // }));
 });
+
+

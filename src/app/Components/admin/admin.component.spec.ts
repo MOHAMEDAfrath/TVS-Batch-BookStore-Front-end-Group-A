@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AdminComponent } from './admin.component';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -12,7 +12,11 @@ describe('AdminComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports:[HttpClientTestingModule,MatDialogModule,RouterTestingModule,NgxPaginationModule],
+      imports:[HttpClientTestingModule,MatDialogModule,NgxPaginationModule,
+      RouterTestingModule.withRoutes(
+        [{path: 'home', component: AdminComponent}]
+      )
+      ],
       declarations: [ AdminComponent ]
     })
     .compileComponents();
@@ -27,4 +31,16 @@ describe('AdminComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+ 
+  it('should be Logout', async(() => {
+    spyOn(component, 'Logout');
+  
+    let button = fixture.debugElement.nativeElement.querySelector('button');
+    button.click();
+  
+    fixture.whenStable().then(() => {
+      expect(component.Logout).toHaveBeenCalled();
+    });
+  }));
 });
+
