@@ -1,5 +1,4 @@
 import { async,ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LoginComponent } from './login.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -54,4 +53,5 @@ describe('LoginComponent', () => {
     component.RegisterForm.controls['Mobile'].setValue('8939541028');
     expect(component.RegisterForm.valid).toBeTruthy();
   }));
+
 });

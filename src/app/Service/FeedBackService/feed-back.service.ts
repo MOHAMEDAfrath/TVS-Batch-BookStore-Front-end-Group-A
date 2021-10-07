@@ -31,7 +31,7 @@ export class FeedBackService {
   }
   getFeedBack(id:any)
   {
-    this.getToken();
-    return this.http.get(`${environment.baseUrl}/api/FeedBack/FeedBack?bookId=${id}`,'',true,this.header);
+
+    return this.http.get(`${environment.baseUrl}/api/FeedBack/FeedBack?bookId=${id}`,'');
   }
 }

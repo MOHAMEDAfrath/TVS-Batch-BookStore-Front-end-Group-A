@@ -6,7 +6,7 @@ import { AdminService } from 'src/app/Service/admin/admin.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar  ,MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition, } from '@angular/material/snack-bar';
-import { BookDescriptionComponent } from '../book-description/book-description.component';
+
 @Component({
   selector: 'app-bookdialog',
   templateUrl: './bookdialog.component.html',
@@ -79,7 +79,9 @@ GetImageUrl(data:any)
     return event.target.result;
   }
 }
+addbookforTest=false;
 updateBook(){
+
   if(!this.AddBookForm.invalid){
     let bookDetail= new FormData();
     bookDetail.append('BookId',this.data.data.bookId);
@@ -102,8 +104,9 @@ updateBook(){
     })
   }
 }
+
 AddBook()
-{
+{  this.addbookforTest=true;
  if(!this.AddBookForm.invalid && this.BigImageFile != null && this.Bookfile != null)
  {
     let bookDetail= new FormData();
