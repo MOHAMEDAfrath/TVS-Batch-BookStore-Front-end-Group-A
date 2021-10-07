@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   hide = false;
   signup = false;
   LoginForm!: FormGroup;
+  testing=false;
   ngOnInit(): void {
     this.LoginForm= new FormGroup({
       email: new FormControl('',[Validators.email,Validators.required]),
@@ -39,6 +40,7 @@ export class LoginComponent implements OnInit {
           this.snackBar.open(result.message, '', { duration: 2500,panelClass:['black-snackbar']});
            if (result.status == true) {
              this.signup=false;
+             this.testing = true;
              this.RegisterForm.reset();
           }
         },
