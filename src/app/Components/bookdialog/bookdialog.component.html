@@ -79,7 +79,7 @@
         </div>
         <div class="submit-button">
             <button style="cursor: pointer;" mat-dialog-close>Cancel</button>
-            <button style="cursor: pointer;" *ngIf="!this.data.edit" (click)="AddBook()">Submit</button>
+            <button style="cursor: pointer;"  id="call-submit"  *ngIf="!this.data.edit" (click)="AddBook()">Submit</button>
             <button style="cursor: pointer;" *ngIf="this.data.edit" (click)="updateBook()">Update</button>
           </div>
     </form>
