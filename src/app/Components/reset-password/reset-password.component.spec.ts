@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ResetPasswordComponent } from './reset-password.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
