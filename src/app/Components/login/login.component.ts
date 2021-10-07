@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
       this.userService.Login(this.LoginForm.value).subscribe((result:any)=>{
         if(result.status==true)
         {
-          if(result.data.emailId=='admin@gmail.com')
+          if(result.data.mobileNumber==null)
           {
             this.AdminLocalStorage(result.data,result.token);
             this.route.navigateByUrl('/admin/home');
