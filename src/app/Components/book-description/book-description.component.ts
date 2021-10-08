@@ -16,6 +16,7 @@ export class BookDescriptionComponent implements OnInit {
   @Output("init") init: EventEmitter<any> = new EventEmitter();
   FeedbackForm!: FormGroup
   feedBackList :any = [];
+
   added = false;
   total = 0;
   cartDetail:any=[];
@@ -77,7 +78,6 @@ export class BookDescriptionComponent implements OnInit {
     if (this.FeedbackForm.valid) {
       this.feedBack.addcomment(this.FeedbackForm.value, this.bookdetails['bookId'])
         .subscribe((result: any) => {
-        
           console.log(result);
           this.GetFeedBack();
         })
@@ -88,10 +88,6 @@ export class BookDescriptionComponent implements OnInit {
       .subscribe((result: any) => {
         console.log(result);
         this.feedBackList = result.data;
-        if(this.feedBackList==0)
-        {
-             this.total=0;
-        }
         this.feedBackList.forEach((element:any) => {
             this.total+=element.rating;
         }); 

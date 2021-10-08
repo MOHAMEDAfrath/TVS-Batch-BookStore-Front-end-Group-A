@@ -58,19 +58,12 @@ export class LoginComponent implements OnInit {
   Login() {
     if (!this.LoginForm.invalid) {
       console.log(this.LoginForm.value);
-<<<<<<< HEAD
       this.userService.Login(this.LoginForm.value).subscribe((result:any)=>{
         if(result.status==true)
         {
           if(result.data.mobileNumber==null)
           {
             this.AdminLocalStorage(result.data,result.token);
-=======
-      this.userService.Login(this.LoginForm.value).subscribe((result: any) => {
-        if (result.status == true) {
-          if (result.data.mobileNumber == null) {
-            this.AdminLocalStorage(result.data, result.token);
->>>>>>> c07648fe26f8465dc55ceff759424859bce75739
             this.route.navigateByUrl('/admin/home');
           }
           else {

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-=======
-import { async,ComponentFixture, TestBed } from '@angular/core/testing';
->>>>>>> c07648fe26f8465dc55ceff759424859bce75739
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { OrderPlacedComponent } from './order-placed.component';
@@ -29,10 +25,6 @@ describe('OrderPlacedComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-<<<<<<< HEAD
-=======
-
->>>>>>> c07648fe26f8465dc55ceff759424859bce75739
   it('should Call GoToHome', async(() => {
     spyOn(component, 'GoToHome');
   
@@ -43,8 +35,4 @@ describe('OrderPlacedComponent', () => {
       expect(component.GoToHome).toHaveBeenCalled();
     });
   }));
-<<<<<<< HEAD
-=======
-
->>>>>>> c07648fe26f8465dc55ceff759424859bce75739
 });

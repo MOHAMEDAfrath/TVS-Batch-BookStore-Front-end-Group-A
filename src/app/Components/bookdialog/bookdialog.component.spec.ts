@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-=======
-import { async,ComponentFixture, TestBed , inject , tick, fakeAsync} from '@angular/core/testing';
->>>>>>> c07648fe26f8465dc55ceff759424859bce75739
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BookdialogComponent } from './bookdialog.component';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -37,8 +33,6 @@ describe('BookdialogComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-<<<<<<< HEAD
-=======
   it('Book form should be invalid', async(() => {
     component.AddBookForm.controls['Title'].setValue('');
     component.AddBookForm.controls['Author'].setValue('');
@@ -67,8 +61,7 @@ describe('BookdialogComponent', () => {
     component.AddBook();
     expect(component.addbookforTest).toBe(true);
   }));
->>>>>>> c07648fe26f8465dc55ceff759424859bce75739
-
+  
 });
 
 

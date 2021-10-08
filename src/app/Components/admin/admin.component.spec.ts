@@ -9,7 +9,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 describe('AdminComponent', () => {
   let component: AdminComponent;
   let fixture: ComponentFixture<AdminComponent>;
-
+  let myService;
+  let mySpy: any;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports:[HttpClientTestingModule,MatDialogModule,NgxPaginationModule,
@@ -38,7 +39,8 @@ describe('AdminComponent', () => {
     let button = fixture.debugElement.nativeElement.querySelector('button');
     button.click();
   
-    fixture.whenStable().then(() => {
+    fixture.whenStable().then(() => 
+    {
       expect(component.Logout).toHaveBeenCalled();
     });
   }));
