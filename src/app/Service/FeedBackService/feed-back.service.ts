@@ -24,7 +24,6 @@ export class FeedBackService {
       Rating: parseInt(data.rate),
       Comments:data.comment
     }
-    console.log("helooooooooo");
     console.log(params);
     this.getToken();
     return this.http.post(`${environment.baseUrl}/api/FeedBack/FeedBack`,params,true,this.header);

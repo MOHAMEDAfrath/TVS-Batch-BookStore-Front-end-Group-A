@@ -10,17 +10,17 @@ import { CartService } from 'src/app/Service/cartService/cart.service';
 })
 export class HomeComponent implements OnInit {
   isSearch = false
-  books=[];
+  books = [];
   new = [];
   option = 'Home'
   sortOption = 0;
   bookId = 0;
-  search:any='';
-  getCart:any = [];
-  bookdetails:any;
-  BookStoreUser =  JSON.parse(localStorage.getItem("BookStoreUser")!); 
-  constructor(private route : Router,private book:BookService,private cartService:CartService) { }
-  p:number= 1;
+  search: any = '';
+  getCart: any = [];
+  bookdetails: any;
+  BookStoreUser = JSON.parse(localStorage.getItem("BookStoreUser")!);
+  constructor(private route: Router, private book: BookService, private cartService: CartService) { }
+  p: number = 1;
   ngOnInit(): void {
     console.log(this.BookStoreUser);
     this.getBooks();
@@ -35,26 +35,26 @@ export class HomeComponent implements OnInit {
 }
 }
 
-  getBooks(){
+  getBooks() {
     this.book.getBooks()
-    .subscribe((result:any)=>{
-      this.books = result.data;
-      this.new = Array.from(this.books);
-      // this.sort();
+      .subscribe((result: any) => {
+        this.books = result.data;
+        this.new = Array.from(this.books);
+        // this.sort();
 
-      console.log(result)
-    })
+        console.log(result)
+      })
   }
-  sort(num:any){
-    if(num == 1){
-      this.books.sort((a:any,b:any)=>(a.price>b.price)?1:-1)
+  sort(num: any) {
+    if (num == 1) {
+      this.books.sort((a: any, b: any) => (a.price > b.price) ? 1 : -1)
       console.log(this.books)
     }
-    else if(num == 2){
-      this.books.sort((a:any,b:any)=>(a.price<b.price)?1:-1)
+    else if (num == 2) {
+      this.books.sort((a: any, b: any) => (a.price < b.price) ? 1 : -1)
       console.log(this.books)
     }
-    else if(num == 3){
+    else if (num == 3) {
       this.new.reverse();
       this.books = Array.from(this.new);
       this.new.reverse();
@@ -62,26 +62,23 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  Search()
-  {
-    if(this.search == "")
-    {
+  Search() {
+    if (this.search == "") {
       this.ngOnInit();
     }
-    else{
-      this.books = this.books.filter((res:any)=>{
+    else {
+      this.books = this.books.filter((res: any) => {
         return res.title?.toLocaleLowerCase().match(this.search.toLocaleLowerCase());
       })
     }
   }
-  GetCart()
-  {
+  GetCart() {
     this.cartService.GetCart()
-    .subscribe((result:any)=>{
+      .subscribe((result: any) => {
 
-      this.getCart = result.data;
-      console.log(this.getCart);
-    })
+        this.getCart = result.data;
+        console.log(this.getCart);
+      })
 
   }
 }
