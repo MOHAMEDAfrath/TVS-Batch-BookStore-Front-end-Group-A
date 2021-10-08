@@ -17,4 +17,8 @@ export class AdminService {
   updateBook(bookDetail:any){
     return this.http.put(`${environment.baseUrl}/api/Book/Book`,bookDetail);
   }
+  deleteBook(id:any)
+  {
+    return this.http.delete(`${environment.baseUrl}/api/Book/Book?bookId=${id}`,'');
+  }
 }

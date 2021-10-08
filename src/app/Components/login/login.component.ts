@@ -66,7 +66,9 @@ export class LoginComponent implements OnInit {
           }
           else {
             this.LocalStorage(result.data, result.token);
-            this.route.navigateByUrl('/home');
+            this.route.navigateByUrl('/home').then(() => {
+              window.location.reload();
+            });
           }
           this.snackBar.open(result.message, '', { duration: 2000, panelClass: ['black-snackbar'] });
           this.LoginForm.reset();

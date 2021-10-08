@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { BookService } from 'src/app/Service/book.service';
 import { WishlistService } from 'src/app/Service/wishListService/wishlist.service';
 import { CartService } from 'src/app/Service/cartService/cart.service';
@@ -15,10 +15,10 @@ export class BookDescriptionComponent implements OnInit {
   @Input() bookdetails!: any
   @Output("init") init: EventEmitter<any> = new EventEmitter();
   FeedbackForm!: FormGroup
-  feedBackList :any = [];
+  feedBackList: any = [];
   added = false;
   total = 0;
-  cartDetail:any=[];
+  cartDetail: any = [];
   constructor(private book: BookService, private cartService: CartService, private wishlist: WishlistService, private snackBar: MatSnackBar,
     private feedBack: FeedBackService) { }
 
@@ -46,15 +46,14 @@ export class BookDescriptionComponent implements OnInit {
         this.snackBar.open(`${error.error.message}`, '', { duration: 3000, verticalPosition: 'bottom', horizontalPosition: 'left' });
       })
   }
-  GetCart()
-  {
+  GetCart() {
     this.cartService.GetCart()
-    .subscribe((result:any)=>{
+      .subscribe((result: any) => {
 
-      this.cartDetail = result.data;
-      this.added = this.cartDetail.some((element:any)=>element.bookId == this.bookdetails.bookId)
-      console.log(this.cartDetail);
-    })
+        this.cartDetail = result.data;
+        this.added = this.cartDetail.some((element: any) => element.bookId == this.bookdetails.bookId)
+        console.log(this.cartDetail);
+      })
 
   }
   AddBooktoCart() {
@@ -77,9 +76,10 @@ export class BookDescriptionComponent implements OnInit {
     if (this.FeedbackForm.valid) {
       this.feedBack.addcomment(this.FeedbackForm.value, this.bookdetails['bookId'])
         .subscribe((result: any) => {
-        
+
           console.log(result);
-          this.GetFeedBack();
+          this.FeedbackForm.reset();
+          this.ngOnInit();
         })
     }
   }
@@ -88,13 +88,12 @@ export class BookDescriptionComponent implements OnInit {
       .subscribe((result: any) => {
         console.log(result);
         this.feedBackList = result.data;
-        if(this.feedBackList==0)
-        {
-             this.total=0;
+        if (this.feedBackList == 0) {
+          this.total = 0;
         }
-        this.feedBackList.forEach((element:any) => {
-            this.total+=element.rating;
-        }); 
+        this.feedBackList.forEach((element: any) => {
+          this.total += element.rating;
+        });
       })
   }
 }
