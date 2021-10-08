@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   if(this.BookStoreUser != null){
     localStorage.removeItem("BookStoreUser");
     this.route.navigateByUrl('/home');
-    this.ngOnInit();
+    location.reload();
 }
 }
 

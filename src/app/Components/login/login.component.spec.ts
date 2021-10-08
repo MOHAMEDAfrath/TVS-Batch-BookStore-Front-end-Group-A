@@ -1,8 +1,9 @@
-import { async,ComponentFixture, TestBed } from '@angular/core/testing';
+import { async,ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { By } from '@angular/platform-browser';
 
 
 describe('LoginComponent', () => {
@@ -53,5 +54,14 @@ describe('LoginComponent', () => {
     component.RegisterForm.controls['Mobile'].setValue('9885745635');
     expect(component.RegisterForm.valid).toBeTruthy();
   }));
-
+  it('Register method is called', async(() => {
+    spyOn(component, 'Register');
+    let button = fixture.debugElement.nativeElement.querySelector('.register');
+    button.click();
+  
+    fixture.whenStable().then(() => 
+    {
+      expect(component.Register).toHaveBeenCalled();
+    });
+  }));
 });

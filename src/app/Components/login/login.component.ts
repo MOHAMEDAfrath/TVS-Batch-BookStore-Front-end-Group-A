@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
     })
   }
   Register() {
+    this.testing = true;
     if (!this.RegisterForm.invalid) {
       console.log(this.RegisterForm.value)
       this.userService.Register(this.RegisterForm.value).subscribe(
@@ -40,7 +41,7 @@ export class LoginComponent implements OnInit {
           this.snackBar.open(result.message, '', { duration: 2500,panelClass:['black-snackbar']});
            if (result.status == true) {
              this.signup=false;
-             this.testing = true;
+             
              this.RegisterForm.reset();
           }
         },
