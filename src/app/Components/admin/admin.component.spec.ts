@@ -4,7 +4,7 @@ import { AdminComponent } from './admin.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { AdminService } from 'src/app/Service/admin/admin.service';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -43,6 +43,38 @@ describe('AdminComponent', () => {
     {
       expect(component.Logout).toHaveBeenCalled();
     });
+  }));
+
+  it('should call the getbooks method', async(() => 
+  {
+    fixture.detectChanges();
+    spyOn(component, 'getBooks').and.callThrough();
+    component.ngOnInit();
+    expect(component.getBooks).toHaveBeenCalledTimes(1);
+  }));
+
+  it('should call the openEditBook method', async(() => 
+  {
+    fixture.detectChanges();
+    spyOn(component, 'openEditBook').and.callThrough();
+    component.ngOnInit();
+    expect(component.openEditBook).toHaveBeenCalledTimes(0);
+  }));
+
+  it('should call the openAddBook method', async(() => 
+  {
+    fixture.detectChanges();
+    spyOn(component, 'openAddBook').and.callThrough();
+    component.ngOnInit();
+    expect(component.openAddBook).toHaveBeenCalledTimes(0);
+  }));
+
+  it('should call the openDeleteBook method', async(() => 
+  {
+    fixture.detectChanges();
+    spyOn(component, 'openDeleteBook').and.callThrough();
+    component.ngOnInit();
+    expect(component.openDeleteBook).toHaveBeenCalledTimes(0);
   }));
 });
 
