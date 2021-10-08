@@ -1,8 +1,9 @@
-import { async,ComponentFixture, TestBed } from '@angular/core/testing';
+import { async,ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { By } from '@angular/platform-browser';
 
 
 describe('LoginComponent', () => {
@@ -33,8 +34,8 @@ describe('LoginComponent', () => {
   }));
 
   it('login form should be valid', async(() => {
-    component.LoginForm.controls['email'].setValue('afrathismath@gmail.com');
-    component.LoginForm.controls['password'].setValue('Afrath@123');
+    component.LoginForm.controls['email'].setValue('vignesh@gmail.com');
+    component.LoginForm.controls['password'].setValue('Vignesh@1220');
     expect(component.LoginForm.valid).toBeTruthy();
   }));
 
@@ -47,11 +48,20 @@ describe('LoginComponent', () => {
   }));
 
   it('register form should be valid', async(() => {
-    component.RegisterForm.controls['FullName'].setValue('Mohamed');
-    component.RegisterForm.controls['Email'].setValue('afrathismath@gmail.com');
-    component.RegisterForm.controls['Password'].setValue('Afrath@123');
-    component.RegisterForm.controls['Mobile'].setValue('9885745635');
+    component.RegisterForm.controls['FullName'].setValue('Vignesh');
+    component.RegisterForm.controls['Email'].setValue('vignesh@gmail.com');
+    component.RegisterForm.controls['Password'].setValue('Vignesh@1220');
+    component.RegisterForm.controls['Mobile'].setValue('8939541028');
     expect(component.RegisterForm.valid).toBeTruthy();
   }));
-
+  it('Register method is called', async(() => {
+    spyOn(component, 'Register');
+    let button = fixture.debugElement.nativeElement.querySelector('.register');
+    button.click();
+  
+    fixture.whenStable().then(() => 
+    {
+      expect(component.Register).toHaveBeenCalled();
+    });
+  }));
 });

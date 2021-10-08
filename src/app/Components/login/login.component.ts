@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
       })
   }
   Register() {
+    this.testing = true;
     if (!this.RegisterForm.invalid) {
       console.log(this.RegisterForm.value)
       this.userService.Register(this.RegisterForm.value).subscribe(
@@ -42,7 +43,7 @@ export class LoginComponent implements OnInit {
           this.snackBar.open(result.message, '', { duration: 2500,panelClass:['black-snackbar']});
            if (result.status == true) {
              this.signup=false;
-             this.testing = true;
+             
              this.RegisterForm.reset();
           }
         },
@@ -58,10 +59,12 @@ export class LoginComponent implements OnInit {
   Login() {
     if (!this.LoginForm.invalid) {
       console.log(this.LoginForm.value);
-      this.userService.Login(this.LoginForm.value).subscribe((result: any) => {
-        if (result.status == true) {
-          if (result.data.mobileNumber == null) {
-            this.AdminLocalStorage(result.data, result.token);
+      this.userService.Login(this.LoginForm.value).subscribe((result:any)=>{
+        if(result.status==true)
+        {
+          if(result.data.mobileNumber==null)
+          {
+            this.AdminLocalStorage(result.data,result.token);
             this.route.navigateByUrl('/admin/home');
           }
           else {

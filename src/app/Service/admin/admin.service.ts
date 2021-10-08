@@ -21,4 +21,5 @@ export class AdminService {
   {
     return this.http.delete(`${environment.baseUrl}/api/Book/Book?bookId=${id}`,'');
   }
+  
 }

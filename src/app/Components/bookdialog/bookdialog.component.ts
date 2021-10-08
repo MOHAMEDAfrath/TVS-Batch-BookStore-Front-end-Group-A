@@ -81,7 +81,6 @@ GetImageUrl(data:any)
 }
 addbookforTest=false;
 updateBook(){
-
   if(!this.AddBookForm.invalid){
     let bookDetail= new FormData();
     bookDetail.append('BookId',this.data.data.bookId);
