@@ -133,6 +133,12 @@
         }
     }
 }
+@media only screen and (max-width:1025px) {
+    ::ng-deep .footer{
+        position: fixed !important;
+    }
+      
+  }
 @media only screen and (max-width:640px) {
     .main-div{
         width: 60vw;

@@ -486,3 +486,14 @@ font-weight: 500;
     color: black;
     background: white;
 }
+@media only screen and (max-width:280px){
+    .person{
+        background-color: #A03037;
+    }
+    .book-head{
+        flex-wrap: wrap;
+    }
+    .book-main{
+        margin-left: 80px;
+    }
+}
