@@ -7,15 +7,16 @@ import { HttpService } from '../HttpService/http.service';
 })
 export class AdminService {
 
-  constructor(private http:HttpService) { }
-  header:any=null;
+  constructor(private http: HttpService) { }
+  header: any = null;
 
-  AddBook(bookDetail:any)
-  {
-    return this.http.post(`${environment.baseUrl}/api/Book/Book`,bookDetail);
+  AddBook(bookDetail: any) {
+    return this.http.post(`${environment.baseUrl}/api/Book/Book`, bookDetail);
   }
-  updateBook(bookDetail:any){
-    return this.http.put(`${environment.baseUrl}/api/Book/Book`,bookDetail);
+  updateBook(bookDetail: any) {
+    return this.http.put(`${environment.baseUrl}/api/Book/Book`, bookDetail);
   }
-  
+  deleteBook(id: any) {
+    return this.http.delete(`${environment.baseUrl}/api/Book/Book?bookId=${id}`, '');
+  }
 }

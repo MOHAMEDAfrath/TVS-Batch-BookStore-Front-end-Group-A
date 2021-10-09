@@ -12,47 +12,46 @@ import { DeleteBookComponent } from '../delete-book/delete-book.component';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private book:BookService, public dialog : MatDialog, private route : Router) { }
-  books:any=[];
-  p:number= 1;
+  constructor(private book: BookService, public dialog: MatDialog, private route: Router) { }
+  books: any = [];
+  p: number = 1;
   ngOnInit(): void {
     this.getBooks();
     this.checklocal();
   }
-  getBooks(){
+  getBooks() {
     this.book.getBooks()
-    .subscribe((result:any)=>{
-      this.books = result.data;
+      .subscribe((result: any) => {
+        this.books = result.data;
+      })
+  }
+  checklocal() {
+    var BookStoreAdmin = JSON.parse(localStorage.getItem("BookStoreAdmin")!);
+    if (BookStoreAdmin == null) {
+      this.route.navigateByUrl('/home');
+    }
+  }
+  openAddBook(edit: boolean) {
+    let dialogref = this.dialog.open(BookdialogComponent, { data: { edit: edit } });
+    dialogref.afterClosed().subscribe((result) => {
+      this.ngOnInit();
     })
   }
-  checklocal(){
-   var BookStoreAdmin =  JSON.parse(localStorage.getItem("BookStoreAdmin")!); 
-   if(BookStoreAdmin == null){
-     this.route.navigateByUrl('/home');
-   }
+  openEditBook(book: any, edit: boolean) {
+    let dialogref = this.dialog.open(BookdialogComponent, { data: { data: book, edit: edit } });
+    dialogref.afterClosed().subscribe((result) => {
+      this.ngOnInit();
+    })
   }
-  openAddBook(edit:boolean){
-    let dialogref = this.dialog.open(BookdialogComponent,{data:{edit:edit}});
-     dialogref.afterClosed().subscribe((result)=>{
-       this.ngOnInit();
-      })
+  openDeleteBook(book: any) {
+    let dialogref = this.dialog.open(DeleteBookComponent, { data: { data: book } });
+    dialogref.afterClosed().subscribe((result) => {
+      this.ngOnInit();
+    })
   }
-  openEditBook(book:any,edit:boolean){
-    let dialogref = this.dialog.open(BookdialogComponent,{data:{data:book,edit:edit}});
-     dialogref.afterClosed().subscribe((result)=>{
-       this.ngOnInit();
-      })
-  }
-  openDeleteBook(book:any){
-    let dialogref = this.dialog.open(DeleteBookComponent,{data:{data:book}});
-     dialogref.afterClosed().subscribe((result)=>{
-       this.ngOnInit();
-      })
-  }
-  Logout()
-  {
-      localStorage.removeItem("BookStoreAdmin");
-      this.route.navigateByUrl('/home');
+  Logout() {
+    localStorage.removeItem("BookStoreAdmin");
+    this.route.navigateByUrl('/home');
   }
 
 }

@@ -25,4 +25,10 @@ describe('BookDescriptionComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('FeedBack form should be invalid', async(() => {
+    component.FeedbackForm.controls['bookId'].setValue('null');
+    component.FeedbackForm.controls['rate'].setValue('');
+    component.FeedbackForm.controls['comment'].setValue('');
+    expect(component.FeedbackForm.valid).toBeFalsy();
+  }));
 });

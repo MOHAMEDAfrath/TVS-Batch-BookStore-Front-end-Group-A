@@ -26,14 +26,13 @@ export class HomeComponent implements OnInit {
     this.getBooks();
     this.GetCart();
   }
-  Logout()
-{
-  if(this.BookStoreUser != null){
-    localStorage.removeItem("BookStoreUser");
-    this.route.navigateByUrl('/home');
-    location.reload();
-}
-}
+  Logout() {
+    if (this.BookStoreUser != null) {
+      localStorage.removeItem("BookStoreUser");
+      this.route.navigateByUrl('/home');
+      location.reload();
+    }
+  }
 
   getBooks() {
     this.book.getBooks()
