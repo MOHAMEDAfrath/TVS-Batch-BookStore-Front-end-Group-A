@@ -237,11 +237,28 @@ font-weight: 500;
 ::ng-deep .ngx-pagination .current{
     background-color: #A03037 !important;
 }
-::ng-deep .mat-menu-item:hover:not([disabled]), .mat-menu-item.cdk-program-focused:not([disabled]), .mat-menu-item.cdk-keyboard-focused:not([disabled]), .mat-menu-item-highlighted:not([disabled])
-{
-  background-color: #fab6ba ;
+
+
+@media only screen and (max-width:665px){
+    .book-main{
+        width: 80vw;
+    }
 }
-.more-icon
-{
-    display: none;
+@media only screen and (max-width:588px){
+    .book-main{
+        width: 95vw;
+    }
+}
+@media only screen and (max-width:495px){
+    .Logo{
+        margin-left: 10px;
+    }
+    .icons{
+        button{
+            margin-right: 10px !important;
+        }
+    }
+   .book-wrap{
+       justify-content: center;
+   }
 }
